@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-primary-fixed-variant":"#2b486f","primary-container":"#17365d","outline":"#74777f","on-primary-fixed":"#001c3b","on-tertiary-container":"#47aea9","surface-container-low":"#eef4ff","surface-dim":"#cfdbec","surface-container-lowest":"#ffffff","surface-tint":"#435f89","on-tertiary":"#ffffff","on-secondary-container":"#4f647c","secondary-fixed":"#d0e4ff","tertiary-container":"#003d3b","tertiary-fixed-dim":"#73d7d2","tertiary-fixed":"#90f3ee","on-primary":"#ffffff","on-surface":"#111c29","inverse-on-surface":"#e9f1ff","primary-fixed":"#d5e3ff","inverse-primary":"#acc8f7","surface-container-highest":"#d8e3f5","secondary":"#4b6078","on-error-container":"#93000a","background":"#f8f9ff","surface-bright":"#f8f9ff","on-secondary-fixed":"#051d32","on-primary-container":"#84a0cd","inverse-surface":"#26313e","secondary-fixed-dim":"#b3c8e4","on-secondary-fixed-variant":"#33485f","error-container":"#ffdad6","primary-fixed-dim":"#acc8f7","on-error":"#ffffff","on-tertiary-fixed":"#00201f","surface":"#f8f9ff","tertiary":"#002524","error":"#ba1a1a","on-surface-variant":"#43474e","outline-variant":"#c4c6cf","secondary-container":"#cce2fe","surface-container-high":"#dee9fb","primary":"#002043","surface-container":"#e4efff","on-tertiary-fixed-variant":"#00504d","on-background":"#111c29","on-secondary":"#ffffff","surface-variant":"#d8e3f5"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-sm":"0.5rem","gutter-compact":"0.5rem","space-xl":"1.5rem","space-xs":"0.25rem","space-md":"0.75rem","margin-mobile":"1rem","space-lg":"1rem","gutter":"1rem","margin":"1.5rem"},"fontFamily":{"body-sm":["Inter"],"label-lg":["Inter"],"body-lg":["Inter"],"headline-xl-mobile":["Inter"],"headline-xl":["Inter"],"code-xs":["JetBrains Mono"],"headline-md":["Inter"],"headline-lg":["Inter"],"body-md":["Inter"],"code-sm":["JetBrains Mono"],"label-md":["Inter"]},"fontSize":{"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"label-lg":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"headline-xl-mobile":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"code-xs":["11px",{"lineHeight":"14px","fontWeight":"400"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"label-md":["11px",{"lineHeight":"14px","fontWeight":"500"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col border-r border-outline-variant/30 select-none"><div class="h-14 px-space-lg flex items-center gap-space-md border-b border-outline-variant/30 bg-surface-container-low/40"><div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-headline-md font-bold text-label-md shrink-0 shadow-sm">EB</div><div class="flex flex-col min-w-0 leading-tight"><span class="font-headline-md text-body-md text-primary font-bold tracking-tight truncate">ACEITEKA EBMIS</span><span class="font-label-md text-code-xs text-on-surface-variant truncate uppercase tracking-wider">National Council Portal</span></div></div><div class="flex-1 overflow-y-auto py-space-sm px-space-xs"><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Operational Registry</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="main-administration-dashboard" href="#">Overview</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examination-cycles" href="#">Examination Cycles</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="candidate-registration-and-bulk-import" href="#">Candidate Registration</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="alphabetical-candidate-register-and-gazette" href="#">Alphabetical Register &amp; Gazette</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="subject-and-combinations" href="#">Subject &amp; Combinations</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs flex items-center justify-between"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Secure Production</span><span class="font-code-xs text-[10px] px-1 rounded bg-secondary-container text-on-secondary-container font-semibold uppercase">Active</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examination-paper-setting-and-reviewer-vault" href="#">Paper Setting &amp; Review Vault</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="printing-and-production" href="#">Printing &amp; Production</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examiner-management" href="#">Examiner Management</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="marking-operations-and-examiner-invitations" href="#">Marking Operations &amp; Examiner Invitations</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-entry-and-verification" href="#">Results Verification</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Governance</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="finance-invoicing-and-school-clearance" href="#">Finance &amp; Invoicing Clearance</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="task-accountability" href="#">Task Accountability</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="reports-and-audit" href="#">Reports &amp; Audit</a></nav></div><div class="p-space-sm border-t border-outline-variant/30 bg-surface-container-low/50"><div class="flex items-center justify-between px-space-xs text-code-xs text-on-surface-variant"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>SECURE EBMIS CORE</span><span class="font-code-xs text-on-surface-variant">v4.2.8</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg"><div class="relative flex items-center bg-surface-container-low border border-outline-variant/40 rounded px-2.5 py-1 text-on-surface hover:border-outline transition-colors"><span class="material-symbols-outlined text-[16px] text-primary mr-1.5">event</span><span class="font-label-lg text-body-sm font-semibold tracking-tight text-primary">2025/2026 UCE &amp; UACE National Session</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant ml-1.5">expand_more</span></div><div class="hidden xl:flex items-center gap-1.5 text-on-surface-variant text-body-sm font-body-sm"><span class="hover:text-primary cursor-pointer">ACEITEKA EBMIS</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface-variant hover:text-primary cursor-pointer">Secure Production</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-primary font-medium">Operational Workflow</span></div></div><div class="flex items-center gap-space-md"><div class="relative hidden md:flex items-center w-72 h-8 bg-surface-container-low border border-outline-variant/40 rounded px-2.5 text-on-surface-variant"><span class="material-symbols-outlined text-[18px] mr-2 text-on-surface-variant">search</span><span class="font-body-sm text-body-sm flex-1 text-on-surface-variant/70">Candidate index, centre code...</span><kbd class="font-code-xs text-code-xs bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant/40 text-on-surface-variant font-medium">Ctrl+K</kbd></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-1"><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Security Audit Counter" type="button"><span class="material-symbols-outlined text-[20px]">security</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></button><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Notifications" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-on-tertiary-container rounded-full ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low text-code-xs text-on-surface-variant border border-outline-variant/30"><span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span><span class="font-code-xs uppercase">ONLINE</span></div></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-2.5 pl-1"><div class="text-right leading-none hidden sm:block"><div class="font-headline-md text-body-sm font-semibold text-primary">Dr. Arthur Nsubuga</div><div class="font-label-md text-code-xs text-on-surface-variant mt-0.5">Chief Registrar &amp; CEO</div></div><img alt="Chief Registrar Dr. Arthur Nsubuga" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida/ALJJyrDEJqiGNArZPqgqf6y3pbseQDUKnlwcDusKp7Fb38UCBXsA3QkhMOme_Rpb221aBmyheUlvp2oellA7LWWNhGXr7zC9D0BhMIKnyeJM4-idrYY9MmZqdC-Py822mo9Ni04am7HFwbnZh9w7g9J9QZ7E2q6EfBI_JNHSZIdYquOiXNTneen6S2YM494B2ymMORsxBu8_xSh-AhMNfR2tkUJ3Oa40QYczkSIXLM9CwE4"/></div></div></header><main class="relative w-full pt-14 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg flex flex-col gap-space-lg">
+<!-- Operational Header & Cryptographic Banner -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm text-code-xs font-code-xs tracking-wider uppercase">
+<span class="text-on-surface-variant font-medium">Secure Production</span>
+<span class="text-outline-variant font-bold">/</span>
+<span class="text-on-surface-variant font-medium">Marking Operations</span>
+<span class="text-outline-variant font-bold">//</span>
+<span class="px-1.5 py-0.5 rounded bg-primary-container text-on-primary font-bold tracking-tight">Examiner Invitations &amp; Deployment</span>
+</div>
+<div class="flex items-center gap-space-xs text-code-xs font-code-xs bg-surface-container-high px-2 py-1 rounded text-primary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-ping"></span>
+<span>GATEWAY: SMPP 3.4 [MTN-UG / AIRTEL-UG ACTIVE]</span>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pt-space-xs">
+<div class="flex flex-col">
+<h1 class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">
+            Marking Operations, Examiner Deployment &amp; Invitation Dispatch
+          </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 max-w-4xl">
+            Real-time dispatch gateway for national marking invitations, quota balancing by paper code, SMS/Email RSVP tracking, venue lodging allocation, and on-site biometric check-in readiness.
+          </p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3 h-9 rounded bg-surface-container-low text-primary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">balance</span>
+            Run Automated Quota Balancer
+          </button>
+<button class="px-3 h-9 rounded bg-surface-container-low text-primary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+            Generate Centre Roster
+          </button>
+<button class="px-3.5 h-9 rounded bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">send_and_archive</span>
+            Broadcast Batch Invitations
+          </button>
+</div>
+</div>
+</div>
+<!-- Institutional KPI Strip (4 Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Target Examiner Quota</span>
+<span class="p-1 rounded bg-surface-container-low text-primary material-symbols-outlined text-[18px]">groups</span>
+</div>
+<div class="mt-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-code-sm text-headline-xl text-primary font-bold">4,310</span>
+<span class="font-code-xs text-body-sm text-on-surface-variant font-medium">/ 4,850 Vetted</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88.9%;"></div>
+</div>
+<div class="flex justify-between items-center mt-1.5 text-code-xs font-code-xs text-on-surface-variant">
+<span>Target Coverage: 88.9%</span>
+<span class="text-tertiary-container font-semibold">540 Buffer Pool</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Invitations Dispatched</span>
+<span class="p-1 rounded bg-surface-container-low text-primary material-symbols-outlined text-[18px]">mark_email_read</span>
+</div>
+<div class="mt-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-code-sm text-headline-xl text-primary font-bold">4,120</span>
+<span class="font-code-xs text-body-sm text-on-surface-variant font-medium">Transmitted</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 95.6%;"></div>
+</div>
+<div class="flex justify-between items-center mt-1.5 text-code-xs font-code-xs text-on-surface-variant">
+<span>Pool Dispatched: 95.6%</span>
+<span class="text-on-tertiary-container font-semibold">190 In Queue</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">RSVP &amp; Oath Confirmed</span>
+<span class="p-1 rounded bg-surface-container-low text-primary material-symbols-outlined text-[18px]">how_to_reg</span>
+</div>
+<div class="mt-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-code-sm text-headline-xl text-primary font-bold">3,890</span>
+<span class="font-code-xs text-body-sm text-tertiary-container font-bold">94.4% Accepted</span>
+</div>
+<div class="flex items-center gap-1.5 mt-2">
+<div class="h-1.5 bg-tertiary-container rounded-full" style="width: 94%;"></div>
+<div class="h-1.5 bg-secondary rounded-full" style="width: 4%;"></div>
+<div class="h-1.5 bg-error rounded-full" style="width: 2%;"></div>
+</div>
+<div class="flex justify-between items-center mt-1.5 text-code-xs font-code-xs text-on-surface-variant">
+<span>142 Pending Response</span>
+<span class="text-error font-medium">88 Declined/Replaced</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Residential Venues</span>
+<span class="p-1 rounded bg-surface-container-low text-primary material-symbols-outlined text-[18px]">domain_verification</span>
+</div>
+<div class="mt-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-code-sm text-headline-xl text-primary font-bold">12 / 12</span>
+<span class="font-code-xs text-body-sm text-on-surface-variant font-medium">Centres Activated</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 91.8%;"></div>
+</div>
+<div class="flex justify-between items-center mt-1.5 text-code-xs font-code-xs text-on-surface-variant">
+<span>4,130 Beds Assigned</span>
+<span class="text-primary font-semibold">4,500 Quarters Total</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Subject Panel Quota & Invitation Balancing Grid -->
+<div class="bg-surface-container-lowest rounded shadow-sm overflow-hidden">
+<div class="px-space-md py-2.5 bg-surface-container-low/60 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">pie_chart</span>
+<span class="font-headline-md text-body-md text-primary font-bold">Syllabus Subject Panel Allocation &amp; Quota Balancing Matrix</span>
+</div>
+<span class="font-code-xs text-code-xs text-on-surface-variant">Automated Refresh Cycle: T-60s</span>
+</div>
+<div class="p-space-md grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Panel 1: Chemistry -->
+<div class="p-space-md rounded bg-surface-container-low/30 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-headline-md text-body-md text-primary font-bold block">Chemistry</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant">P525/1, P525/2, P525/3</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-code-xs text-[10px] font-bold uppercase tracking-wider">Quota Met</span>
+</div>
+<div class="grid grid-cols-3 gap-1 mt-space-md text-center">
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Required</span>
+<span class="text-body-md font-code-sm font-bold text-primary">380</span>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Invited</span>
+<span class="text-body-md font-code-sm font-bold text-secondary">380</span>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Confirmed</span>
+<span class="text-body-md font-code-sm font-bold text-tertiary-container">368</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-code-xs font-code-xs">
+<span class="text-on-surface-variant">Variance: 0 (Reserve Ready)</span>
+<span class="text-tertiary-container font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+              Synchronized
+            </span>
+</div>
+</div>
+<!-- Panel 2: Physics (Alert Deficit) -->
+<div class="p-space-md rounded bg-error-container/20 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-headline-md text-body-md text-primary font-bold block">Physics</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant">P510/1, P510/2</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-error text-on-error font-code-xs text-[10px] font-bold uppercase tracking-wider">Deficit: -12</span>
+</div>
+<div class="grid grid-cols-3 gap-1 mt-space-md text-center">
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Required</span>
+<span class="text-body-md font-code-sm font-bold text-primary">340</span>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Invited</span>
+<span class="text-body-md font-code-sm font-bold text-secondary">340</span>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Confirmed</span>
+<span class="text-body-md font-code-sm font-bold text-error">315</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-code-xs font-code-xs">
+<span class="text-error font-medium">13 Declined / 12 Uncovered</span>
+<span class="text-on-surface-variant">Auto-Reserve Active</span>
+</div>
+<button class="w-full h-7 rounded bg-primary text-on-primary font-label-md text-code-xs font-semibold hover:bg-primary-container transition-colors flex items-center justify-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[14px]">send</span>
+              Dispatch to 25 Next Reserve Candidates
+            </button>
+</div>
+</div>
+<!-- Panel 3: Pure & Applied Mathematics -->
+<div class="p-space-md rounded bg-surface-container-low/30 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-headline-md text-body-md text-primary font-bold block">Mathematics</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant">P425/1, P425/2</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-code-xs text-[10px] font-bold uppercase tracking-wider">Ready</span>
+</div>
+<div class="grid grid-cols-3 gap-1 mt-space-md text-center">
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Required</span>
+<span class="text-body-md font-code-sm font-bold text-primary">420</span>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Invited</span>
+<span class="text-body-md font-code-sm font-bold text-secondary">420</span>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Confirmed</span>
+<span class="text-body-md font-code-sm font-bold text-tertiary-container">412</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-code-xs font-code-xs">
+<span class="text-on-surface-variant">Variance: +8 (Stable)</span>
+<span class="text-tertiary-container font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+              Roster Closed
+            </span>
+</div>
+</div>
+<!-- Panel 4: Biology -->
+<div class="p-space-md rounded bg-surface-container-low/30 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-headline-md text-body-md text-primary font-bold block">Biology</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant">P530/1, P530/2, P530/3</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-code-xs text-[10px] font-bold uppercase tracking-wider">Ready</span>
+</div>
+<div class="grid grid-cols-3 gap-1 mt-space-md text-center">
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Required</span>
+<span class="text-body-md font-code-sm font-bold text-primary">390</span>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Invited</span>
+<span class="text-body-md font-code-sm font-bold text-secondary">390</span>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="text-code-xs font-code-xs text-on-surface-variant block">Confirmed</span>
+<span class="text-body-md font-code-sm font-bold text-tertiary-container">385</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-code-xs font-code-xs">
+<span class="text-on-surface-variant">5 RSVP Reminders Active</span>
+<span class="text-tertiary-container font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+              Prepared
+            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Examiner Dispatch & Live RSVP Management Table Section -->
+<div class="bg-surface-container-lowest rounded shadow-sm overflow-hidden flex flex-col">
+<!-- Filter Bar -->
+<div class="p-space-md bg-surface-container-low/50 flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-sm flex-1">
+<!-- Venue Filter -->
+<div class="flex items-center gap-1 bg-surface-container-lowest px-2.5 py-1.5 rounded shadow-sm">
+<span class="font-label-md text-code-xs text-on-surface-variant">Marking Venue:</span>
+<select class="bg-transparent font-body-md text-body-sm text-primary font-medium focus:outline-none cursor-pointer">
+<option value="all">All 12 Marking Centres</option>
+<option selected="" value="kyambogo">Kyambogo University Main Campus</option>
+<option value="makerere">Makerere College Centre</option>
+<option value="namilyango">Namilyango College Centre</option>
+<option value="gayaza">Gayaza High School Hall</option>
+<option value="budo">King's College Budo Center</option>
+</select>
+</div>
+<!-- Status Filter -->
+<div class="flex items-center gap-1 bg-surface-container-lowest px-2.5 py-1.5 rounded shadow-sm">
+<span class="font-label-md text-code-xs text-on-surface-variant">RSVP Status:</span>
+<select class="bg-transparent font-body-md text-body-sm text-primary font-medium focus:outline-none cursor-pointer">
+<option value="all">All Deployment States</option>
+<option value="accepted">Accepted &amp; Oath Sworn</option>
+<option value="queued">Invitation Queued</option>
+<option value="dispatched">Dispatched via SMS/Email</option>
+<option value="declined">Declined / Replaced</option>
+</select>
+</div>
+<!-- Subject Filter -->
+<div class="flex items-center gap-1 bg-surface-container-lowest px-2.5 py-1.5 rounded shadow-sm">
+<span class="font-label-md text-code-xs text-on-surface-variant">Subject Panel:</span>
+<select class="bg-transparent font-body-md text-body-sm text-primary font-medium focus:outline-none cursor-pointer">
+<option value="all">All Subjects</option>
+<option value="chem">P525 Chemistry</option>
+<option value="phy">P510 Physics</option>
+<option value="math">P425 Pure &amp; Applied Math</option>
+<option value="bio">P530 Biology</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative flex items-center bg-surface-container-lowest rounded px-2.5 py-1.5 shadow-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] mr-1.5 text-on-surface-variant">search</span>
+<input class="bg-transparent text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none w-56" placeholder="Examiner ID, name, phone..." type="text"/>
+</div>
+<button class="h-8 px-2.5 rounded bg-surface-container-high text-primary hover:bg-surface-container text-body-sm font-label-lg flex items-center gap-1" title="Export Ledger" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+            CSV Export
+          </button>
+</div>
+</div>
+<!-- Table Header & Body -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-md text-code-xs text-on-surface-variant uppercase tracking-wider select-none">
+<th class="py-2.5 px-3 w-8">
+<input class="rounded accent-primary" type="checkbox"/>
+</th>
+<th class="py-2.5 px-3">Examiner Profile &amp; Contact</th>
+<th class="py-2.5 px-3">Subject &amp; Panel Deployment</th>
+<th class="py-2.5 px-3">Venue Lodging &amp; Hall</th>
+<th class="py-2.5 px-3">Dispatch Gateway Log</th>
+<th class="py-2.5 px-3">RSVP &amp; Oath Status</th>
+<th class="py-2.5 px-3">Stipend / Biometric ID</th>
+<th class="py-2.5 px-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-sm text-on-surface">
+<!-- Row 1: Valid & Confirmed -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-3">
+<input checked="" class="rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-bold text-label-md shrink-0">
+                    JO
+                  </div>
+<div>
+<div class="font-headline-md text-body-sm font-semibold text-primary">Dr. James Okello-Ocen</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1.5">
+<span>ID: EX-CHM-0412</span>
+<span class="text-outline-variant">•</span>
+<span>+256 772 449 812</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-headline-md text-body-sm font-medium text-primary">P525/1 Chemistry Theory</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Team Leader • Marking Table 04</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-medium text-on-surface">Kyambogo Hall B</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">West Wing Dormitory 3 (Bed #14)</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col text-code-xs font-code-xs">
+<span class="text-tertiary-container font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">sms</span>
+                    SMS Deliv: MTN UG (0.9s)
+                  </span>
+<span class="text-on-surface-variant truncate max-w-[180px]">Token: 9812-INV • Email Opened</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-tertiary-container bg-tertiary-fixed/40 px-2 py-0.5 rounded w-max">
+<span class="material-symbols-outlined text-[13px]">verified_user</span>
+                    Accepted &amp; Oath E-Signed
+                  </span>
+<span class="font-code-xs text-[10px] text-on-surface-variant mt-0.5">Nov 14, 10:14 EAT • Hash: #8f2a1</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col text-code-xs font-code-xs">
+<span class="text-primary font-medium">UGX 680,000 MM Pre-Auth</span>
+<span class="text-tertiary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">fingerprint</span>
+                    Biometric Token Synced
+                  </span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container-high text-primary" title="Print Deployment Badge" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant" title="Message History" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant" title="Actions Menu" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Pending Response -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-3">
+<input class="rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-label-md shrink-0">
+                    MN
+                  </div>
+<div>
+<div class="font-headline-md text-body-sm font-semibold text-primary">Mrs. Mary Namagembe</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1.5">
+<span>ID: EX-PHY-1109</span>
+<span class="text-outline-variant">•</span>
+<span>+256 701 988 231</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-headline-md text-body-sm font-medium text-primary">P510/2 Physics Practical</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Senior Examiner • Lab Section 2</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-medium text-on-surface">Makerere College Hall</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Block C Staff Wing (Room 102)</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col text-code-xs font-code-xs">
+<span class="text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">sms</span>
+                    SMS Sent: Airtel UG
+                  </span>
+<span class="text-on-surface-variant">Delivered 18h ago</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-secondary bg-secondary-container/50 px-2 py-0.5 rounded w-max">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+                    Awaiting Response (48h left)
+                  </span>
+<span class="font-code-xs text-[10px] text-on-surface-variant mt-0.5">Expires Nov 17, 18:00 EAT</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col text-code-xs font-code-xs">
+<span class="text-on-surface-variant">Stipend Queued</span>
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">qr_code</span>
+                    Passcode Ticket Armed
+                  </span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-high text-primary hover:bg-surface-container text-code-xs font-label-md flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">send</span>
+                    Resend SMS
+                  </button>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant" title="Actions Menu" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Declined & Replacement Auto-Invoked -->
+<tr class="hover:bg-surface-container-low/40 transition-colors bg-error-container/5">
+<td class="py-3 px-3">
+<input class="rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-error-container text-error flex items-center justify-center font-bold text-label-md shrink-0">
+                    PW
+                  </div>
+<div>
+<div class="font-headline-md text-body-sm font-semibold text-primary">Prof. Wilson Walusimbi</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1.5">
+<span>ID: EX-PHY-0883</span>
+<span class="text-outline-variant">•</span>
+<span>+256 782 110 500</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-headline-md text-body-sm font-medium text-primary line-through text-on-surface-variant">P510/1 Physics Mechanics</div>
+<div class="font-code-xs text-code-xs text-error font-medium">Replaced By: EX-PHY-2041 (S. Kato)</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-medium text-on-surface-variant line-through">Namilyango Centre</div>
+<div class="font-code-xs text-code-xs text-error">Allocation Re-routed to Reserve</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col text-code-xs font-code-xs">
+<span class="text-error font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">cancel</span>
+                    Opt-out Recv: SMS Reply
+                  </span>
+<span class="text-on-surface-variant">Reason: Medical Leave</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-error bg-error-container px-2 py-0.5 rounded w-max">
+<span class="material-symbols-outlined text-[13px]">person_off</span>
+                    Declined: Auto-Replaced
+                  </span>
+<span class="font-code-xs text-[10px] text-on-surface-variant mt-0.5">Audit Log: #REL-7740</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col text-code-xs font-code-xs">
+<span class="text-error line-through">Advance Revoked</span>
+<span class="text-on-surface-variant">Token Nullified</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-high text-primary hover:bg-surface-container text-code-xs font-label-md flex items-center gap-1" type="button">
+                    View Replacement
+                  </button>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant" title="Actions Menu" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Accepted with Biometric Pre-clearance -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-3">
+<input checked="" class="rounded accent-primary" type="checkbox"/>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-bold text-label-md shrink-0">
+                    BK
+                  </div>
+<div>
+<div class="font-headline-md text-body-sm font-semibold text-primary">Grace Busingye Kemigisha</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1.5">
+<span>ID: EX-MAT-0149</span>
+<span class="text-outline-variant">•</span>
+<span>+256 752 901 324</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-headline-md text-body-sm font-medium text-primary">P425/2 Applied Mathematics</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Examiner • Table 01 (Statistics)</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-medium text-on-surface">Gayaza High School Hall</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Rhodes House (Quarters Unit 08)</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col text-code-xs font-code-xs">
+<span class="text-tertiary-container font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">mail</span>
+                    Portal Authentication
+                  </span>
+<span class="text-on-surface-variant">Signed via Web ID Token</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-tertiary-container bg-tertiary-fixed/40 px-2 py-0.5 rounded w-max">
+<span class="material-symbols-outlined text-[13px]">verified_user</span>
+                    Accepted &amp; Oath E-Signed
+                  </span>
+<span class="font-code-xs text-[10px] text-on-surface-variant mt-0.5">Nov 14, 08:33 EAT • Hash: #4b89e</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex flex-col text-code-xs font-code-xs">
+<span class="text-primary font-medium">UGX 680,000 Disbursed</span>
+<span class="text-tertiary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">fingerprint</span>
+                    Biometric Synced
+                  </span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container-high text-primary" title="Print Deployment Badge" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant" title="Message History" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant" title="Actions Menu" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-space-md py-2.5 bg-surface-container-low/40 flex items-center justify-between text-code-xs font-code-xs text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<span>Showing 1 to 4 of 4,120 active invitations</span>
+<span class="text-outline-variant">|</span>
+<span class="text-primary font-medium">100% Cryptographic Ledger Trace Enabled</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-primary hover:bg-surface-container-high font-medium" type="button">Previous</button>
+<span class="px-2 py-1 rounded bg-primary text-on-primary font-bold">1</span>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-primary hover:bg-surface-container-high font-medium" type="button">2</button>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-primary hover:bg-surface-container-high font-medium" type="button">3</button>
+<span class="px-1 text-on-surface-variant">...</span>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-primary hover:bg-surface-container-high font-medium" type="button">412</button>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-primary hover:bg-surface-container-high font-medium" type="button">Next</button>
+</div>
+</div>
+</div>
+<!-- Invitation Gateway & SMS Broadcast Control Panel (Split Architecture) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left: Active SMS Broadcast Template Configuration (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary">chat_paste_go</span>
+<span class="font-headline-md text-body-md text-primary font-bold">SMS Dispatch Template &amp; Token Interpolator</span>
+</div>
+<span class="font-code-xs text-code-xs px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container font-semibold">ENCRYPTED HSM PIPELINE</span>
+</div>
+<div class="mt-space-sm">
+<div class="flex items-center gap-1.5 flex-wrap mb-2">
+<span class="font-label-md text-code-xs text-on-surface-variant">Dynamic Tokens:</span>
+<button class="font-code-xs text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-primary hover:bg-surface-container transition-colors" type="button">{ExaminerName}</button>
+<button class="font-code-xs text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-primary hover:bg-surface-container transition-colors" type="button">{SubjectCode}</button>
+<button class="font-code-xs text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-primary hover:bg-surface-container transition-colors" type="button">{MarkingVenue}</button>
+<button class="font-code-xs text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-primary hover:bg-surface-container transition-colors" type="button">{ReportDate}</button>
+<button class="font-code-xs text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-primary hover:bg-surface-container transition-colors" type="button">{RSVP_Deadline}</button>
+<button class="font-code-xs text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-primary hover:bg-surface-container transition-colors" type="button">{AcceptLink}</button>
+</div>
+<textarea class="w-full bg-surface-container-low font-code-xs text-code-sm text-on-surface p-2.5 rounded focus:outline-none focus:ring-1 focus:ring-primary font-mono resize-none" rows="4">ACEITEKA EBMIS CONFIDENTIAL: Dear {ExaminerName}, you are officially invited to the 2025/2026 National Marking Session for {SubjectCode} at {MarkingVenue}. Report date: {ReportDate}. Confirm RSVP &amp; e-sign Oath of Secrecy by {RSVP_Deadline}: {AcceptLink}. Non-response triggers automatic quota re-allocation.</textarea>
+<div class="flex items-center justify-between mt-2 text-code-xs font-code-xs text-on-surface-variant">
+<span>Characters: 218 / 320 (2 SMS Segments)</span>
+<span>Encoding: GSM 7-bit standard</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-2">
+<input checked="" class="rounded accent-primary" id="escalationRule" type="checkbox"/>
+<label class="font-body-md text-body-sm text-primary select-none" for="escalationRule">
+              Auto-escalate &amp; replace unconfirmed invitees after 72 hours
+            </label>
+</div>
+<button class="px-3 h-8 rounded bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors shadow-sm flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">save</span>
+            Update Gateway Payload
+          </button>
+</div>
+</div>
+<!-- Right: Live Telco Gateway Switch Monitor (5 cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary">router</span>
+<span class="font-headline-md text-body-md text-primary font-bold">Telco Gateway Switch Status</span>
+</div>
+<span class="font-code-xs text-code-xs text-tertiary-container font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+              99.8% HEALTH
+            </span>
+</div>
+<div class="space-y-space-sm mt-space-sm">
+<!-- Gateway 1: MTN UG -->
+<div class="p-2.5 rounded bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded bg-surface-container-highest text-primary flex items-center justify-center font-bold text-code-xs">
+                  MTN
+                </div>
+<div>
+<div class="font-label-lg text-body-sm font-semibold text-primary">MTN Uganda SMPP Core</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Throughput: 120 SMS/sec • Avg Latency: 0.9s</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-code-xs text-[10px] font-bold">ONLINE</span>
+</div>
+<!-- Gateway 2: Airtel UG -->
+<div class="p-2.5 rounded bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded bg-surface-container-highest text-primary flex items-center justify-center font-bold text-code-xs">
+                  ATL
+                </div>
+<div>
+<div class="font-label-lg text-body-sm font-semibold text-primary">Airtel Uganda Direct Trunk</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Throughput: 95 SMS/sec • Avg Latency: 1.4s</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-code-xs text-[10px] font-bold">ONLINE</span>
+</div>
+<!-- Gateway 3: Primary SMTP Gateway -->
+<div class="p-2.5 rounded bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded bg-surface-container-highest text-primary flex items-center justify-center font-bold text-code-xs">
+                  TLS
+                </div>
+<div>
+<div class="font-label-lg text-body-sm font-semibold text-primary">National Mail Relay (SPF/DKIM)</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Strict DMARC • Delivery Success: 99.9%</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-code-xs text-[10px] font-bold">ACTIVE</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-code-xs font-code-xs text-on-surface-variant">
+<span>Failed Queue: 0 dropped packets</span>
+<button class="text-primary hover:underline font-semibold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+            Configure SMPP Throttle
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

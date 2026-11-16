@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"secondary-fixed":"#d0e4ff","on-primary-fixed":"#001c3b","surface-container-highest":"#d8e3f5","on-tertiary-container":"#47aea9","inverse-on-surface":"#e9f1ff","on-tertiary-fixed-variant":"#00504d","on-surface":"#111c29","on-primary":"#ffffff","on-primary-fixed-variant":"#2b486f","surface-tint":"#435f89","on-tertiary-fixed":"#00201f","surface-container-low":"#eef4ff","primary-fixed-dim":"#acc8f7","surface-container":"#e4efff","on-secondary-container":"#4f647c","primary":"#002043","on-secondary-fixed":"#051d32","outline-variant":"#c4c6cf","surface":"#f8f9ff","primary-container":"#17365d","tertiary":"#002524","on-error":"#ffffff","inverse-surface":"#26313e","on-secondary":"#ffffff","background":"#f8f9ff","on-error-container":"#93000a","tertiary-fixed-dim":"#73d7d2","inverse-primary":"#acc8f7","secondary-container":"#cce2fe","tertiary-fixed":"#90f3ee","primary-fixed":"#d5e3ff","secondary-fixed-dim":"#b3c8e4","tertiary-container":"#003d3b","surface-dim":"#cfdbec","error":"#ba1a1a","surface-variant":"#d8e3f5","on-background":"#111c29","on-surface-variant":"#43474e","on-secondary-fixed-variant":"#33485f","surface-bright":"#f8f9ff","surface-container-lowest":"#ffffff","on-tertiary":"#ffffff","outline":"#74777f","secondary":"#4b6078","on-primary-container":"#84a0cd","error-container":"#ffdad6","surface-container-high":"#dee9fb"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xl":"1.5rem","gutter-compact":"0.5rem","space-sm":"0.5rem","margin-mobile":"1rem","gutter":"1rem","space-lg":"1rem","space-xs":"0.25rem","margin":"1.5rem","space-md":"0.75rem"},"fontFamily":{"code-xs":["JetBrains Mono"],"label-md":["Inter"],"body-md":["Inter"],"headline-lg":["Inter"],"headline-xl":["Inter"],"body-sm":["Inter"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-md":["Inter"],"headline-xl-mobile":["Inter"],"label-lg":["Inter"]},"fontSize":{"code-xs":["11px",{"lineHeight":"14px","fontWeight":"400"}],"label-md":["11px",{"lineHeight":"14px","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-xl-mobile":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-lg":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col border-r border-outline-variant/30 select-none"><div class="h-14 px-space-lg flex items-center gap-space-md border-b border-outline-variant/30 bg-surface-container-low/40"><div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-headline-md font-bold text-label-md shrink-0 shadow-sm">EB</div><div class="flex flex-col min-w-0 leading-tight"><span class="font-headline-md text-body-md text-primary font-bold tracking-tight truncate">ACEITEKA EBMIS</span><span class="font-label-md text-code-xs text-on-surface-variant truncate uppercase tracking-wider">National Council Portal</span></div></div><div class="flex-1 overflow-y-auto py-space-sm px-space-xs"><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Operational Registry</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examination-cycles" href="#">Examination Cycles</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="candidate-registration-and-bulk-import" href="#">Candidate Registration</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="alphabetical-candidate-register-and-gazette" href="#">Alphabetical Register &amp; Gazette</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="subject-and-combinations" href="#">Subject &amp; Combinations</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Secure Production</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examination-paper-setting-and-reviewer-vault" href="#">Paper Setting &amp; Review Vault</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="printing-and-production" href="#">Printing &amp; Production</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examiner-management" href="#">Examiner Management</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="marking-operations" href="#">Marking Operations</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-entry-and-verification" href="#">Results Verification</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Governance</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="finance-invoicing-and-school-clearance" href="#">Finance &amp; Invoicing Clearance</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="task-accountability" href="#">Task Accountability</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="reports-and-audit" href="#">Reports &amp; Audit</a></nav></div><div class="p-space-sm border-t border-outline-variant/30 bg-surface-container-low/50"><div class="flex items-center justify-between px-space-xs text-code-xs text-on-surface-variant"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>SECURE EBMIS CORE</span><span class="font-code-xs text-on-surface-variant">v4.2.8</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg"><div class="relative flex items-center bg-surface-container-low border border-outline-variant/40 rounded px-2.5 py-1 text-on-surface hover:border-outline transition-colors"><span class="material-symbols-outlined text-[16px] text-primary mr-1.5">event</span><span class="font-label-lg text-body-sm font-semibold tracking-tight text-primary">2025/2026 UCE &amp; UACE National Session</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant ml-1.5">expand_more</span></div><div class="hidden xl:flex items-center gap-1.5 text-on-surface-variant text-body-sm font-body-sm"><span class="hover:text-primary cursor-pointer">Portal</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-medium">Examination Operations</span></div></div><div class="flex items-center gap-space-md"><div class="relative hidden md:flex items-center w-72 h-8 bg-surface-container-low border border-outline-variant/40 rounded px-2.5 text-on-surface-variant"><span class="material-symbols-outlined text-[18px] mr-2 text-on-surface-variant">search</span><span class="font-body-sm text-body-sm flex-1 text-on-surface-variant/70">Candidate index, center code...</span><kbd class="font-code-xs text-code-xs bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant/40 text-on-surface-variant font-medium">Ctrl+K</kbd></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-1"><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Security Audit Counter" type="button"><span class="material-symbols-outlined text-[20px]">security</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></button><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Notifications" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-on-tertiary-container rounded-full ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low text-code-xs text-on-surface-variant border border-outline-variant/30"><span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span><span class="font-code-xs uppercase">ONLINE</span></div></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-2.5 pl-1"><div class="text-right leading-none hidden sm:block"><div class="font-headline-md text-body-sm font-semibold text-primary">Dr. Arthur Nsubuga</div><div class="font-label-md text-code-xs text-on-surface-variant mt-0.5">Chief Registrar &amp; CEO</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida/ALJJyrDEJqiGNArZPqgqf6y3pbseQDUKnlwcDusKp7Fb38UCBXsA3QkhMOme_Rpb221aBmyheUlvp2oellA7LWWNhGXr7zC9D0BhMIKnyeJM4-idrYY9MmZqdC-Py822mo9Ni04am7HFwbnZh9w7g9J9QZ7E2q6EfBI_JNHSZIdYquOiXNTneen6S2YM494B2ymMORsxBu8_xSh-AhMNfR2tkUJ3Oa40QYczkSIXLM9CwE4"/></div></div></header><main class="relative w-full pt-14 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Sub-header Breadcrumb and Live Security Status -->
+<div class="w-full bg-surface-container-low px-space-lg py-2.5 flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">account_balance</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant uppercase tracking-wider">Governance</span>
+<span class="text-outline-variant font-code-xs text-code-xs">/</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant uppercase tracking-wider">Finance &amp; Invoicing Clearance</span>
+<span class="text-outline-variant font-code-xs text-code-xs">/</span>
+<span class="font-code-xs text-code-xs text-primary font-semibold uppercase tracking-wider">Session Cycle 2025–2026</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container text-code-xs font-code-xs text-on-surface">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-ping"></span>
+<span class="font-medium text-primary">URA / Direct Central Bank Switch:</span>
+<span class="text-on-tertiary-fixed-variant font-semibold">Active &amp; Reconciled</span>
+<span class="text-on-surface-variant text-[10px]">(Ping: 104ms · 2m ago)</span>
+</div>
+<div class="flex items-center gap-1 text-code-xs font-code-xs text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px] text-primary">verified_user</span>
+<span>Audit Sig: #TX-9022-EB</span>
+</div>
+</div>
+</div>
+<!-- Operational Header Title & Control Actions -->
+<div class="px-space-lg py-space-md bg-surface-container-lowest flex flex-col xl:flex-row xl:items-center justify-between gap-space-md shadow-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">Centre Invoicing, Collections &amp; Statutory Clearance</h1>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-code-xs text-code-xs font-medium uppercase tracking-wider">Statutory Audit</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+        Statutory registry of billing cycles, treasury automated settlement feeds, sit-permit endorsements, and candidate roll reconciliation for 1,482 examination centres.
+      </p>
+</div>
+<!-- Quick Action Bar -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors font-medium" type="button">
+<span class="material-symbols-outlined text-[16px]">file_upload</span>
+<span>Import Settlement Log (MT940/CSV)</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors font-medium" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>Generate Batch Invoices</span>
+</button>
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm font-semibold" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Export Financial Ledger</span>
+</button>
+</div>
+</div>
+<!-- Main Operational Canvas -->
+<div class="p-space-lg flex flex-col gap-space-lg">
+<!-- Top Financial Performance Metric Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Metric 1: Invoiced Roll -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<div class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant">Gross Invoiced Roll</div>
+<div class="font-headline-xl text-headline-xl text-primary font-bold mt-1 tracking-tight">$18,420,500</div>
+</div>
+<div class="w-9 h-9 rounded bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">request_quote</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 flex items-center justify-between text-code-xs font-code-xs bg-surface-container-low px-2 py-1 rounded">
+<span class="text-on-surface-variant">1,482 Examination Centres</span>
+<span class="text-primary font-semibold">100% Billed</span>
+</div>
+</div>
+<!-- Metric 2: Verified Collections -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<div class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant">Verified Bank Remittance</div>
+<div class="font-headline-xl text-headline-xl text-on-tertiary-fixed-variant font-bold mt-1 tracking-tight">$14,215,800</div>
+</div>
+<div class="w-9 h-9 rounded bg-secondary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-center justify-between text-code-xs font-code-xs mb-1">
+<span class="text-on-surface-variant">Reconciled Settlement</span>
+<span class="text-on-tertiary-fixed-variant font-bold">77.2% Total</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-on-tertiary-container rounded-full" style="width: 77.2%;"></div>
+</div>
+</div>
+</div>
+<!-- Metric 3: Outstanding Receivables -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<div class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant">Outstanding Arrears</div>
+<div class="font-headline-xl text-headline-xl text-error font-bold mt-1 tracking-tight">$4,204,700</div>
+</div>
+<div class="w-9 h-9 rounded bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 flex items-center justify-between text-code-xs font-code-xs bg-surface-container-low px-2 py-1 rounded">
+<span class="text-error font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+            92 Centre Lockouts Pending
+          </span>
+<span class="text-on-surface-variant font-code-xs">Due in 4 Days</span>
+</div>
+</div>
+<!-- Metric 4: Statutory Sit-Permit Clearance Breakdown -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant">Statutory Permits</span>
+<span class="font-code-xs text-code-xs font-bold text-primary">1,482 TOTAL</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5 mt-2.5 text-center">
+<div class="bg-surface-container-low p-1.5 rounded flex flex-col items-center">
+<span class="font-headline-md text-headline-md font-bold text-on-tertiary-fixed-variant leading-none">1,148</span>
+<span class="text-[10px] font-label-md uppercase tracking-wider text-on-surface-variant mt-1">Cleared</span>
+</div>
+<div class="bg-secondary-container/40 p-1.5 rounded flex flex-col items-center">
+<span class="font-headline-md text-headline-md font-bold text-secondary font-mono leading-none">242</span>
+<span class="text-[10px] font-label-md uppercase tracking-wider text-secondary mt-1">Partial</span>
+</div>
+<div class="bg-error-container/40 p-1.5 rounded flex flex-col items-center">
+<span class="font-headline-md text-headline-md font-bold text-error leading-none">92</span>
+<span class="text-[10px] font-label-md uppercase tracking-wider text-error mt-1">Blocked</span>
+</div>
+</div>
+</div>
+<div class="mt-2.5 flex items-center gap-1.5 text-code-xs font-code-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-on-tertiary-container">lock</span>
+<span>Security watermarks dynamically provisioned</span>
+</div>
+</div>
+</div>
+<!-- Active Invoicing & Audit Ledger Section -->
+<div class="bg-surface-container-lowest rounded shadow-sm flex flex-col">
+<!-- Filter Navigation Tabs -->
+<div class="flex flex-wrap items-center justify-between px-space-md pt-space-sm bg-surface-container-low/50">
+<div class="flex items-center gap-1 overflow-x-auto">
+<button class="px-3.5 py-2 font-label-lg text-label-md font-semibold text-primary bg-surface-container-lowest rounded-t shadow-sm flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">view_list</span>
+<span>All Centres</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-code-xs font-code-xs text-primary font-bold">1,482</span>
+</button>
+<button class="px-3.5 py-2 font-label-lg text-label-md font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-t flex items-center gap-1.5" type="button">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span>Fully Cleared &amp; Issued</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-code-xs font-code-xs">1,148</span>
+</button>
+<button class="px-3.5 py-2 font-label-lg text-label-md font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-t flex items-center gap-1.5" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Partial Payment / Under Review</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-code-xs font-code-xs">242</span>
+</button>
+<button class="px-3.5 py-2 font-label-lg text-label-md font-medium text-error hover:bg-error-container/40 transition-colors rounded-t flex items-center gap-1.5" type="button">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>Critical Deficit / Blocked</span>
+<span class="px-1.5 py-0.2 rounded bg-error-container text-on-error-container font-code-xs text-code-xs font-bold">92</span>
+</button>
+<button class="px-3.5 py-2 font-label-lg text-label-md font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-t flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[15px] text-primary">workspace_premium</span>
+<span>Special Grants / Exemptions</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-code-xs font-code-xs">14</span>
+</button>
+</div>
+<div class="py-1.5 flex items-center gap-2">
+<span class="font-code-xs text-code-xs text-on-surface-variant">Auto-reconcile with PRN Gateway:</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs font-bold uppercase tracking-wider">Live Polling (60s)</span>
+</div>
+</div>
+<!-- Advanced Multi-parameter Filter Ribbon -->
+<div class="p-space-md bg-surface-container-lowest grid grid-cols-1 md:grid-cols-12 gap-space-sm items-center">
+<!-- Search Box -->
+<div class="md:col-span-4 relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full h-9 pl-9 pr-3 rounded bg-surface-container-low font-body-md text-body-sm text-on-surface placeholder:text-on-surface-variant/70 focus:bg-surface-container-lowest focus:outline-none" placeholder="Filter by Centre Code (e.g. U0001) or School Name..." type="text"/>
+</div>
+<!-- District / Regional Registry -->
+<div class="md:col-span-3 flex items-center">
+<select class="w-full h-9 px-2.5 rounded bg-surface-container-low font-body-md text-body-sm text-on-surface focus:outline-none cursor-pointer">
+<option value="all">All Administrative Regions / Districts (146)</option>
+<option value="kla">Kampala Central Metropolitan</option>
+<option value="wks">Wakiso District (High-Density Zone)</option>
+<option value="mbk">Mbarara / Western Regional Hub</option>
+<option value="jja">Jinja / Eastern Industrial Basin</option>
+<option value="glu">Gulu / Northern Circuit</option>
+</select>
+</div>
+<!-- Settlement Tier Dropdown -->
+<div class="md:col-span-2 flex items-center">
+<select class="w-full h-9 px-2.5 rounded bg-surface-container-low font-body-md text-body-sm text-on-surface focus:outline-none cursor-pointer">
+<option value="all">All Settlement Tiers</option>
+<option value="full">100% Cleared &amp; Reconciled</option>
+<option value="escrow">75% - 99% Partial Escrow</option>
+<option value="critical">&lt; 50% Critical Deficit</option>
+<option value="zero">Zero Deposit ($0.00)</option>
+</select>
+</div>
+<!-- Examination Level Dropdown -->
+<div class="md:col-span-2 flex items-center">
+<select class="w-full h-9 px-2.5 rounded bg-surface-container-low font-body-md text-body-sm text-on-surface focus:outline-none cursor-pointer">
+<option value="all">Levels: UCE &amp; UACE</option>
+<option value="uce">UCE Only (Ordinary Level)</option>
+<option value="uace">UACE Only (Advanced Level)</option>
+<option value="combined">Combined Dual Centre</option>
+</select>
+</div>
+<!-- Reset Button -->
+<div class="md:col-span-1 flex justify-end">
+<button class="h-9 w-full px-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-colors" title="Reset all active parameters" type="button">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+<span class="hidden xl:inline">Reset</span>
+</button>
+</div>
+</div>
+<!-- High-Density Institutional Invoicing & Clearance Ledger Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-code-xs uppercase tracking-wider select-none">
+<th class="p-space-sm w-9 text-center">
+<input class="rounded text-primary focus:ring-0 cursor-pointer w-3.5 h-3.5" title="Select all rows" type="checkbox"/>
+</th>
+<th class="py-2.5 px-space-sm font-semibold">Centre Code</th>
+<th class="py-2.5 px-space-sm font-semibold min-w-[200px]">Examination Centre &amp; Category</th>
+<th class="py-2.5 px-space-sm font-semibold text-center">Enrolled Roll</th>
+<th class="py-2.5 px-space-sm font-semibold text-right">Fee Tariff</th>
+<th class="py-2.5 px-space-sm font-semibold text-right">Bank Remitted</th>
+<th class="py-2.5 px-space-sm font-semibold text-right">Balance Due</th>
+<th class="py-2.5 px-space-sm font-semibold min-w-[170px]">Verification / PRN</th>
+<th class="py-2.5 px-space-sm font-semibold text-center">Clearance Status</th>
+<th class="py-2.5 px-space-sm font-semibold text-right pr-space-md">Administrative Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-md text-body-md text-on-surface">
+<!-- Row 1: King's College Budo (Fully Cleared) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="p-space-sm text-center">
+<input class="rounded text-primary focus:ring-0 cursor-pointer w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-sm font-code-sm text-code-sm font-bold text-primary whitespace-nowrap">
+                U0001
+              </td>
+<td class="py-2.5 px-space-sm">
+<div class="font-headline-md text-body-sm font-semibold text-primary">King's College, Budo</div>
+<div class="font-label-md text-code-xs text-on-surface-variant flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+<span>National Public · Wakiso District</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<div class="font-code-sm text-code-sm font-medium text-primary">592 Total</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">324 UCE / 268 UACE</div>
+</td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface font-medium">
+                $29,600.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-tertiary-fixed-variant font-bold">
+                $29,600.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface-variant font-mono">
+                $0.00
+              </td>
+<td class="py-2.5 px-space-sm font-code-xs text-code-xs">
+<div class="flex items-center gap-1 text-primary font-semibold">
+<span class="material-symbols-outlined text-[13px] text-on-tertiary-container">verified</span>
+<span>PRN: 994020194821</span>
+</div>
+<div class="text-on-surface-variant text-[10px]">Stanbic Direct · URA-ACK#882</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-secondary-fixed/50 text-primary font-code-xs text-code-xs font-bold">
+<span class="material-symbols-outlined text-[13px] text-on-tertiary-container">lock</span>
+<span>CLEARED &amp; SEALED</span>
+</span>
+</td>
+<td class="py-2.5 px-space-sm text-right pr-space-md">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Download Sealed Sit-Permit" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="View Financial Statement" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Audit History Log" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Gayaza High School (Fully Cleared) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="p-space-sm text-center">
+<input class="rounded text-primary focus:ring-0 cursor-pointer w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-sm font-code-sm text-code-sm font-bold text-primary whitespace-nowrap">
+                U0002
+              </td>
+<td class="py-2.5 px-space-sm">
+<div class="font-headline-md text-body-sm font-semibold text-primary">Gayaza High School</div>
+<div class="font-label-md text-code-xs text-on-surface-variant flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+<span>Government-Aided · Wakiso District</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<div class="font-code-sm text-code-sm font-medium text-primary">510 Total</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">280 UCE / 230 UACE</div>
+</td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface font-medium">
+                $25,500.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-tertiary-fixed-variant font-bold">
+                $25,500.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface-variant font-mono">
+                $0.00
+              </td>
+<td class="py-2.5 px-space-sm font-code-xs text-code-xs">
+<div class="flex items-center gap-1 text-primary font-semibold">
+<span class="material-symbols-outlined text-[13px] text-on-tertiary-container">verified</span>
+<span>PRN: 994020198842</span>
+</div>
+<div class="text-on-surface-variant text-[10px]">Absa Bank · URA-ACK#891</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-secondary-fixed/50 text-primary font-code-xs text-code-xs font-bold">
+<span class="material-symbols-outlined text-[13px] text-on-tertiary-container">lock</span>
+<span>CLEARED &amp; SEALED</span>
+</span>
+</td>
+<td class="py-2.5 px-space-sm text-right pr-space-md">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Download Sealed Sit-Permit" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="View Financial Statement" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Audit History Log" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: St. Mary's Kitende (Partial Escrow / Target Spotlight) -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-low transition-colors group">
+<td class="p-space-sm text-center">
+<input checked="" class="rounded text-primary focus:ring-0 cursor-pointer w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-sm font-code-sm text-code-sm font-bold text-primary whitespace-nowrap flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>U0034</span>
+</td>
+<td class="py-2.5 px-space-sm">
+<div class="font-headline-md text-body-sm font-bold text-primary flex items-center gap-1.5">
+<span>St. Mary's College, Kitende</span>
+<span class="px-1.5 py-0.2 rounded bg-primary text-on-primary font-code-xs text-[10px] uppercase">Spotlight</span>
+</div>
+<div class="font-label-md text-code-xs text-on-surface-variant flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Private Boarding Hub · Wakiso South</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<div class="font-code-sm text-code-sm font-medium text-primary">744 Total</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">420 UCE / 324 UACE</div>
+</td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface font-medium">
+                $37,200.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-secondary font-bold">
+                $34,800.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-error font-bold">
+                $2,400.00
+              </td>
+<td class="py-2.5 px-space-sm font-code-xs text-code-xs">
+<div class="flex items-center gap-1 text-secondary font-semibold">
+<span class="material-symbols-outlined text-[13px]">pending</span>
+<span>PRN: 994020199140</span>
+</div>
+<div class="text-on-surface-variant text-[10px]">Centenary Bank · Tranche 1 of 2</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-secondary-container text-on-secondary-container font-code-xs text-code-xs font-bold">
+<span class="material-symbols-outlined text-[13px]">hourglass_top</span>
+<span>PARTIAL ESCROW (93%)</span>
+</span>
+</td>
+<td class="py-2.5 px-space-sm text-right pr-space-md">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed transition-colors" title="Inspect Spotlight Reconciliation" type="button">
+<span class="material-symbols-outlined text-[18px]">rule</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Post Payment Allocation" type="button">
+<span class="material-symbols-outlined text-[18px]">add_card</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Issue Surcharge Memo" type="button">
+<span class="material-symbols-outlined text-[18px]">notification_important</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: St. Mary's College Kisubi (Fully Cleared) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="p-space-sm text-center">
+<input class="rounded text-primary focus:ring-0 cursor-pointer w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-sm font-code-sm text-code-sm font-bold text-primary whitespace-nowrap">
+                U0023
+              </td>
+<td class="py-2.5 px-space-sm">
+<div class="font-headline-md text-body-sm font-semibold text-primary">St. Mary's College, Kisubi</div>
+<div class="font-label-md text-code-xs text-on-surface-variant flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+<span>Government-Aided · Entebbe Zone</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<div class="font-code-sm text-code-sm font-medium text-primary">486 Total</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">256 UCE / 230 UACE</div>
+</td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface font-medium">
+                $24,300.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-tertiary-fixed-variant font-bold">
+                $24,300.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface-variant font-mono">
+                $0.00
+              </td>
+<td class="py-2.5 px-space-sm font-code-xs text-code-xs">
+<div class="flex items-center gap-1 text-primary font-semibold">
+<span class="material-symbols-outlined text-[13px] text-on-tertiary-container">verified</span>
+<span>PRN: 994020191138</span>
+</div>
+<div class="text-on-surface-variant text-[10px]">DFCU Bank · URA-ACK#760</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-secondary-fixed/50 text-primary font-code-xs text-code-xs font-bold">
+<span class="material-symbols-outlined text-[13px] text-on-tertiary-container">lock</span>
+<span>CLEARED &amp; SEALED</span>
+</span>
+</td>
+<td class="py-2.5 px-space-sm text-right pr-space-md">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Download Sealed Sit-Permit" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="View Financial Statement" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Audit History Log" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Makerere College School (Critical Deficit / Blocked) -->
+<tr class="hover:bg-error-container/10 transition-colors group">
+<td class="p-space-sm text-center">
+<input class="rounded text-error focus:ring-0 cursor-pointer w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-sm font-code-sm text-code-sm font-bold text-error whitespace-nowrap flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+<span>U0013</span>
+</td>
+<td class="py-2.5 px-space-sm">
+<div class="font-headline-md text-body-sm font-semibold text-primary">Makerere College School</div>
+<div class="font-label-md text-code-xs text-error flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-error"></span>
+<span>Statutory Default · Kampala Central</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<div class="font-code-sm text-code-sm font-medium text-primary">412 Total</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">220 UCE / 192 UACE</div>
+</td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface font-medium">
+                $20,600.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface-variant font-mono">
+                $0.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-error font-bold">
+                $20,600.00
+              </td>
+<td class="py-2.5 px-space-sm font-code-xs text-code-xs">
+<div class="flex items-center gap-1 text-error font-semibold">
+<span class="material-symbols-outlined text-[13px]">gpp_bad</span>
+<span>NO SETTLEMENT TRACE</span>
+</div>
+<div class="text-error/80 text-[10px]">Demand Notice #3 Issued</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-error-container text-on-error-container font-code-xs text-code-xs font-bold">
+<span class="material-symbols-outlined text-[13px]">block</span>
+<span>BLOCKED: UNPAID</span>
+</span>
+</td>
+<td class="py-2.5 px-space-sm text-right pr-space-md">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded bg-error text-on-error hover:bg-error/90 transition-colors" title="Issue Gate Lockout Order" type="button">
+<span class="material-symbols-outlined text-[18px]">lock_person</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Post Urgent Allocation" type="button">
+<span class="material-symbols-outlined text-[18px]">add_card</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Legal Notice Dispatch" type="button">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Kibuli Secondary School (Partial Escrow) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="p-space-sm text-center">
+<input class="rounded text-primary focus:ring-0 cursor-pointer w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-sm font-code-sm text-code-sm font-bold text-primary whitespace-nowrap">
+                U0048
+              </td>
+<td class="py-2.5 px-space-sm">
+<div class="font-headline-md text-body-sm font-semibold text-primary">Kibuli Secondary School</div>
+<div class="font-label-md text-code-xs text-on-surface-variant flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Government-Aided · Makindye Hub</span>
+</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<div class="font-code-sm text-code-sm font-medium text-primary">620 Total</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">340 UCE / 280 UACE</div>
+</td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-on-surface font-medium">
+                $31,000.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-secondary font-bold">
+                $23,250.00
+              </td>
+<td class="py-2.5 px-space-sm text-right font-code-sm text-code-sm text-error font-bold">
+                $7,750.00
+              </td>
+<td class="py-2.5 px-space-sm font-code-xs text-code-xs">
+<div class="flex items-center gap-1 text-secondary font-semibold">
+<span class="material-symbols-outlined text-[13px]">pending</span>
+<span>PRN: 994020193309</span>
+</div>
+<div class="text-on-surface-variant text-[10px]">Housing Finance · Tranche 1 (75%)</div>
+</td>
+<td class="py-2.5 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-secondary-container text-on-secondary-container font-code-xs text-code-xs font-bold">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+<span>PARTIAL ESCROW (75%)</span>
+</span>
+</td>
+<td class="py-2.5 px-space-sm text-right pr-space-md">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Post Balance Allocation" type="button">
+<span class="material-symbols-outlined text-[18px]">add_card</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Statement Breakdown" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary" title="Dispatch Balance Demand" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Ledger Pagination & Batch Governance Bar -->
+<div class="p-space-md bg-surface-container-low/40 flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md text-code-xs font-code-xs text-on-surface-variant">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary">done_all</span>
+<span>Selected: <strong>1 Centre</strong> (U0034 St. Mary's Kitende)</span>
+</span>
+<span>·</span>
+<span>Showing <strong>1–6</strong> of <strong>1,482</strong> records</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-xs text-code-xs disabled:opacity-40" disabled="" type="button">
+            Previous
+          </button>
+<div class="flex items-center gap-1">
+<span class="w-6 h-6 rounded bg-primary text-on-primary font-code-xs text-code-xs flex items-center justify-center font-bold">1</span>
+<span class="w-6 h-6 rounded hover:bg-surface-container font-code-xs text-code-xs flex items-center justify-center text-on-surface cursor-pointer">2</span>
+<span class="w-6 h-6 rounded hover:bg-surface-container font-code-xs text-code-xs flex items-center justify-center text-on-surface cursor-pointer">3</span>
+<span class="text-on-surface-variant font-code-xs">...</span>
+<span class="w-6 h-6 rounded hover:bg-surface-container font-code-xs text-code-xs flex items-center justify-center text-on-surface cursor-pointer">247</span>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-xs text-code-xs" type="button">
+            Next
+          </button>
+</div>
+</div>
+</div>
+<!-- Active Centre Spotlight & Reconciliation Drawer Card -->
+<div class="bg-surface-container-lowest rounded shadow-md overflow-hidden">
+<!-- Spotlight Top Bar -->
+<div class="bg-primary text-on-primary p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded bg-on-tertiary-container/20 text-on-tertiary-container flex items-center justify-center font-bold font-code-sm text-body-lg">
+            U34
+          </div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold tracking-tight">Active Audit Spotlight: U0034 — St. Mary's College, Kitende</span>
+<span class="px-2 py-0.5 rounded bg-secondary text-on-secondary font-code-xs text-code-xs font-semibold uppercase">Partial Escrow Escaped</span>
+</div>
+<p class="font-code-xs text-code-xs text-on-primary-container mt-0.5">
+              Registration Centre PIN: 2901-KTD-2025 · Account Officer: E. Wandera (Internal Auditor II)
+            </p>
+</div>
+</div>
+<!-- Dual Authorization Action Group -->
+<div class="flex items-center gap-space-sm">
+<button class="px-3.5 py-1.5 rounded bg-surface-container-highest/20 hover:bg-surface-container-highest/30 text-on-primary font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+<span>Record Surcharge Waiver</span>
+</button>
+<button class="px-3.5 py-1.5 rounded bg-error text-on-error hover:bg-error/90 font-label-md text-label-md transition-colors flex items-center gap-1.5 shadow-sm font-semibold" type="button">
+<span class="material-symbols-outlined text-[16px]">gpp_maybe</span>
+<span>Enforce Strict Gate Lockout</span>
+</button>
+<button class="px-4 py-1.5 rounded bg-on-tertiary-container text-tertiary hover:opacity-90 font-label-md text-label-md transition-colors flex items-center gap-1.5 font-bold shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Release Conditional Examination Permit</span>
+</button>
+</div>
+</div>
+<!-- Spotlight Content Grid -->
+<div class="p-space-lg grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Candidate Roll Reconciliation Breakdown (Left 7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-lg font-bold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">receipt</span>
+<span>Candidate Roll Statutory Invoicing Breakdown</span>
+</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant font-medium">Billed: Nov 12, 2025</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded">
+<span class="font-label-md text-code-xs text-on-surface-variant uppercase">Ordinary Level (UCE)</span>
+<div class="font-headline-md text-headline-md font-bold text-primary mt-1">420 Candidates</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant mt-0.5">@ $50.00 = $21,000.00</div>
+<div class="mt-2 text-[10px] font-code-xs font-semibold text-on-tertiary-fixed-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+<span>Fully Settled (100%)</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded">
+<span class="font-label-md text-code-xs text-on-surface-variant uppercase">Advanced Level (UACE)</span>
+<div class="font-headline-md text-headline-md font-bold text-primary mt-1">324 Candidates</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant mt-0.5">@ $50.00 = $16,200.00</div>
+<div class="mt-2 text-[10px] font-code-xs font-semibold text-on-tertiary-fixed-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+<span>$13,800 Settled · $2.4k Bal</span>
+</div>
+</div>
+<div class="bg-error-container/30 p-space-sm rounded">
+<span class="font-label-md text-code-xs text-error uppercase font-bold">Late Roll Penalty</span>
+<div class="font-headline-md text-headline-md font-bold text-error mt-1">48 Candidates</div>
+<div class="font-code-xs text-code-xs text-error/80 mt-0.5">@ $50.00 Surcharge = $2,400.00</div>
+<div class="mt-2 text-[10px] font-code-xs font-bold text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+<span>Statutory Default (Unpaid)</span>
+</div>
+</div>
+</div>
+<!-- Cryptographic Seal Banner -->
+<div class="bg-surface-container-low p-space-md rounded flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded bg-primary-container text-on-primary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</div>
+<div>
+<div class="font-label-lg text-body-sm font-bold text-primary">Cryptographic Pre-Seal Verification Signature</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant mt-0.5">
+                  SHA-256: 48f9-c290-e881-8840-0012-acb8-kitende-clearance-eval
+                </div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-code-xs text-code-xs font-bold text-error uppercase tracking-wider">Permit Withheld</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">$2,400.00 shortfall required</div>
+</div>
+</div>
+</div>
+<!-- Automated Bank Settlement Feeds snippet (Right 5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-sm bg-surface-container-low p-space-md rounded">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-sm font-bold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">sync_alt</span>
+<span>Direct Bank Settlement Feed</span>
+</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-code-xs text-code-xs text-primary font-bold">2 Transactions Logged</span>
+</div>
+<!-- Transaction List -->
+<div class="flex flex-col gap-2 mt-1">
+<!-- Tx 1 -->
+<div class="p-2.5 rounded bg-surface-container-lowest shadow-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-code-xs text-code-xs font-bold text-on-tertiary-fixed-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>+$21,000.00 (UCE Full Tariff)</span>
+</span>
+<span class="font-code-xs text-[10px] text-on-surface-variant">Nov 18, 2025 · 09:14 UTC</span>
+</div>
+<div class="font-code-xs text-[11px] text-on-surface-variant flex items-center justify-between">
+<span>Centenary Bank Ref: <span class="font-bold text-primary">CB-88291040-KTD</span></span>
+<span class="text-on-tertiary-fixed-variant font-semibold">PRN Reconciled</span>
+</div>
+</div>
+<!-- Tx 2 -->
+<div class="p-2.5 rounded bg-surface-container-lowest shadow-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-code-xs text-code-xs font-bold text-on-tertiary-fixed-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>+$13,800.00 (UACE Tranche 1)</span>
+</span>
+<span class="font-code-xs text-[10px] text-on-surface-variant">Nov 22, 2025 · 14:48 UTC</span>
+</div>
+<div class="font-code-xs text-[11px] text-on-surface-variant flex items-center justify-between">
+<span>Centenary Bank Ref: <span class="font-bold text-primary">CB-88319924-KTD</span></span>
+<span class="text-on-tertiary-fixed-variant font-semibold">PRN Reconciled</span>
+</div>
+</div>
+</div>
+<!-- Authorizing Bursar Signature Token Block -->
+<div class="mt-2 pt-2 bg-surface-container-lowest p-2.5 rounded flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img alt="Bursar Signature" class="w-8 h-8 rounded-full ring-1 ring-primary/20" src="https://lh3.googleusercontent.com/aida/ALJJyrDEJqiGNArZPqgqf6y3pbseQDUKnlwcDusKp7Fb38UCBXsA3QkhMOme_Rpb221aBmyheUlvp2oellA7LWWNhGXr7zC9D0BhMIKnyeJM4-idrYY9MmZqdC-Py822mo9Ni04am7HFwbnZh9w7g9J9QZ7E2q6EfBI_JNHSZIdYquOiXNTneen6S2YM494B2ymMORsxBu8_xSh-AhMNfR2tkUJ3Oa40QYczkSIXLM9CwE4"/>
+<div>
+<div class="font-headline-md text-code-xs font-bold text-primary">Bursar Authorization Gate</div>
+<div class="font-code-xs text-[10px] text-on-surface-variant">S. Kyeyune · Sr. Treasury Controller</div>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container font-code-xs text-[10px] font-bold">
+                AUDIT PIN VERIFIED
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

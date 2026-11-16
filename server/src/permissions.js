@@ -1,0 +1,53 @@
+// Single source of truth for permissions and role defaults. Seeded into the database.
+export const PERMISSIONS = {
+  'schools.view': 'See schools and examination centres',
+  'schools.create': 'Add schools and centres',
+  'schools.update': 'Edit schools and centres',
+  'sessions.manage': 'Create and edit examination sessions',
+  'subjects.manage': 'Manage subjects and subject groups',
+  'students.view': 'See student entries and records',
+  'students.upload': 'Upload student entries (school)',
+  'students.review': 'Review student entries',
+  'students.approve': 'Approve or reject student entries',
+  'examiners.nominate': 'Recommend examiners (school)',
+  'examiners.review': 'Review recommended examiners',
+  'examiners.approve': 'Approve or reject recommended examiners',
+  'examiners.assign': 'Assign examiners to marking',
+  'results.enter': 'Enter or upload results',
+  'results.review': 'Check results',
+  'results.approve': 'Approve results',
+  'results.release': 'Send results to schools',
+  'reports.view': 'See performance reports',
+  'users.manage': 'Manage staff accounts and roles',
+  'activity.view': 'See activity history',
+  'announcements.manage': 'Send announcements and messages',
+  'school.portal': 'Use the school portal (own school only)',
+};
+
+const ALL = Object.keys(PERMISSIONS).filter((p) => p !== 'school.portal' && !['students.upload', 'examiners.nominate'].includes(p));
+
+export const ROLES = [
+  { key: 'system_admin', name: 'System Administrator', userType: 'STAFF',
+    description: 'Manages the system, staff accounts and settings.',
+    permissions: ['users.manage', 'activity.view', 'schools.view', 'reports.view'] },
+  { key: 'exam_admin', name: 'Examination Administrator', userType: 'STAFF',
+    description: 'Runs examination sessions, schools, subjects and oversees all work.',
+    permissions: ['schools.view', 'schools.create', 'schools.update', 'sessions.manage', 'subjects.manage',
+      'students.view', 'examiners.review', 'reports.view', 'announcements.manage', 'activity.view'] },
+  { key: 'registration_officer', name: 'Registration Officer', userType: 'STAFF',
+    description: 'Checks and approves student entries from schools.',
+    permissions: ['schools.view', 'students.view', 'students.review', 'students.approve', 'reports.view'] },
+  { key: 'examiner_officer', name: 'Examiner Management Officer', userType: 'STAFF',
+    description: 'Checks recommended examiners and assigns them to marking.',
+    permissions: ['schools.view', 'examiners.review', 'examiners.approve', 'examiners.assign', 'reports.view'] },
+  { key: 'results_officer', name: 'Results Officer', userType: 'STAFF',
+    description: 'Enters and checks results. Cannot approve or send them.',
+    permissions: ['schools.view', 'students.view', 'results.enter', 'results.review', 'reports.view'] },
+  { key: 'results_approver', name: 'Results Approver', userType: 'STAFF',
+    description: 'Approves results and sends them to schools.',
+    permissions: ['schools.view', 'students.view', 'results.review', 'results.approve', 'results.release', 'reports.view'] },
+  { key: 'school_admin', name: 'School Administrator', userType: 'SCHOOL',
+    description: 'Uses the school portal for their own school only.',
+    permissions: ['school.portal', 'students.upload', 'examiners.nominate'] },
+];
+export { ALL };

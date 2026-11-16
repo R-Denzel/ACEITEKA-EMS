@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"secondary-fixed":"#d0e4ff","on-primary-fixed":"#001c3b","surface-container-highest":"#d8e3f5","on-tertiary-container":"#47aea9","inverse-on-surface":"#e9f1ff","on-tertiary-fixed-variant":"#00504d","on-surface":"#111c29","on-primary":"#ffffff","on-primary-fixed-variant":"#2b486f","surface-tint":"#435f89","on-tertiary-fixed":"#00201f","surface-container-low":"#eef4ff","primary-fixed-dim":"#acc8f7","surface-container":"#e4efff","on-secondary-container":"#4f647c","primary":"#002043","on-secondary-fixed":"#051d32","outline-variant":"#c4c6cf","surface":"#f8f9ff","primary-container":"#17365d","tertiary":"#002524","on-error":"#ffffff","inverse-surface":"#26313e","on-secondary":"#ffffff","background":"#f8f9ff","on-error-container":"#93000a","tertiary-fixed-dim":"#73d7d2","inverse-primary":"#acc8f7","secondary-container":"#cce2fe","tertiary-fixed":"#90f3ee","primary-fixed":"#d5e3ff","secondary-fixed-dim":"#b3c8e4","tertiary-container":"#003d3b","surface-dim":"#cfdbec","error":"#ba1a1a","surface-variant":"#d8e3f5","on-background":"#111c29","on-surface-variant":"#43474e","on-secondary-fixed-variant":"#33485f","surface-bright":"#f8f9ff","surface-container-lowest":"#ffffff","on-tertiary":"#ffffff","outline":"#74777f","secondary":"#4b6078","on-primary-container":"#84a0cd","error-container":"#ffdad6","surface-container-high":"#dee9fb"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xl":"1.5rem","gutter-compact":"0.5rem","space-sm":"0.5rem","margin-mobile":"1rem","gutter":"1rem","space-lg":"1rem","space-xs":"0.25rem","margin":"1.5rem","space-md":"0.75rem"},"fontFamily":{"code-xs":["JetBrains Mono"],"label-md":["Inter"],"body-md":["Inter"],"headline-lg":["Inter"],"headline-xl":["Inter"],"body-sm":["Inter"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-md":["Inter"],"headline-xl-mobile":["Inter"],"label-lg":["Inter"]},"fontSize":{"code-xs":["11px",{"lineHeight":"14px","fontWeight":"400"}],"label-md":["11px",{"lineHeight":"14px","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-xl-mobile":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-lg":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col border-r border-outline-variant/30 select-none"><div class="h-14 px-space-lg flex items-center gap-space-md border-b border-outline-variant/30 bg-surface-container-low/40"><div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-headline-md font-bold text-label-md shrink-0 shadow-sm">KAES</div><div class="flex flex-col min-w-0 leading-tight"><span class="font-headline-md text-body-md text-primary font-bold tracking-tight truncate">ACEITEKA EBMIS</span><span class="font-label-md text-code-xs text-on-surface-variant truncate uppercase tracking-wider">Kampala Archdiocese Education Sec.</span></div></div><div class="flex-1 overflow-y-auto py-space-sm px-space-xs"><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Archdiocesan Registry</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examination-cycles" href="#">Examination Cycles</a><a aria-current="page" class="flex items-center px-space-md py-1.5 rounded transition-colors truncate bg-primary text-on-primary font-medium shadow-sm" data-path="schools-and-examination-centres" href="#">Schools &amp; Examination Centres</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="candidate-registration" href="#">Candidate Registration</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="alphabetical-register-and-gazette" href="#">Alphabetical Register &amp; Gazette</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="subject-and-combinations" href="#">Subject &amp; Combinations</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Archdiocese Operations</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="paper-setting-and-review-vault" href="#">Paper Setting &amp; Review Vault</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="printing-and-production" href="#">Printing &amp; Production</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examiner-management" href="#">Examiner Management</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="marking-operations" href="#">Marking Operations</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-entry-and-verification" href="#">Results Entry &amp; Verification</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-approval-and-discrepancies" href="#">Results Approval &amp; Discrepancies</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Governance &amp; Clearances</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="finance-and-centre-clearance" href="#">Finance &amp; Centre Clearance</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="task-accountability-and-reports" href="#">Task Accountability &amp; Reports</a></nav></div><div class="p-space-sm border-t border-outline-variant/30 bg-surface-container-low/50"><div class="flex items-center justify-between px-space-xs text-code-xs text-on-surface-variant"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>ARCHDIOCESE EBMIS CORE</span><span class="font-code-xs text-on-surface-variant">v4.3.0</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg"><div class="relative flex items-center bg-surface-container-low border border-outline-variant/40 rounded px-2.5 py-1 text-on-surface hover:border-outline transition-colors"><span class="material-symbols-outlined text-[16px] text-primary mr-1.5">church</span><span class="font-label-lg text-body-sm font-semibold tracking-tight text-primary">Archdiocese of Kampala Mock &amp; Joint Exams</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant ml-1.5">expand_more</span></div><div class="hidden xl:flex items-center gap-1.5 text-on-surface-variant text-body-sm font-body-sm"><span class="hover:text-primary cursor-pointer">Archdiocesan Secretariat</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-medium">Deanery Operations</span></div></div><div class="flex items-center gap-space-md"><div class="relative hidden md:flex items-center w-72 h-8 bg-surface-container-low border border-outline-variant/40 rounded px-2.5 text-on-surface-variant"><span class="material-symbols-outlined text-[18px] mr-2 text-on-surface-variant">search</span><span class="font-body-sm text-body-sm flex-1 text-on-surface-variant/70">Deanery, parish centre, student index...</span><kbd class="font-code-xs text-code-xs bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant/40 text-on-surface-variant font-medium">Ctrl+K</kbd></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-1"><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Archdiocese Audit Security" type="button"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></button><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Secretariat Notifications" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-on-tertiary-container rounded-full ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low text-code-xs text-on-surface-variant border border-outline-variant/30"><span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span><span class="font-code-xs uppercase">SECRETARIAT ACTIVE</span></div></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-2.5 pl-1"><div class="text-right leading-none hidden sm:block"><div class="font-headline-md text-body-sm font-semibold text-primary">Fr. Education Secretary</div><div class="font-label-md text-code-xs text-on-surface-variant mt-0.5">Kampala Archdiocese Education Dept.</div></div><img alt="Archdiocese Secretary Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida/ALJJyrDEJqiGNArZPqgqf6y3pbseQDUKnlwcDusKp7Fb38UCBXsA3QkhMOme_Rpb221aBmyheUlvp2oellA7LWWNhGXr7zC9D0BhMIKnyeJM4-idrYY9MmZqdC-Py822mo9Ni04am7HFwbnZh9w7g9J9QZ7E2q6EfBI_JNHSZIdYquOiXNTneen6S2YM494B2ymMORsxBu8_xSh-AhMNfR2tkUJ3Oa40QYczkSIXLM9CwE4"/></div></div></header><main class="relative w-full pt-14 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg flex flex-col gap-space-lg">
+<!-- Breadcrumb & Top Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-md text-label-md mb-1">
+<span>Archdiocesan Registry</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Institutions &amp; Exam Centres</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+          Archdiocese Schools &amp; Examination Centres Directory
+        </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 max-w-4xl">
+          Master register of Catholic and affiliated examination centres across Kampala Archdiocese Deaneries (Christ the King, Rubaga, Gaba, Kisubi, Wakiso, Gayaza) for the 2025/2026 Examination Session.
+        </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-lowest text-primary font-label-lg text-label-lg shadow-sm hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">file_download</span>
+<span>Export Directory (XLS)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-primary-container text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>+ Register New Centre</span>
+</button>
+</div>
+</div>
+<!-- 4 Key Institutional Metric Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Affiliated Centres</span>
+<span class="p-1 rounded bg-secondary-container/40 text-primary">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">184</span>
+<span class="font-label-md text-label-md text-on-tertiary-container font-semibold">Active Cycle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            142 Catholic-founded, 42 Associate centres across 6 Deaneries
+          </p>
+</div>
+<div class="mt-3 pt-2 bg-surface-container-low/40 rounded px-2 py-1 flex items-center justify-between text-code-xs font-code-xs text-on-surface-variant">
+<span>6 Deaneries Verified</span>
+<span class="text-primary font-semibold">100% Inspected</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Enrolled Candidates</span>
+<span class="p-1 rounded bg-secondary-container/40 text-primary">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">48,250</span>
+<span class="font-code-xs text-code-xs text-secondary font-medium">Session 25/26</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            31,400 UCE O-Level • 16,850 UACE A-Level
+          </p>
+</div>
+<div class="mt-3 pt-2 bg-surface-container-low/40 rounded px-2 py-1 flex items-center justify-between text-code-xs font-code-xs text-on-surface-variant">
+<span>Index Allotment</span>
+<span class="text-on-tertiary-container font-semibold">Gazetted Complete</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Exam Fee Assessment</span>
+<span class="p-1 rounded bg-secondary-container/40 text-primary">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="flex items-baseline gap-1">
+<span class="font-code-sm text-code-sm text-secondary font-semibold">UGX</span>
+<span class="font-headline-lg text-headline-lg text-primary font-bold">1,447,500,000</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Total Invoiced Archdiocesan Joint Exams Levy
+          </p>
+</div>
+<div class="mt-3 pt-2 bg-surface-container-low/40 rounded px-2 py-1 flex items-center justify-between text-code-xs font-code-xs text-on-surface-variant">
+<span>Base Rate: UGX 30,000 / Stud</span>
+<span class="text-secondary font-semibold">Official Assessment</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Financial Clearance Status</span>
+<span class="p-1 rounded bg-tertiary-container/20 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</span>
+</div>
+<div class="mt-2">
+<div class="flex items-baseline gap-1">
+<span class="font-code-sm text-code-sm text-secondary font-semibold">UGX</span>
+<span class="font-headline-lg text-headline-lg text-primary font-bold">1,186,950,000</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            82.0% Settled • 14 Centres in Provisional Escrow
+          </p>
+</div>
+<!-- Progress Bar Indicator -->
+<div class="mt-3 pt-1">
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-on-tertiary-container h-full rounded-full" style="width: 82%"></div>
+</div>
+<div class="flex justify-between items-center text-code-xs font-code-xs text-on-surface-variant mt-1">
+<span>Treasury Clearance</span>
+<span class="font-semibold text-primary">82.0% Cleared</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Filter & Control Ribbon -->
+<div class="bg-surface-container-lowest rounded p-space-sm shadow-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm">
+<div class="flex flex-1 flex-col sm:flex-row items-stretch sm:items-center gap-space-sm">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-[260px] flex items-center bg-surface-container-low rounded px-3 py-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary mr-2">search</span>
+<input aria-label="Search Centre Code or School Name" class="bg-transparent font-body-sm text-body-sm w-full focus:outline-none placeholder:text-on-surface-variant/60" id="centre-search" placeholder="Search Centre Code (e.g. U0023) or School Name..." type="text"/>
+</div>
+<!-- Deanery Selector -->
+<div class="flex items-center bg-surface-container-low rounded px-2.5 py-1.5 text-on-surface min-w-[200px]">
+<span class="material-symbols-outlined text-[16px] text-secondary mr-1.5">church</span>
+<select class="bg-transparent font-body-sm text-body-sm text-on-surface w-full focus:outline-none cursor-pointer" id="deanery-filter">
+<option value="all">All Deaneries (6)</option>
+<option value="rubaga">Rubaga Deanery</option>
+<option value="christ-king">Christ the King Deanery</option>
+<option value="gaba">Gaba Deanery</option>
+<option value="kisubi">Kisubi Deanery</option>
+<option value="wakiso">Wakiso Deanery</option>
+<option value="gayaza">Gayaza Deanery</option>
+<option value="affiliated">Lugazi / Affiliated Dioceses</option>
+</select>
+</div>
+<!-- Centre Status Filter -->
+<div class="flex items-center bg-surface-container-low rounded px-2.5 py-1.5 text-on-surface min-w-[190px]">
+<span class="material-symbols-outlined text-[16px] text-secondary mr-1.5">check_circle</span>
+<select class="bg-transparent font-body-sm text-body-sm text-on-surface w-full focus:outline-none cursor-pointer" id="status-filter">
+<option value="all">Status: All Records</option>
+<option value="approved">Fully Accredited</option>
+<option value="escrow">Conditional Escrow</option>
+<option value="pending">Pending Secretariat Inspection</option>
+</select>
+</div>
+</div>
+<!-- Quick Actions / Meta indicator -->
+<div class="flex items-center justify-end gap-space-sm pl-2">
+<span class="text-code-xs font-code-xs text-on-surface-variant whitespace-nowrap">Showing 6 of 184 Centres</span>
+<button class="p-1.5 text-secondary hover:text-primary rounded bg-surface-container-low hover:bg-surface-container-high transition-colors" title="Reload Directory" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Main Content Area: Master Directory Table & Live Inspector Sidebar -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- High Clarity Institutional Data Table (8 Cols on XL) -->
+<div class="xl:col-span-8 bg-surface-container-lowest rounded shadow-sm overflow-hidden flex flex-col">
+<!-- Table Header Banner -->
+<div class="px-space-md py-2.5 bg-surface-container-low/70 flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">view_list</span>
+<span class="font-headline-md text-body-md text-primary font-semibold tracking-tight">Active Centre Registers</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-surface-container-highest rounded font-code-xs text-code-xs text-on-surface-variant">
+<span>EXAM SESSION: 2025/2026</span>
+</span>
+</div>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-2.5 px-3">Centre &amp; Code</th>
+<th class="py-2.5 px-3">Deanery / Parish</th>
+<th class="py-2.5 px-3">Headteacher</th>
+<th class="py-2.5 px-3 text-right">Candidates</th>
+<th class="py-2.5 px-3">Finance / Clearance</th>
+<th class="py-2.5 px-3 text-center">Status</th>
+<th class="py-2.5 px-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y-0" id="centre-table-body">
+<!-- Row 1: St. Mary's College, Kisubi -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group bg-surface-container-lowest" onclick="selectCentre('U0023')">
+<td class="py-2.5 px-3">
+<div class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container">
+                    St. Mary's College, Kisubi
+                  </div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-xs text-code-xs bg-primary-fixed text-on-primary-fixed px-1.5 py-0.2 rounded font-semibold">U0023</span>
+<span class="text-code-xs font-code-xs text-on-surface-variant">Brothers of Christian Instruction</span>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface font-medium">Kisubi Deanery</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Kisubi Catholic Parish</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface">Bro. Deodati Aganyira</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Headteacher / Cert Officer</div>
+</td>
+<td class="py-2.5 px-3 text-right font-code-sm text-code-sm font-semibold text-primary">
+                  486
+                </td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-1 text-on-tertiary-container font-code-xs text-code-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>UGX 24,300,000 Paid</span>
+</div>
+<div class="text-code-xs font-code-xs text-on-surface-variant">Cleared #FIN-2025-091</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-code-xs font-label-md bg-secondary-container/60 text-on-secondary-fixed font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                    Approved &amp; Accredited
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-right whitespace-nowrap">
+<button class="px-2 py-1 rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-label-md text-label-md transition-colors" title="Inspect Centre" type="button">
+                    Dossier
+                  </button>
+</td>
+</tr>
+<!-- Row 2: Mount St. Mary's College, Namagunga -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group bg-surface-container-low/20" onclick="selectCentre('U0003')">
+<td class="py-2.5 px-3">
+<div class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container">
+                    Mount St. Mary's College, Namagunga
+                  </div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-xs text-code-xs bg-primary-fixed text-on-primary-fixed px-1.5 py-0.2 rounded font-semibold">U0003</span>
+<span class="text-code-xs font-code-xs text-on-surface-variant">Franciscan Missionary Sisters</span>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface font-medium">Lugazi / Affiliated</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Namagunga Parish</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface">Sr. Regina Kyomukama</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Headteacher</div>
+</td>
+<td class="py-2.5 px-3 text-right font-code-sm text-code-sm font-semibold text-primary">
+                  475
+                </td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-1 text-on-tertiary-container font-code-xs text-code-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>UGX 23,750,000 Paid</span>
+</div>
+<div class="text-code-xs font-code-xs text-on-surface-variant">Cleared #FIN-2025-074</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-code-xs font-label-md bg-secondary-container/60 text-on-secondary-fixed font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                    Approved &amp; Accredited
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-right whitespace-nowrap">
+<button class="px-2 py-1 rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-label-md text-label-md transition-colors" title="Inspect Centre" type="button">
+                    Dossier
+                  </button>
+</td>
+</tr>
+<!-- Row 3: Uganda Martyrs S.S., Namugongo -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group bg-surface-container-lowest" onclick="selectCentre('U0124')">
+<td class="py-2.5 px-3">
+<div class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container">
+                    Uganda Martyrs S.S., Namugongo
+                  </div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-xs text-code-xs bg-primary-fixed text-on-primary-fixed px-1.5 py-0.2 rounded font-semibold">U0124</span>
+<span class="text-code-xs font-code-xs text-on-surface-variant">Archdiocesan Diocesan Clr.</span>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface font-medium">Gayaza / Kira</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Namugongo Basilica Parish</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface">Rev. Fr. Henry Kasasa</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Headteacher</div>
+</td>
+<td class="py-2.5 px-3 text-right font-code-sm text-code-sm font-semibold text-primary">
+                  612
+                </td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-1 text-on-tertiary-container font-code-xs text-code-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>UGX 30,600,000 Paid</span>
+</div>
+<div class="text-code-xs font-code-xs text-on-surface-variant">Cleared #FIN-2025-012</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-code-xs font-label-md bg-secondary-container/60 text-on-secondary-fixed font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                    Approved &amp; Accredited
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-right whitespace-nowrap">
+<button class="px-2 py-1 rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-label-md text-label-md transition-colors" title="Inspect Centre" type="button">
+                    Dossier
+                  </button>
+</td>
+</tr>
+<!-- Row 4: St. Joseph's Girls S.S., Nsambya -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group bg-surface-container-low/20" onclick="selectCentre('U0048')">
+<td class="py-2.5 px-3">
+<div class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container">
+                    St. Joseph's Girls S.S., Nsambya
+                  </div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-xs text-code-xs bg-primary-fixed text-on-primary-fixed px-1.5 py-0.2 rounded font-semibold">U0048</span>
+<span class="text-code-xs font-code-xs text-on-surface-variant">Little Sisters of St. Francis</span>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface font-medium">Gaba Deanery</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Nsambya Parish</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface">Sr. Gertrude Babirye</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Headteacher</div>
+</td>
+<td class="py-2.5 px-3 text-right font-code-sm text-code-sm font-semibold text-primary">
+                  380
+                </td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-1 text-on-tertiary-container font-code-xs text-code-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>UGX 19,000,000 Paid</span>
+</div>
+<div class="text-code-xs font-code-xs text-on-surface-variant">Cleared #FIN-2025-063</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-code-xs font-label-md bg-secondary-container/60 text-on-secondary-fixed font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                    Approved &amp; Accredited
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-right whitespace-nowrap">
+<button class="px-2 py-1 rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-label-md text-label-md transition-colors" title="Inspect Centre" type="button">
+                    Dossier
+                  </button>
+</td>
+</tr>
+<!-- Row 5: Trinity College Nabbingo -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group bg-surface-container-lowest" onclick="selectCentre('U0038')">
+<td class="py-2.5 px-3">
+<div class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container">
+                    Trinity College Nabbingo
+                  </div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-xs text-code-xs bg-primary-fixed text-on-primary-fixed px-1.5 py-0.2 rounded font-semibold">U0038</span>
+<span class="text-code-xs font-code-xs text-on-surface-variant">Archdiocese of Kampala Foundation</span>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface font-medium">Rubaga Deanery</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Nabbingo Catholic Parish</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface">Mrs. Imelda K. Birabwa</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Headteacher</div>
+</td>
+<td class="py-2.5 px-3 text-right font-code-sm text-code-sm font-semibold text-primary">
+                  430
+                </td>
+<td class="py-2.5 px-3">
+<div class="text-secondary font-code-xs text-code-xs font-semibold">
+                    UGX 17,200,000 / 21,500,000
+                  </div>
+<div class="text-code-xs font-code-xs text-error font-medium">Bal: UGX 4,300,000</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-code-xs font-label-md bg-secondary-container text-on-secondary-container font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    Partial Escrow - Allowed
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-right whitespace-nowrap">
+<button class="px-2 py-1 rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-label-md text-label-md transition-colors" title="Inspect Centre" type="button">
+                    Dossier
+                  </button>
+</td>
+</tr>
+<!-- Row 6: Caltec Academy Makerere -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group bg-surface-container-low/20" onclick="selectCentre('U0076')">
+<td class="py-2.5 px-3">
+<div class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container">
+                    Caltec Academy Makerere
+                  </div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-xs text-code-xs bg-primary-fixed text-on-primary-fixed px-1.5 py-0.2 rounded font-semibold">U0076</span>
+<span class="text-code-xs font-code-xs text-on-surface-variant">Brothers of Christian Instruction</span>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface font-medium">Christ the King</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Makerere Parish</div>
+</td>
+<td class="py-2.5 px-3">
+<div class="font-body-md text-body-md text-on-surface">Bro. Peter Nsubuga</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Principal / Centre Supervisor</div>
+</td>
+<td class="py-2.5 px-3 text-right font-code-sm text-code-sm font-semibold text-primary">
+                  295
+                </td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-1 text-on-tertiary-container font-code-xs text-code-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>UGX 14,750,000 Paid</span>
+</div>
+<div class="text-code-xs font-code-xs text-on-surface-variant">Cleared #FIN-2025-104</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-code-xs font-label-md bg-secondary-container/60 text-on-secondary-fixed font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                    Approved &amp; Accredited
+                  </span>
+</td>
+<td class="py-2.5 px-3 text-right whitespace-nowrap">
+<button class="px-2 py-1 rounded bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-label-md text-label-md transition-colors" title="Inspect Centre" type="button">
+                    Dossier
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="p-space-sm bg-surface-container-low/50 flex flex-col sm:flex-row items-center justify-between text-code-xs font-code-xs text-on-surface-variant gap-2">
+<div class="flex items-center gap-2">
+<span>Rows per page:</span>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded text-on-surface font-semibold">15</span>
+<span class="text-on-surface-variant/70">1–6 of 184 Centres</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-secondary hover:text-primary transition-colors disabled:opacity-40" disabled="" type="button">
+              ← Prev
+            </button>
+<span class="px-2.5 py-1 rounded bg-primary text-on-primary font-semibold">1</span>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors" type="button">2</button>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors" type="button">3</button>
+<span class="px-1 text-on-surface-variant">...</span>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors" type="button">13</button>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-secondary hover:text-primary transition-colors" type="button">
+              Next →
+            </button>
+</div>
+</div>
+</div>
+<!-- Quick Centre Overview & Compliance Inspector (4 Cols on XL) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Inspector Card -->
+<div class="bg-surface-container-lowest rounded shadow-sm overflow-hidden">
+<!-- Card Header Ribbon -->
+<div class="p-space-md bg-primary-container text-on-primary flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">verified</span>
+<div>
+<span class="font-label-md text-code-xs uppercase tracking-wider text-on-primary-container block">Live Secretariat Audit</span>
+<h2 class="font-headline-md text-headline-md text-on-primary font-semibold tracking-tight" id="inspect-name">
+                  St. Mary's College, Kisubi
+                </h2>
+</div>
+</div>
+<span class="font-code-sm text-code-sm bg-surface-container-lowest text-primary font-bold px-2 py-0.5 rounded shadow-sm" id="inspect-code">
+              U0023
+            </span>
+</div>
+<!-- Institutional Photo & Verification Ribbon -->
+<div class="p-space-md flex flex-col gap-space-md">
+<div class="relative rounded overflow-hidden h-36 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="An expansive view of an esteemed historic Catholic secondary school campus in Uganda with red brick architectural buildings, palm trees, manicured courtyards under clear equatorial daylight with dignified collegiate atmosphere." id="inspect-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvieW0JHKWxymcUYzbO_96KtDlrnl2y6epaunSWMqB5JJwA78axUZYw7wmx0kaXN5LvfYI6qIabNpa8cg2mMLoCdRu6UrARhGxqmHy2uqlvlvJH4sLbz2QhGkI4VGViixhaRu6QmN1HvNEkCsqZB6hE3daoSUlT4C2KI_NLVafBJmwsF3D0xSABc7ItZC5Wl5S71Lv4ydfiI0Ac_6OI8jTD4k5nPfE2JbNKHD6cQ"/>
+<div class="absolute bottom-2 left-2 bg-primary/80 backdrop-blur-sm px-2 py-1 rounded text-on-primary flex items-center gap-1.5 font-label-md text-code-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span id="inspect-seal">KAMPALA ARCHDIOCESE ACCREDITED - 2025</span>
+</div>
+</div>
+<!-- Centre Dossier Specifics -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low p-2 rounded">
+<div class="text-code-xs font-label-md text-on-surface-variant">Deanery &amp; Parish</div>
+<div class="font-body-md text-body-md text-on-surface font-semibold truncate" id="inspect-deanery">Kisubi Deanery</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate" id="inspect-parish">Kisubi Catholic Parish</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<div class="text-code-xs font-label-md text-on-surface-variant">Sitting Capacity</div>
+<div class="font-body-md text-body-md text-primary font-semibold" id="inspect-capacity">620 Desk Units</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Hall A + Annexe Lab</div>
+</div>
+</div>
+<!-- Diocesan Appointees Section -->
+<div class="bg-surface-container-low/60 rounded p-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-code-xs text-on-surface-variant uppercase tracking-wider">Diocesan Appointed Personnel</span>
+<span class="text-code-xs font-code-xs text-on-tertiary-container font-semibold">Vetted by Secretariat</span>
+</div>
+<!-- Diocesan Supervisor -->
+<div class="flex items-center gap-2.5 p-1.5 rounded bg-surface-container-lowest">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-semibold text-code-xs shrink-0">
+<span class="material-symbols-outlined text-[16px]">account_box</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="font-body-md text-body-md text-on-surface font-semibold truncate" id="inspect-supervisor">
+                    Rev. Fr. Emmanuel Kiwanuka
+                  </div>
+<div class="font-body-sm text-code-xs text-on-surface-variant flex items-center justify-between">
+<span>Archdiocesan Supervisor</span>
+<span class="text-on-tertiary-container font-medium">Badge #AS-412</span>
+</div>
+</div>
+</div>
+<!-- Chief Invigilator -->
+<div class="flex items-center gap-2.5 p-1.5 rounded bg-surface-container-lowest">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-semibold text-code-xs shrink-0">
+<span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="font-body-md text-body-md text-on-surface font-semibold truncate" id="inspect-invigilator">
+                    Sr. Rose Namayanja, DM
+                  </div>
+<div class="font-body-sm text-code-xs text-on-surface-variant flex items-center justify-between">
+<span>Chief Invigilator (ACEITEKA)</span>
+<span class="text-primary font-medium">Zone 2 Kisubi</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial Settlement Snapshot -->
+<div class="p-2.5 rounded bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Financial Remittance</span>
+<span class="font-code-xs text-code-xs px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface font-bold" id="inspect-finance-badge">
+                  100% REMITTED
+                </span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Archdiocese Exam Invoiced</span>
+<span class="font-code-sm text-code-sm font-semibold text-primary" id="inspect-fee-invoiced">UGX 24,300,000</span>
+</div>
+<div class="flex items-baseline justify-between text-code-xs font-code-xs text-on-surface-variant">
+<span>Centenary Bank Archdiocese Slip</span>
+<span class="text-on-tertiary-container font-semibold">Verified Receipt #78219</span>
+</div>
+</div>
+<!-- Action buttons inside drawer -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2 px-3 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-lg text-body-sm text-center font-semibold transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">print</span>
+<span>Print Timetable</span>
+</button>
+<button class="py-2 px-3 rounded bg-primary-container text-on-primary hover:bg-primary font-label-lg text-body-sm text-center font-semibold transition-colors flex items-center justify-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">assignment_turned_in</span>
+<span>Issue Clearance</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Archdiocesan Secure Custody Protocol Note -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm flex items-start gap-3">
+<div class="p-2 rounded bg-tertiary-container/10 text-on-tertiary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<div>
+<h3 class="font-headline-md text-body-md font-semibold text-primary">
+              Security Safe &amp; Strongroom Seal
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Strict delivery and retrieval of confidential ACEITEKA test papers will follow diocesan lockbox protocol under escort of Deanery Exam Moderators.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Interaction for Selected Centre Quick Overview -->
+<script>
+  const centresData = {
+    'U0023': {
+      name: "St. Mary's College, Kisubi",
+      code: "U0023",
+      deanery: "Kisubi Deanery",
+      parish: "Kisubi Catholic Parish",
+      capacity: "620 Desk Units",
+      supervisor: "Rev. Fr. Emmanuel Kiwanuka",
+      invigilator: "Sr. Rose Namayanja, DM",
+      invoiced: "UGX 24,300,000",
+      status: "100% REMITTED",
+      badgeClass: "bg-surface-container-highest text-on-surface"
+    },
+    'U0003': {
+      name: "Mount St. Mary's College, Namagunga",
+      code: "U0003",
+      deanery: "Lugazi / Affiliated",
+      parish: "Namagunga Parish",
+      capacity: "540 Desk Units",
+      supervisor: "Rev. Fr. Joseph Mukasa",
+      invigilator: "Sr. Christine Nabirye, FSPA",
+      invoiced: "UGX 23,750,000",
+      status: "100% REMITTED",
+      badgeClass: "bg-surface-container-highest text-on-surface"
+    },
+    'U0124': {
+      name: "Uganda Martyrs S.S., Namugongo",
+      code: "U0124",
+      deanery: "Gayaza / Kira",
+      parish: "Namugongo Basilica Parish",
+      capacity: "750 Desk Units",
+      supervisor: "Rev. Fr. Paul Ssemogerere",
+      invigilator: "Mr. Augustine Sserwadda",
+      invoiced: "UGX 30,600,000",
+      status: "100% REMITTED",
+      badgeClass: "bg-surface-container-highest text-on-surface"
+    },
+    'U0048': {
+      name: "St. Joseph's Girls S.S., Nsambya",
+      code: "U0048",
+      deanery: "Gaba Deanery",
+      parish: "Nsambya Parish",
+      capacity: "420 Desk Units",
+      supervisor: "Rev. Fr. Charles Kibirige",
+      invigilator: "Sr. Agnes Laker, LSOSF",
+      invoiced: "UGX 19,000,000",
+      status: "100% REMITTED",
+      badgeClass: "bg-surface-container-highest text-on-surface"
+    },
+    'U0038': {
+      name: "Trinity College Nabbingo",
+      code: "U0038",
+      deanery: "Rubaga Deanery",
+      parish: "Nabbingo Catholic Parish",
+      capacity: "500 Desk Units",
+      supervisor: "Rev. Fr. Jude Kato",
+      invigilator: "Mrs. Margaret Nansamba",
+      invoiced: "UGX 21,500,000",
+      status: "80% PARTIAL ESCROW",
+      badgeClass: "bg-secondary-container text-on-secondary-container"
+    },
+    'U0076': {
+      name: "Caltec Academy Makerere",
+      code: "U0076",
+      deanery: "Christ the King",
+      parish: "Makerere Parish",
+      capacity: "350 Desk Units",
+      supervisor: "Rev. Fr. Bernard Lubega",
+      invigilator: "Bro. John Baptist Ddungu",
+      invoiced: "UGX 14,750,000",
+      status: "100% REMITTED",
+      badgeClass: "bg-surface-container-highest text-on-surface"
+    }
+  };
+
+  function selectCentre(code) {
+    const data = centresData[code];
+    if (!data) return;
+
+    document.getElementById('inspect-name').textContent = data.name;
+    document.getElementById('inspect-code').textContent = data.code;
+    document.getElementById('inspect-deanery').textContent = data.deanery;
+    document.getElementById('inspect-parish').textContent = data.parish;
+    document.getElementById('inspect-capacity').textContent = data.capacity;
+    document.getElementById('inspect-supervisor').textContent = data.supervisor;
+    document.getElementById('inspect-invigilator').textContent = data.invigilator;
+    document.getElementById('inspect-fee-invoiced').textContent = data.invoiced;
+    
+    const badge = document.getElementById('inspect-finance-badge');
+    badge.textContent = data.status;
+    badge.className = "font-code-xs text-code-xs px-1.5 py-0.5 rounded font-bold " + data.badgeClass;
+  }
+
+  // Client-side quick filter
+  document.getElementById('centre-search')?.addEventListener('input', function(e) {
+    const term = e.target.value.toLowerCase();
+    const rows = document.querySelectorAll('#centre-table-body tr');
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      row.style.display = text.includes(term) ? '' : 'none';
+    });
+  });
+</script></main></div></body></html>

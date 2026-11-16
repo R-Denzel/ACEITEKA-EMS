@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"secondary-fixed":"#d0e4ff","on-primary-fixed":"#001c3b","surface-container-highest":"#d8e3f5","on-tertiary-container":"#47aea9","inverse-on-surface":"#e9f1ff","on-tertiary-fixed-variant":"#00504d","on-surface":"#111c29","on-primary":"#ffffff","on-primary-fixed-variant":"#2b486f","surface-tint":"#435f89","on-tertiary-fixed":"#00201f","surface-container-low":"#eef4ff","primary-fixed-dim":"#acc8f7","surface-container":"#e4efff","on-secondary-container":"#4f647c","primary":"#002043","on-secondary-fixed":"#051d32","outline-variant":"#c4c6cf","surface":"#f8f9ff","primary-container":"#17365d","tertiary":"#002524","on-error":"#ffffff","inverse-surface":"#26313e","on-secondary":"#ffffff","background":"#f8f9ff","on-error-container":"#93000a","tertiary-fixed-dim":"#73d7d2","inverse-primary":"#acc8f7","secondary-container":"#cce2fe","tertiary-fixed":"#90f3ee","primary-fixed":"#d5e3ff","secondary-fixed-dim":"#b3c8e4","tertiary-container":"#003d3b","surface-dim":"#cfdbec","error":"#ba1a1a","surface-variant":"#d8e3f5","on-background":"#111c29","on-surface-variant":"#43474e","on-secondary-fixed-variant":"#33485f","surface-bright":"#f8f9ff","surface-container-lowest":"#ffffff","on-tertiary":"#ffffff","outline":"#74777f","secondary":"#4b6078","on-primary-container":"#84a0cd","error-container":"#ffdad6","surface-container-high":"#dee9fb"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xl":"1.5rem","gutter-compact":"0.5rem","space-sm":"0.5rem","margin-mobile":"1rem","gutter":"1rem","space-lg":"1rem","space-xs":"0.25rem","margin":"1.5rem","space-md":"0.75rem"},"fontFamily":{"code-xs":["JetBrains Mono"],"label-md":["Inter"],"body-md":["Inter"],"headline-lg":["Inter"],"headline-xl":["Inter"],"body-sm":["Inter"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-md":["Inter"],"headline-xl-mobile":["Inter"],"label-lg":["Inter"]},"fontSize":{"code-xs":["11px",{"lineHeight":"14px","fontWeight":"400"}],"label-md":["11px",{"lineHeight":"14px","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-xl-mobile":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-lg":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col border-r border-outline-variant/30 select-none"><div class="h-14 px-space-lg flex items-center gap-space-md border-b border-outline-variant/30 bg-surface-container-low/40"><div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-headline-md font-bold text-label-md shrink-0 shadow-sm">KAES</div><div class="flex flex-col min-w-0 leading-tight"><span class="font-headline-md text-body-md text-primary font-bold tracking-tight truncate">ACEITEKA EBMIS</span><span class="font-label-md text-code-xs text-on-surface-variant truncate uppercase tracking-wider">Kampala Archdiocese Education Dept.</span></div></div><div class="flex-1 overflow-y-auto py-space-sm px-space-xs"><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Archdiocesan Registry</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examination-cycles-management" href="#">Examination Cycles Management</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="schools-and-examination-centres" href="#">Schools &amp; Examination Centres</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="candidate-registration" href="#">Candidate Registration</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="alphabetical-register-and-gazette" href="#">Alphabetical Register &amp; Gazette</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="subject-and-combinations-configuration" href="#">Subject &amp; Combinations Configuration</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Archdiocese Operations</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="paper-setting-and-review-vault" href="#">Paper Setting &amp; Review Vault</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="printing-and-production" href="#">Printing &amp; Production</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examiner-management" href="#">Examiner Management</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="marking-operations" href="#">Marking Operations</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-entry-and-verification" href="#">Results Entry &amp; Verification</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-approval-and-discrepancies" href="#">Results Approval &amp; Discrepancies</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="performance-reports-and-analytics" href="#">Performance Reports &amp; Analytics</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Governance &amp; Clearances</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="finance-and-centre-clearance" href="#">Finance &amp; Centre Clearance</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="task-accountability-and-reports" href="#">Task Accountability &amp; Reports</a></nav></div><div class="p-space-sm border-t border-outline-variant/30 bg-surface-container-low/50"><div class="flex items-center justify-between px-space-xs text-code-xs text-on-surface-variant"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>ARCHDIOCESE EBMIS CORE</span><span class="font-code-xs text-on-surface-variant">v4.3.0</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg"><div class="relative flex items-center bg-surface-container-low border border-outline-variant/40 rounded px-2.5 py-1 text-on-surface hover:border-outline transition-colors"><span class="material-symbols-outlined text-[16px] text-primary mr-1.5">church</span><span class="font-label-lg text-body-sm font-semibold tracking-tight text-primary">Archdiocese of Kampala Mock &amp; Joint Exams</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant ml-1.5">expand_more</span></div><div class="hidden xl:flex items-center gap-1.5 text-on-surface-variant text-body-sm font-body-sm"><span class="hover:text-primary cursor-pointer">Kampala Archdiocese Education Dept.</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-medium">Deanery Operations &amp; Verification</span></div></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-low border border-outline-variant/30 text-on-surface-variant"><span class="font-code-xs text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant/80">CURRENCY:</span><span class="font-code-xs text-code-xs font-semibold text-primary">UGX</span></div><div class="relative hidden md:flex items-center w-72 h-8 bg-surface-container-low border border-outline-variant/40 rounded px-2.5 text-on-surface-variant"><span class="material-symbols-outlined text-[18px] mr-2 text-on-surface-variant">search</span><span class="font-body-sm text-body-sm flex-1 text-on-surface-variant/70">Deanery, parish centre, student index...</span><kbd class="font-code-xs text-code-xs bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant/40 text-on-surface-variant font-medium">Ctrl+K</kbd></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-1"><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Archdiocese Audit Security" type="button"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></button><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Secretariat Notifications" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-on-tertiary-container rounded-full ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low text-code-xs text-on-surface-variant border border-outline-variant/30"><span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span><span class="font-code-xs uppercase">SECRETARIAT ACTIVE</span></div></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-2.5 pl-1"><div class="text-right leading-none hidden sm:block"><div class="font-headline-md text-body-sm font-semibold text-primary">Fr. Education Secretary</div><div class="font-label-md text-code-xs text-on-surface-variant mt-0.5">Kampala Archdiocese Education Dept.</div></div><img alt="Archdiocese Secretary Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida/ALJJyrDEJqiGNArZPqgqf6y3pbseQDUKnlwcDusKp7Fb38UCBXsA3QkhMOme_Rpb221aBmyheUlvp2oellA7LWWNhGXr7zC9D0BhMIKnyeJM4-idrYY9MmZqdC-Py822mo9Ni04am7HFwbnZh9w7g9J9QZ7E2q6EfBI_JNHSZIdYquOiXNTneen6S2YM494B2ymMORsxBu8_xSh-AhMNfR2tkUJ3Oa40QYczkSIXLM9CwE4"/></div></div></header><main class="relative w-full pt-14 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg lg:p-space-xl flex flex-col gap-space-lg">
+<!-- Header Section -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-code-xs text-code-xs uppercase tracking-wider mb-1">
+<span>Curriculum Directorate</span>
+<span>/</span>
+<span>UNEB &amp; Archdiocesan Standards</span>
+<span>/</span>
+<span class="text-tertiary font-medium">Matrix v24.8</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">Subject &amp; Combinations Configuration</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-4xl mt-1">
+          Statutory subject codes, principal combinations rules, compulsory subsidiary requirements, and paper grading schemes for Kampala Archdiocese schools.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded bg-surface-container-low text-primary font-headline-md text-body-sm font-semibold hover:bg-surface-container transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+<span>Spec Sheet (PDF)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded bg-surface-container-high text-primary font-headline-md text-body-sm font-semibold hover:bg-surface-container-highest transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Add Subject/Paper</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded bg-primary text-on-primary font-headline-md text-body-sm font-semibold hover:bg-primary-container transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>+ Configure New Combination</span>
+</button>
+</div>
+</div>
+<!-- Metrics Banner -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Total Active Subjects -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-code-xs uppercase tracking-wider text-on-surface-variant font-semibold">Total Active Subjects</span>
+<span class="material-symbols-outlined text-primary text-[20px]">menu_book</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">42</span>
+<span class="font-label-md text-code-xs text-on-surface-variant font-medium">Offered in Cycle</span>
+</div>
+<div class="mt-2.5 pt-2 flex items-center justify-between text-code-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">
+<span>UCE (O-Level): <strong class="text-primary font-code-sm">26</strong></span>
+<span class="text-outline-variant">•</span>
+<span>UACE (A-Level): <strong class="text-primary font-code-sm">16</strong></span>
+</div>
+</div>
+<!-- Accredited Principal Combinations -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-code-xs uppercase tracking-wider text-on-surface-variant font-semibold">Principal Combinations</span>
+<span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">28</span>
+<span class="font-label-md text-code-xs text-on-surface-variant font-medium">Valid Reg. Profiles</span>
+</div>
+<div class="mt-2.5 pt-2 flex items-center justify-between text-code-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">
+<span>Sciences: <strong class="text-primary font-code-sm">12</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Arts/Humanities: <strong class="text-primary font-code-sm">16</strong></span>
+</div>
+</div>
+<!-- Candidate Enrollment -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-code-xs uppercase tracking-wider text-on-surface-variant font-semibold">Candidate Enrollment</span>
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">48,250</span>
+<span class="font-label-md text-code-xs text-tertiary font-semibold">Entries</span>
+</div>
+<div class="mt-2.5 pt-2 flex items-center justify-between text-code-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">
+<span>Registered Paper Units</span>
+<span class="font-code-sm text-tertiary font-medium">100% Verified</span>
+</div>
+</div>
+<!-- Regulatory Engine Status -->
+<div class="bg-primary text-on-primary p-space-md rounded-lg flex flex-col justify-between shadow-sm relative">
+<div class="flex items-center justify-between text-primary-fixed">
+<span class="font-label-md text-code-xs uppercase tracking-wider font-semibold">Validation Rule Engine</span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed animate-pulse"></span>
+</div>
+<div class="mt-2">
+<div class="font-headline-md text-body-md font-semibold text-surface-bright flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">verified</span>
+            Strict UNEB/ACEITEKA Matrix
+          </div>
+<p class="font-body-sm text-code-xs text-primary-fixed/80 mt-1 leading-snug">
+            Compulsory Sub-Math / ICT Enforcement Active on all 2024 returns.
+          </p>
+</div>
+<div class="mt-2 pt-2 text-code-xs text-primary-fixed-dim flex items-center justify-between">
+<span>Engine Hash: <span class="font-code-xs">#KA-REG-2024-C</span></span>
+<span class="font-code-xs">Zero Discrepancy</span>
+</div>
+</div>
+</div>
+<!-- Search and Filters Strip -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-0">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full pl-10 pr-20 py-2 bg-surface-container-low rounded text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest shadow-sm placeholder:text-on-surface-variant/70" id="combination-search" placeholder="Search subject name, paper code (e.g. P525, P425), or combination (e.g. PCM, BCM, HEG)..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+<kbd class="font-code-xs text-[10px] bg-surface-container-highest px-1.5 py-0.5 rounded text-on-surface-variant font-medium">Alt+S</kbd>
+</div>
+</div>
+<!-- Segmented Filters -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<!-- Level Filter -->
+<div class="flex items-center bg-surface-container-low p-1 rounded font-label-md text-code-xs font-semibold">
+<button class="filter-btn px-2.5 py-1 rounded bg-surface-container-lowest text-primary shadow-sm" data-filter="level" data-value="all" type="button">All Levels</button>
+<button class="filter-btn px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface transition-colors" data-filter="level" data-value="uace" type="button">UACE (A-Level)</button>
+<button class="filter-btn px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface transition-colors" data-filter="level" data-value="uce" type="button">UCE (O-Level)</button>
+</div>
+<!-- Category Dropdown / Pills -->
+<div class="flex items-center bg-surface-container-low p-1 rounded font-label-md text-code-xs font-semibold">
+<button class="filter-btn px-2.5 py-1 rounded bg-surface-container-lowest text-primary shadow-sm" data-filter="cat" data-value="all" type="button">All Categories</button>
+<button class="filter-btn px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface transition-colors" data-filter="cat" data-value="sciences" type="button">Sciences</button>
+<button class="filter-btn px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface transition-colors" data-filter="cat" data-value="humanities" type="button">Humanities</button>
+<button class="filter-btn px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface transition-colors" data-filter="cat" data-value="languages" type="button">Languages</button>
+</div>
+<div class="h-6 w-px bg-outline-variant/30 hidden sm:block"></div>
+<button class="p-2 rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Export Ledger" type="button">
+<span class="material-symbols-outlined text-[18px]">table_view</span>
+</button>
+</div>
+</div>
+<!-- Main Workspace Split: Table + Side Inspector -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Combinations Register Table (8 cols on large screen) -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<!-- Table Title Header -->
+<div class="p-space-md bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">view_list</span>
+<span class="font-headline-md text-body-md font-bold text-primary">Accredited Principal Combination Ledger</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-xs text-code-xs font-semibold">7 Listed</span>
+</div>
+<span class="font-code-xs text-code-xs text-on-surface-variant">Archdiocese Syllabus 2024/2025</span>
+</div>
+<!-- Table View -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-md text-code-xs uppercase tracking-wider text-on-surface-variant font-semibold">
+<th class="py-2.5 px-space-md">Combination &amp; Constituents</th>
+<th class="py-2.5 px-space-md">Subsidiaries</th>
+<th class="py-2.5 px-space-md text-right">Candidates</th>
+<th class="py-2.5 px-space-md text-right">Accredited Centres</th>
+<th class="py-2.5 px-space-md text-center">Status</th>
+<th class="py-2.5 px-space-md text-center">Action</th>
+</tr>
+</thead>
+<tbody class="text-on-surface divide-y-0" id="combinations-tbody">
+<!-- Item 1: PCM -->
+<tr class="combination-row group hover:bg-surface-container-low/60 cursor-pointer transition-colors bg-surface-container-low/20" data-candidates="3,420" data-code="PCM" data-schools="142" data-sub="Sub-Math (S476) / Sub-ICT (S475)" data-subjects="Physics (P510), Chemistry (P525), Mathematics (P425)" data-tariff="35,000" data-type="Sciences">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-12 h-8 rounded bg-primary text-on-primary font-code-sm text-code-sm font-bold flex items-center justify-center shrink-0">PCM</span>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container truncate">Physics, Chemistry, Mathematics</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1">
+<span>P510</span>•<span>P525</span>•<span>P425</span>
+<span class="ml-1 px-1.5 py-0.2 rounded bg-surface-container-high text-primary text-[10px] font-semibold">Pure Science</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S475 ICT</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S476 Sub-Math</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm font-bold text-primary">3,420</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm text-on-surface">142 Schools</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-code-xs font-semibold bg-surface-container-highest text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1.5"></span>
+                    Approved
+                  </span>
+</td>
+<td class="py-3 px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Inspect Rules" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Item 2: BCM -->
+<tr class="combination-row group hover:bg-surface-container-low/60 cursor-pointer transition-colors" data-candidates="2,890" data-code="BCM" data-schools="128" data-sub="Sub-Math (S476) / Sub-ICT (S475)" data-subjects="Biology (P530), Chemistry (P525), Mathematics (P425)" data-tariff="35,000" data-type="Sciences">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-12 h-8 rounded bg-primary text-on-primary font-code-sm text-code-sm font-bold flex items-center justify-center shrink-0">BCM</span>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container truncate">Biology, Chemistry, Mathematics</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1">
+<span>P530</span>•<span>P525</span>•<span>P425</span>
+<span class="ml-1 px-1.5 py-0.2 rounded bg-surface-container-high text-primary text-[10px] font-semibold">Biological / Math</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S475 ICT</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S476 Sub-Math</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm font-bold text-primary">2,890</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm text-on-surface">128 Schools</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-code-xs font-semibold bg-surface-container-highest text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1.5"></span>
+                    Approved
+                  </span>
+</td>
+<td class="py-3 px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Inspect Rules" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Item 3: PCB -->
+<tr class="combination-row group hover:bg-surface-container-low/60 cursor-pointer transition-colors" data-candidates="1,940" data-code="PCB" data-schools="115" data-sub="Compulsory Sub-Math (S476)" data-subjects="Physics (P510), Chemistry (P525), Biology (P530)" data-tariff="35,000" data-type="Sciences">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-12 h-8 rounded bg-primary text-on-primary font-code-sm text-code-sm font-bold flex items-center justify-center shrink-0">PCB</span>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container truncate">Physics, Chemistry, Biology</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1">
+<span>P510</span>•<span>P525</span>•<span>P530</span>
+<span class="ml-1 px-1.5 py-0.2 rounded bg-surface-container-high text-primary text-[10px] font-semibold">Medical Track</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface font-code-xs text-code-xs font-semibold">S476 Sub-Math Req.</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm font-bold text-primary">1,940</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm text-on-surface">115 Schools</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-code-xs font-semibold bg-surface-container-highest text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1.5"></span>
+                    Approved
+                  </span>
+</td>
+<td class="py-3 px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Inspect Rules" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Item 4: PEM -->
+<tr class="combination-row group hover:bg-surface-container-low/60 cursor-pointer transition-colors" data-candidates="1,650" data-code="PEM" data-schools="94" data-sub="Sub-Math (S476) / Sub-ICT (S475)" data-subjects="Physics (P510), Economics (P220), Mathematics (P425)" data-tariff="35,000" data-type="Sciences">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-12 h-8 rounded bg-primary text-on-primary font-code-sm text-code-sm font-bold flex items-center justify-center shrink-0">PEM</span>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container truncate">Physics, Economics, Mathematics</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1">
+<span>P510</span>•<span>P220</span>•<span>P425</span>
+<span class="ml-1 px-1.5 py-0.2 rounded bg-surface-container-high text-primary text-[10px] font-semibold">Sci-Econ Hybrid</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S475 ICT</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S476 Sub-Math</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm font-bold text-primary">1,650</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm text-on-surface">94 Schools</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-code-xs font-semibold bg-surface-container-highest text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1.5"></span>
+                    Approved
+                  </span>
+</td>
+<td class="py-3 px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Inspect Rules" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Item 5: HEG -->
+<tr class="combination-row group hover:bg-surface-container-low/60 cursor-pointer transition-colors" data-candidates="2,410" data-code="HEG" data-schools="150" data-sub="Sub-Math (S476) / Sub-ICT (S475)" data-subjects="History (P210), Economics (P220), Geography (P250)" data-tariff="35,000" data-type="Humanities">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-12 h-8 rounded bg-primary-container text-on-primary font-code-sm text-code-sm font-bold flex items-center justify-center shrink-0">HEG</span>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container truncate">History, Economics, Geography</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1">
+<span>P210</span>•<span>P220</span>•<span>P250</span>
+<span class="ml-1 px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface text-[10px] font-semibold">Humanities Standard</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S475 ICT</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S476 Sub-Math</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm font-bold text-primary">2,410</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm text-on-surface">150 Schools</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-code-xs font-semibold bg-surface-container-highest text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1.5"></span>
+                    Approved
+                  </span>
+</td>
+<td class="py-3 px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Inspect Rules" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Item 6: DEG -->
+<tr class="combination-row group hover:bg-surface-container-low/60 cursor-pointer transition-colors" data-candidates="1,820" data-code="DEG" data-schools="110" data-sub="Sub-Math (S476) / Sub-ICT (S475)" data-subjects="Divinity (P245), Economics (P220), Geography (P250)" data-tariff="35,000" data-type="Humanities">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-12 h-8 rounded bg-primary-container text-on-primary font-code-sm text-code-sm font-bold flex items-center justify-center shrink-0">DEG</span>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container truncate">Divinity, Economics, Geography</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1">
+<span>P245</span>•<span>P220</span>•<span>P250</span>
+<span class="ml-1 px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface text-[10px] font-semibold">Theological Track</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S475 ICT</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S476 Sub-Math</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm font-bold text-primary">1,820</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm text-on-surface">110 Schools</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-code-xs font-semibold bg-surface-container-highest text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1.5"></span>
+                    Approved
+                  </span>
+</td>
+<td class="py-3 px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Inspect Rules" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Item 7: HEL -->
+<tr class="combination-row group hover:bg-surface-container-low/60 cursor-pointer transition-colors" data-candidates="1,210" data-code="HEL" data-schools="85" data-sub="Sub-Math (S476) / Sub-ICT (S475)" data-subjects="History (P210), Economics (P220), Literature (P310)" data-tariff="35,000" data-type="Humanities">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-12 h-8 rounded bg-primary-container text-on-primary font-code-sm text-code-sm font-bold flex items-center justify-center shrink-0">HEL</span>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-body-md font-semibold text-primary group-hover:text-primary-container truncate">History, Economics, Literature in English</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant flex items-center gap-1">
+<span>P210</span>•<span>P220</span>•<span>P310</span>
+<span class="ml-1 px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface text-[10px] font-semibold">Arts &amp; Letters</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S475 ICT</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs">S476 Sub-Math</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm font-bold text-primary">1,210</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-sm text-on-surface">85 Schools</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-code-xs font-semibold bg-surface-container-highest text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1.5"></span>
+                    Approved
+                  </span>
+</td>
+<td class="py-3 px-space-md text-center">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Inspect Rules" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Ledger Footer Bar -->
+<div class="p-space-sm px-space-md bg-surface-container-low/50 flex flex-col sm:flex-row items-center justify-between text-code-xs text-on-surface-variant gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span>All combination syllabi synchronize dynamically with the UNEB Central Database.</span>
+</div>
+<span class="font-code-xs">Last Verified: Archdiocese Curriculum Board, Sept 2024</span>
+</div>
+</div>
+<!-- Side Inspector / Drawer Card (4 cols on large screen) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Rule Inspector Card -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-code-xs uppercase tracking-wider text-on-surface-variant font-semibold">Active Inspector</span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight mt-0.5" id="inspector-code">PCM / Sub-ICT</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-xs text-code-xs font-semibold" id="inspector-badge">Sciences</span>
+</div>
+<!-- Secure Seal / Regulatory Stamp -->
+<div class="p-space-sm rounded bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<div class="flex flex-col leading-tight">
+<span class="font-headline-md text-code-xs font-semibold text-primary">KAES Validated Curriculum</span>
+<span class="font-code-xs text-[10px] text-on-surface-variant">Regulation Act § 14(B)</span>
+</div>
+</div>
+<span class="font-code-xs text-[11px] font-bold text-primary">UGX <span id="inspector-tariff">35,000</span></span>
+</div>
+<!-- Rule Breakdown -->
+<div class="flex flex-col gap-2.5">
+<span class="font-label-md text-code-xs uppercase tracking-wider text-on-surface-variant font-semibold">Statutory Matrix Validation Rules</span>
+<div class="flex items-start gap-2 text-body-sm text-on-surface bg-surface-container-low/40 p-2 rounded">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div>
+<strong class="font-semibold text-primary">Principal Constituency:</strong>
+<p class="text-on-surface-variant mt-0.5" id="inspector-constituents">Must strictly include P510 (Physics), P525 (Chemistry), and P425 (Pure Mathematics).</p>
+</div>
+</div>
+<div class="flex items-start gap-2 text-body-sm text-on-surface bg-surface-container-low/40 p-2 rounded">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div>
+<strong class="font-semibold text-primary">Subsidiary Constraint:</strong>
+<p class="text-on-surface-variant mt-0.5" id="inspector-sub-rules">Requires S475 (Sub-ICT) or S476 (Sub-Math). If Principal Math is taken, candidate takes Sub-ICT.</p>
+</div>
+</div>
+<div class="flex items-start gap-2 text-body-sm text-on-surface bg-error-container/30 p-2 rounded">
+<span class="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">error</span>
+<div>
+<strong class="font-semibold text-error">Rejection Criteria:</strong>
+<p class="text-on-surface-variant mt-0.5">System will reject registration if non-science principal selected or if candidate attempts 4th principal without Secretariat dispensation.</p>
+</div>
+</div>
+</div>
+<!-- Quick Stats for Selected Combination -->
+<div class="grid grid-cols-2 gap-space-sm pt-2">
+<div class="p-space-sm rounded bg-surface-container-low flex flex-col">
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase font-semibold">Candidate Load</span>
+<span class="font-code-sm text-headline-md font-bold text-primary mt-0.5" id="inspector-candidates">3,420</span>
+<span class="font-code-xs text-[10px] text-tertiary">Leading Archdiocesan Science</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low flex flex-col">
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase font-semibold">Accredited Centres</span>
+<span class="font-code-sm text-headline-md font-bold text-primary mt-0.5" id="inspector-schools">142</span>
+<span class="font-code-xs text-[10px] text-on-surface-variant">Active Laboratories</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full py-2 px-3 rounded bg-primary text-on-primary font-headline-md text-body-sm font-semibold hover:bg-primary-container transition-colors flex items-center justify-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+<span>Edit Rule Specification</span>
+</button>
+<button class="w-full py-2 px-3 rounded bg-surface-container-low text-primary font-headline-md text-body-sm font-semibold hover:bg-surface-container transition-colors flex items-center justify-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+<span>Print Candidate Gazette Profile</span>
+</button>
+</div>
+</div>
+<!-- Archdiocesan Exam Center Policy Tile -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm p-space-md flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary font-headline-md text-body-md font-bold">
+<span class="material-symbols-outlined text-[20px] text-tertiary">policy</span>
+<span>Secretariat Regulation Advisory</span>
+</div>
+<p class="font-body-sm text-code-xs text-on-surface-variant leading-relaxed">
+            All secondary schools in Kampala Archdiocese are governed under Catholic Education Board resolution #EB-2023/11. No new principal combination may be published in mock or joint examinations without prior written clearance from the Archdiocesan Secretary.
+          </p>
+<div class="flex items-center justify-between text-code-xs text-on-surface-variant pt-2">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+              Compliance Lock: Active
+            </span>
+<a class="text-primary hover:underline font-semibold" href="#">View By-Laws</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Subsidiary Subject Reference Strip -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm p-space-md flex flex-col gap-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">checklist</span>
+<span class="font-headline-md text-body-md font-bold text-primary">Statutory Compulsory Subsidiaries Directory (UACE Level)</span>
+</div>
+<span class="font-code-xs text-code-xs text-on-surface-variant">UNEB Directives § 2012 Sub-Math &amp; Sub-ICT Regulation</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-1">
+<!-- Sub 1 -->
+<div class="p-space-sm rounded bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm font-bold text-primary">S101 • General Paper</span>
+<span class="font-body-sm text-code-xs text-on-surface-variant mt-0.5">Compulsory for ALL registered A-Level candidates in Uganda.</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-xs text-code-xs font-semibold shrink-0">Universal</span>
+</div>
+<div class="mt-2 text-code-xs text-on-surface-variant flex items-center justify-between pt-1">
+<span>Grading: 1 - 9 (Credit/Pass)</span>
+<span class="font-code-xs text-tertiary font-semibold">Mandatory</span>
+</div>
+</div>
+<!-- Sub 2 -->
+<div class="p-space-sm rounded bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm font-bold text-primary">S475 • Subsidiary ICT</span>
+<span class="font-body-sm text-code-xs text-on-surface-variant mt-0.5">Compulsory for candidates offering Principal Pure Mathematics (P425).</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-xs text-code-xs font-semibold shrink-0">ICT Lab Req.</span>
+</div>
+<div class="mt-2 text-code-xs text-on-surface-variant flex items-center justify-between pt-1">
+<span>Paper 1 (Theory) + Paper 2 (Practical)</span>
+<span class="font-code-xs text-tertiary font-semibold">1 Credit Point</span>
+</div>
+</div>
+<!-- Sub 3 -->
+<div class="p-space-sm rounded bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm font-bold text-primary">S476 • Subsidiary Mathematics</span>
+<span class="font-body-sm text-code-xs text-on-surface-variant mt-0.5">Compulsory for candidates offering Principal Economics without Principal Math.</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-xs text-code-xs font-semibold shrink-0">Core Numerate</span>
+</div>
+<div class="mt-2 text-code-xs text-on-surface-variant flex items-center justify-between pt-1">
+<span>Paper 1 (Calculus &amp; Applied Stats)</span>
+<span class="font-code-xs text-tertiary font-semibold">1 Credit Point</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Interactive Row Selection & Inspector Update
+    const rows = document.querySelectorAll('.combination-row');
+    const inspectorCode = document.getElementById('inspector-code');
+    const inspectorBadge = document.getElementById('inspector-badge');
+    const inspectorConstituents = document.getElementById('inspector-constituents');
+    const inspectorSubRules = document.getElementById('inspector-sub-rules');
+    const inspectorCandidates = document.getElementById('inspector-candidates');
+    const inspectorSchools = document.getElementById('inspector-schools');
+    const inspectorTariff = document.getElementById('inspector-tariff');
+
+    rows.forEach(row => {
+      row.addEventListener('click', function() {
+        // Highlight state
+        rows.forEach(r => r.classList.remove('bg-surface-container-low/40', 'bg-surface-container-low/20'));
+        this.classList.add('bg-surface-container-low/40');
+
+        const code = this.getAttribute('data-code');
+        const type = this.getAttribute('data-type');
+        const subjects = this.getAttribute('data-subjects');
+        const sub = this.getAttribute('data-sub');
+        const candidates = this.getAttribute('data-candidates');
+        const schools = this.getAttribute('data-schools');
+        const tariff = this.getAttribute('data-tariff');
+
+        if (inspectorCode) inspectorCode.textContent = code + ' / ' + (code === 'PCB' ? 'Sub-Math' : 'Sub-ICT');
+        if (inspectorBadge) inspectorBadge.textContent = type;
+        if (inspectorConstituents) inspectorConstituents.textContent = 'Must strictly include ' + subjects + '.';
+        if (inspectorSubRules) inspectorSubRules.textContent = 'Governed subsidiary path: ' + sub + '. Validation matrix enforces automatic paper scheduling.';
+        if (inspectorCandidates) inspectorCandidates.textContent = candidates;
+        if (inspectorSchools) inspectorSchools.textContent = schools;
+        if (inspectorTariff) inspectorTariff.textContent = tariff;
+      });
+    });
+
+    // Simple search filtering
+    const searchInput = document.getElementById('combination-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const query = e.target.value.toLowerCase().trim();
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+          if (text.includes(query)) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    // Category button toggles
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filterGroup = this.getAttribute('data-filter');
+        const val = this.getAttribute('data-value');
+        
+        // Toggle active visual within same group
+        filterButtons.forEach(b => {
+          if (b.getAttribute('data-filter') === filterGroup) {
+            b.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+            b.classList.add('text-on-surface-variant');
+          }
+        });
+        this.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        this.classList.remove('text-on-surface-variant');
+
+        // Apply category filter
+        if (filterGroup === 'cat') {
+          rows.forEach(row => {
+            const cat = row.getAttribute('data-type').toLowerCase();
+            if (val === 'all' || cat.includes(val)) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        }
+      });
+    });
+
+    // Keyboard shortcut Alt+S for quick search focus
+    window.addEventListener('keydown', function(e) {
+      if (e.altKey && (e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+        if (searchInput) searchInput.focus();
+      }
+    });
+  })();
+</script></main></div></body></html>

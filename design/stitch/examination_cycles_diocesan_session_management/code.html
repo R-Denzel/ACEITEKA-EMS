@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"secondary-fixed":"#d0e4ff","on-primary-fixed":"#001c3b","surface-container-highest":"#d8e3f5","on-tertiary-container":"#47aea9","inverse-on-surface":"#e9f1ff","on-tertiary-fixed-variant":"#00504d","on-surface":"#111c29","on-primary":"#ffffff","on-primary-fixed-variant":"#2b486f","surface-tint":"#435f89","on-tertiary-fixed":"#00201f","surface-container-low":"#eef4ff","primary-fixed-dim":"#acc8f7","surface-container":"#e4efff","on-secondary-container":"#4f647c","primary":"#002043","on-secondary-fixed":"#051d32","outline-variant":"#c4c6cf","surface":"#f8f9ff","primary-container":"#17365d","tertiary":"#002524","on-error":"#ffffff","inverse-surface":"#26313e","on-secondary":"#ffffff","background":"#f8f9ff","on-error-container":"#93000a","tertiary-fixed-dim":"#73d7d2","inverse-primary":"#acc8f7","secondary-container":"#cce2fe","tertiary-fixed":"#90f3ee","primary-fixed":"#d5e3ff","secondary-fixed-dim":"#b3c8e4","tertiary-container":"#003d3b","surface-dim":"#cfdbec","error":"#ba1a1a","surface-variant":"#d8e3f5","on-background":"#111c29","on-surface-variant":"#43474e","on-secondary-fixed-variant":"#33485f","surface-bright":"#f8f9ff","surface-container-lowest":"#ffffff","on-tertiary":"#ffffff","outline":"#74777f","secondary":"#4b6078","on-primary-container":"#84a0cd","error-container":"#ffdad6","surface-container-high":"#dee9fb"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xl":"1.5rem","gutter-compact":"0.5rem","space-sm":"0.5rem","margin-mobile":"1rem","gutter":"1rem","space-lg":"1rem","space-xs":"0.25rem","margin":"1.5rem","space-md":"0.75rem"},"fontFamily":{"code-xs":["JetBrains Mono"],"label-md":["Inter"],"body-md":["Inter"],"headline-lg":["Inter"],"headline-xl":["Inter"],"body-sm":["Inter"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-md":["Inter"],"headline-xl-mobile":["Inter"],"label-lg":["Inter"]},"fontSize":{"code-xs":["11px",{"lineHeight":"14px","fontWeight":"400"}],"label-md":["11px",{"lineHeight":"14px","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-xl-mobile":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-lg":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col border-r border-outline-variant/30 select-none"><div class="h-14 px-space-lg flex items-center gap-space-md border-b border-outline-variant/30 bg-surface-container-low/40"><div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-headline-md font-bold text-label-md shrink-0 shadow-sm">KAES</div><div class="flex flex-col min-w-0 leading-tight"><span class="font-headline-md text-body-md text-primary font-bold tracking-tight truncate">ACEITEKA EBMIS</span><span class="font-label-md text-code-xs text-on-surface-variant truncate uppercase tracking-wider">Kampala Archdiocese Education Dept.</span></div></div><div class="flex-1 overflow-y-auto py-space-sm px-space-xs"><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Archdiocesan Registry</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="overview" href="#">Overview</a><a aria-current="page" class="flex items-center px-space-md py-1.5 rounded transition-colors truncate bg-primary text-on-primary font-medium shadow-sm" data-path="examination-cycles-management" href="#">Examination Cycles Management</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="schools-and-examination-centres" href="#">Schools &amp; Examination Centres</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="candidate-registration" href="#">Candidate Registration</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="alphabetical-register-and-gazette" href="#">Alphabetical Register &amp; Gazette</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="subject-and-combinations-configuration" href="#">Subject &amp; Combinations Configuration</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Archdiocese Operations</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="paper-setting-and-review-vault" href="#">Paper Setting &amp; Review Vault</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="printing-and-production" href="#">Printing &amp; Production</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examiner-management" href="#">Examiner Management</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="marking-operations" href="#">Marking Operations</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-entry-and-verification" href="#">Results Entry &amp; Verification</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-approval-and-discrepancies" href="#">Results Approval &amp; Discrepancies</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="performance-reports-and-analytics" href="#">Performance Reports &amp; Analytics</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Governance &amp; Clearances</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="finance-and-centre-clearance" href="#">Finance &amp; Centre Clearance</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="task-accountability-and-reports" href="#">Task Accountability &amp; Reports</a></nav></div><div class="p-space-sm border-t border-outline-variant/30 bg-surface-container-low/50"><div class="flex items-center justify-between px-space-xs text-code-xs text-on-surface-variant"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>ARCHDIOCESE EBMIS CORE</span><span class="font-code-xs text-on-surface-variant">v4.3.0</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg"><div class="relative flex items-center bg-surface-container-low border border-outline-variant/40 rounded px-2.5 py-1 text-on-surface hover:border-outline transition-colors"><span class="material-symbols-outlined text-[16px] text-primary mr-1.5">church</span><span class="font-label-lg text-body-sm font-semibold tracking-tight text-primary">Archdiocese of Kampala Mock &amp; Joint Exams</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant ml-1.5">expand_more</span></div><div class="hidden xl:flex items-center gap-1.5 text-on-surface-variant text-body-sm font-body-sm"><span class="hover:text-primary cursor-pointer">Kampala Archdiocese Education Dept.</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-medium">Deanery Operations &amp; Verification</span></div></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-low border border-outline-variant/30 text-on-surface-variant"><span class="font-code-xs text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant/80">CURRENCY:</span><span class="font-code-xs text-code-xs font-semibold text-primary">UGX</span></div><div class="relative hidden md:flex items-center w-72 h-8 bg-surface-container-low border border-outline-variant/40 rounded px-2.5 text-on-surface-variant"><span class="material-symbols-outlined text-[18px] mr-2 text-on-surface-variant">search</span><span class="font-body-sm text-body-sm flex-1 text-on-surface-variant/70">Deanery, parish centre, student index...</span><kbd class="font-code-xs text-code-xs bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant/40 text-on-surface-variant font-medium">Ctrl+K</kbd></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-1"><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Archdiocese Audit Security" type="button"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></button><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Secretariat Notifications" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-on-tertiary-container rounded-full ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low text-code-xs text-on-surface-variant border border-outline-variant/30"><span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span><span class="font-code-xs uppercase">SECRETARIAT ACTIVE</span></div></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-2.5 pl-1"><div class="text-right leading-none hidden sm:block"><div class="font-headline-md text-body-sm font-semibold text-primary">Fr. Education Secretary</div><div class="font-label-md text-code-xs text-on-surface-variant mt-0.5">Kampala Archdiocese Education Dept.</div></div><img alt="Archdiocese Secretary Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida/ALJJyrDEJqiGNArZPqgqf6y3pbseQDUKnlwcDusKp7Fb38UCBXsA3QkhMOme_Rpb221aBmyheUlvp2oellA7LWWNhGXr7zC9D0BhMIKnyeJM4-idrYY9MmZqdC-Py822mo9Ni04am7HFwbnZh9w7g9J9QZ7E2q6EfBI_JNHSZIdYquOiXNTneen6S2YM494B2ymMORsxBu8_xSh-AhMNfR2tkUJ3Oa40QYczkSIXLM9CwE4"/></div></div></header><main class="relative w-full pt-14 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg lg:p-space-xl flex flex-col gap-space-lg">
+<!-- Header Ribbon & Quick Actions -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest p-space-lg rounded-lg shadow-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary font-code-xs text-code-xs uppercase tracking-wider font-semibold">Statutory Governance</span>
+<span class="font-code-xs text-code-xs text-on-surface-variant">SEC-REF: KAES/EXAM/CYC-2025/01</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Examination Cycles &amp; Diocesan Session Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-4xl">
+          Lifecycle configuration, statutory deadlines, paper composition, and operational milestones for Kampala Archdiocese Joint Mock &amp; End of Cycle Examinations.
+        </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="h-9 px-space-md rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-lg text-label-lg flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+          Archive Previous Sessions
+        </button>
+<button class="h-9 px-space-md rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-lg text-label-lg flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+          Export Timetable (PDF)
+        </button>
+<button class="h-9 px-space-md rounded bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg flex items-center gap-1.5 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+          Create New Examination Cycle
+        </button>
+</div>
+</div>
+<!-- Top Institutional Metric Tiles -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<!-- Active Cycle -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-md text-code-xs uppercase tracking-wider">Active Cycle</span>
+<span class="material-symbols-outlined text-[18px] text-primary">event_available</span>
+</div>
+<div class="font-headline-md text-body-lg text-primary font-bold leading-snug">
+          2025/2026 Archdiocese Mock
+        </div>
+<div class="mt-2 text-on-surface-variant font-code-xs text-code-xs flex items-center gap-1">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+          UCE &amp; UACE Joint Sitting
+        </div>
+</div>
+<!-- Current Lifecycle Status -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-md text-code-xs uppercase tracking-wider">Session Status</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary-container">sync</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-lg text-code-xs font-semibold uppercase">Candidate Verification</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-code-xs text-code-xs">
+          Stage 2 of 8 Institutional Milestones
+        </div>
+</div>
+<!-- Examination Centres -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-md text-code-xs uppercase tracking-wider">Registered Centres</span>
+<span class="material-symbols-outlined text-[18px] text-primary">school</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">184</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Centres</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-code-xs text-code-xs">
+          Distributed in 6 Deaneries
+        </div>
+</div>
+<!-- Examination Window -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-md text-code-xs uppercase tracking-wider">Statutory Window</span>
+<span class="material-symbols-outlined text-[18px] text-primary">date_range</span>
+</div>
+<div class="font-headline-md text-body-md text-on-surface font-semibold leading-snug">
+          14 Jul – 28 Nov 2025
+        </div>
+<div class="mt-2 text-on-surface-variant font-code-xs text-code-xs font-mono">
+          T-minus 62 days to Main Sitting
+        </div>
+</div>
+<!-- Canonical Levies -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-md text-code-xs uppercase tracking-wider">Examination Levies</span>
+<span class="material-symbols-outlined text-[18px] text-primary">payments</span>
+</div>
+<div class="flex flex-col">
+<div class="flex justify-between items-center text-code-xs font-mono">
+<span class="text-on-surface-variant">UCE:</span>
+<span class="font-semibold text-primary">UGX 30,000</span>
+</div>
+<div class="flex justify-between items-center text-code-xs font-mono mt-0.5">
+<span class="text-on-surface-variant">UACE:</span>
+<span class="font-semibold text-primary">UGX 35,000</span>
+</div>
+</div>
+<div class="mt-2 text-on-surface-variant font-code-xs text-code-xs">
+          Centenary Bank A/C Verified
+        </div>
+</div>
+</div>
+<!-- Tabbed Navigation Ribbon -->
+<div class="flex items-center gap-space-sm bg-surface-container-low p-1 rounded-lg">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-lg text-body-sm font-semibold shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">timeline</span>
+        Active Cycle &amp; Milestones
+      </button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-lg text-body-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+        Deadlines &amp; Timetable Schedule
+      </button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-lg text-body-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+        Subject &amp; Paper Matrix (NLSC)
+      </button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-lg text-body-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+        Cycle Archive &amp; Historical Gazettes
+      </button>
+</div>
+<!-- Main Operational Workspace (Grid Architecture) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<!-- Primary Column: Milestones Schedule (8 cols) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Section A: Milestones & Workflow Lifecycle -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">flag</span>
+<h2 class="font-headline-md text-body-lg text-primary font-bold">Statutory Milestones &amp; Operational Progress</h2>
+</div>
+<div class="flex items-center gap-2 text-code-xs font-code-xs text-on-surface-variant">
+<span>Overall Completion:</span>
+<span class="font-semibold text-primary">28% Completed</span>
+<div class="w-24 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 28%;"></div>
+</div>
+</div>
+</div>
+<div class="p-space-lg">
+<div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-container-highest">
+<!-- Milestone 1: Completed -->
+<div class="relative flex items-start gap-space-md group">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex-1 bg-surface-container-low/60 hover:bg-surface-container-low transition-colors p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-body-md text-primary font-bold">1. School Registration &amp; Centre Renewal</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-md text-code-xs font-semibold">Completed</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Verification of physical laboratories, safe storage vaults, and ACEITEKA licensing.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-xs text-primary font-semibold">30 Jun 2025</div>
+<div class="font-label-md text-[10px] text-on-surface-variant uppercase">Signed by Arch. Inspector</div>
+</div>
+</div>
+</div>
+<!-- Milestone 2: In Progress -->
+<div class="relative flex items-start gap-space-md group">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-secondary-container text-primary flex items-center justify-center ring-4 ring-surface-container-lowest animate-pulse">
+<span class="material-symbols-outlined text-[14px]">edit_note</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-body-md text-primary font-bold">2. Candidate Entry &amp; Bulk Register Upload</span>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-md text-code-xs font-semibold">In Progress</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Capture of Lin-Numbers, combinations, Christian names, and passport biometric seals.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-xs text-error font-semibold">15 Aug 2025</div>
+<div class="font-label-md text-[10px] text-error uppercase font-medium">Strict Portal Cutoff</div>
+</div>
+</div>
+</div>
+<!-- Milestone 3: In Progress -->
+<div class="relative flex items-start gap-space-md group">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-secondary-container text-primary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px]">account_balance</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-body-md text-primary font-bold">3. Fee Payment &amp; Centenary Bank Reconciliation</span>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-md text-code-xs font-semibold">In Progress</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Deanery bursar clearance; automatic ledger posting through Centenary integrated API.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-xs text-primary font-semibold">30 Aug 2025</div>
+<div class="font-label-md text-[10px] text-on-surface-variant uppercase">Finance Dept. Review</div>
+</div>
+</div>
+</div>
+<!-- Milestone 4: Scheduled -->
+<div class="relative flex items-start gap-space-md group opacity-85">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">security</span>
+</div>
+<div class="flex-1 bg-surface-container-low/40 p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-body-md text-on-surface font-semibold">4. Confidential Paper Setting &amp; Moderator Sign-Off</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-md text-code-xs">Scheduled</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Subject panels convene at undisclosed archdiocesan site for item vetting and scoring rubrics.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-xs text-on-surface-variant">12 Sep 2025</div>
+<div class="font-label-md text-[10px] text-on-surface-variant uppercase">Moderation Council</div>
+</div>
+</div>
+</div>
+<!-- Milestone 5: Scheduled -->
+<div class="relative flex items-start gap-space-md group opacity-85">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">print</span>
+</div>
+<div class="flex-1 bg-surface-container-low/40 p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-body-md text-on-surface font-semibold">5. Strongroom Press Run &amp; Poly-Pack Packaging</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-md text-code-xs">Scheduled</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">High-security digital press output, security seals, and deanery bundle dispatch sorting.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-xs text-on-surface-variant">28 Sep 2025</div>
+<div class="font-label-md text-[10px] text-on-surface-variant uppercase">Press Controller</div>
+</div>
+</div>
+</div>
+<!-- Milestone 6: Scheduled -->
+<div class="relative flex items-start gap-space-md group opacity-85">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">draw</span>
+</div>
+<div class="flex-1 bg-surface-container-low/40 p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-body-md text-on-surface font-semibold">6. Joint Examinations Sitting Window</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-md text-code-xs">Scheduled</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Uniform diocesan morning/afternoon sitting sessions. Archdiocesan external invigilation squads active.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-xs text-on-surface-variant">06 Oct – 24 Oct 2025</div>
+<div class="font-label-md text-[10px] text-on-surface-variant uppercase">Active Sitting</div>
+</div>
+</div>
+</div>
+<!-- Milestone 7: Scheduled -->
+<div class="relative flex items-start gap-space-md group opacity-85">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">grading</span>
+</div>
+<div class="flex-1 bg-surface-container-low/40 p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-body-md text-on-surface font-semibold">7. Residential Marking at Designated Campuses</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-md text-code-xs">Scheduled</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Conducted at St. Mary's Kisubi &amp; Mt. St. Mary's Namagunga residential centres.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-xs text-on-surface-variant">03 Nov – 14 Nov 2025</div>
+<div class="font-label-md text-[10px] text-on-surface-variant uppercase">Chief Examiners</div>
+</div>
+</div>
+</div>
+<!-- Milestone 8: Scheduled -->
+<div class="relative flex items-start gap-space-md group opacity-85">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">workspace_premium</span>
+</div>
+<div class="flex-1 bg-surface-container-low/40 p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-body-md text-on-surface font-semibold">8. Secretariat Results Verification &amp; Archbishop's Award Gazette</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-md text-code-xs">Scheduled</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Final approval by Archdiocesan Board of Education and distribution of verified canonical transcripts.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-xs text-on-surface-variant">28 Nov 2025</div>
+<div class="font-label-md text-[10px] text-on-surface-variant uppercase">Archbishop's Seal</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Column: Cycle Configuration & Governance Parameters (4 cols) -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Institutional Parameter Card -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+<h3 class="font-headline-md text-body-lg text-primary font-bold">Session Governance Parameters</h3>
+</div>
+<button class="text-primary hover:text-primary-container text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+              Modify
+            </button>
+</div>
+<div class="p-space-lg flex flex-col gap-space-md text-body-md">
+<div>
+<span class="font-label-md text-code-xs uppercase text-on-surface-variant tracking-wider block mb-1">Academic Levels In-Scope</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-code-sm text-code-xs font-semibold">UCE (New Curriculum / NLSC)</span>
+<span class="px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-code-sm text-code-xs font-semibold">UACE Principal &amp; Subsidiaries</span>
+</div>
+</div>
+<div>
+<span class="font-label-md text-code-xs uppercase text-on-surface-variant tracking-wider block mb-1">Departmental Leadership</span>
+<div class="flex items-center gap-2.5 p-2 rounded bg-surface-container-low">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-label-md">
+                  KA
+                </div>
+<div>
+<div class="font-headline-md text-body-md text-primary font-semibold">Rev. Fr. Education Secretary</div>
+<div class="font-body-sm text-code-xs text-on-surface-variant">Archdiocesan Executive Examiner</div>
+</div>
+</div>
+</div>
+<div>
+<span class="font-label-md text-code-xs uppercase text-on-surface-variant tracking-wider block mb-1">Constituent Deaneries (6)</span>
+<div class="grid grid-cols-2 gap-1.5 font-code-sm text-code-xs">
+<div class="px-2 py-1 bg-surface-container-low rounded flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Kisubi Deanery
+                </div>
+<div class="px-2 py-1 bg-surface-container-low rounded flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Rubaga Deanery
+                </div>
+<div class="px-2 py-1 bg-surface-container-low rounded flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Christ the King
+                </div>
+<div class="px-2 py-1 bg-surface-container-low rounded flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Gaba Deanery
+                </div>
+<div class="px-2 py-1 bg-surface-container-low rounded flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Wakiso Deanery
+                </div>
+<div class="px-2 py-1 bg-surface-container-low rounded flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Gayaza Deanery
+                </div>
+</div>
+</div>
+<div>
+<span class="font-label-md text-code-xs uppercase text-on-surface-variant tracking-wider block mb-1">Security &amp; Vault Protocols</span>
+<div class="p-2.5 rounded bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 text-primary font-semibold text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container">verified_user</span>
+                  Level-4 Dual Key Custody
+                </div>
+<p class="font-body-sm text-code-xs text-on-surface-variant">
+                  Requires simultaneous cryptographic signature from Education Secretary &amp; Diocesan Police Liaison for safe dispatch.
+                </p>
+</div>
+</div>
+<div>
+<span class="font-label-md text-code-xs uppercase text-on-surface-variant tracking-wider block mb-1">Banking Destination</span>
+<div class="text-code-xs font-mono p-2 bg-surface-container-low rounded text-on-surface">
+<span class="text-on-surface-variant">A/C:</span> 3100049281 (Centenary Corporate)<br/>
+<span class="text-on-surface-variant">Name:</span> Kampala Archdiocese Mock Board
+              </div>
+</div>
+</div>
+</div>
+<!-- Notification Banner / Alert Box -->
+<div class="bg-primary-container text-on-primary p-space-md rounded-lg shadow-sm flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">info</span>
+<span class="font-headline-md text-body-md font-bold text-on-primary">Gazette Deadline Warning</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+            All Centre Registrations for 2025/2026 must be finalized before August 15th to guarantee serial allocation on the centralized Optical Mark Recognition (OMR) sheets.
+          </p>
+<div class="pt-1">
+<a class="font-label-lg text-code-xs text-tertiary-fixed underline flex items-center gap-1 hover:text-on-primary" href="#">
+              View Statutory Guidelines
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Section C: Historical Cycles Table (Full Width) -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">history_edu</span>
+<h2 class="font-headline-md text-body-lg text-primary font-bold">Historical Examination Cycles Archive</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<input class="h-8 pl-8 pr-3 text-body-sm bg-surface-container-lowest rounded text-on-surface placeholder:text-on-surface-variant focus:outline-none" placeholder="Filter archived cycles..." type="text"/>
+<span class="material-symbols-outlined absolute left-2 top-2 text-[16px] text-on-surface-variant">filter_list</span>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-md text-code-xs uppercase tracking-wider">
+<th class="py-2.5 px-space-md font-semibold">Session / Cycle Code</th>
+<th class="py-2.5 px-space-md font-semibold">Academic Scope</th>
+<th class="py-2.5 px-space-md font-semibold">Participating Centres</th>
+<th class="py-2.5 px-space-md font-semibold text-right">Total Candidates</th>
+<th class="py-2.5 px-space-md font-semibold text-right">Fee Clearance Rate</th>
+<th class="py-2.5 px-space-md font-semibold text-center">Division I / Perf. Mean</th>
+<th class="py-2.5 px-space-md font-semibold">Diocesan Seal</th>
+<th class="py-2.5 px-space-md font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-sm text-on-surface">
+<!-- Row 1: 2024/2025 Finals -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-space-md">
+<div class="font-semibold text-primary font-code-sm text-body-sm">2024/2025 Mock Finals</div>
+<div class="font-code-xs text-[10px] text-on-surface-variant">KAES-ARC-24-992</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="text-body-sm">UCE &amp; UACE</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm">180 Centres</span>
+<span class="text-on-surface-variant text-code-xs block">6 Deaneries</span>
+</td>
+<td class="py-3 px-space-md text-right font-mono font-semibold">
+                14,820
+              </td>
+<td class="py-3 px-space-md text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-code-xs font-semibold">
+                  99.4% Cleared
+                </span>
+</td>
+<td class="py-3 px-space-md text-center font-mono font-semibold text-primary">
+                38.2% Div I (Mean: 24.1)
+              </td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 text-code-xs text-primary font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+                  Certified
+                </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="h-7 px-2.5 rounded bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-code-xs inline-flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+                  View Archive
+                </button>
+</td>
+</tr>
+<!-- Row 2: 2023/2024 Finals -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-space-md">
+<div class="font-semibold text-primary font-code-sm text-body-sm">2023/2024 Mock Finals</div>
+<div class="font-code-xs text-[10px] text-on-surface-variant">KAES-ARC-23-871</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="text-body-sm">UCE &amp; UACE</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm">176 Centres</span>
+<span class="text-on-surface-variant text-code-xs block">6 Deaneries</span>
+</td>
+<td class="py-3 px-space-md text-right font-mono font-semibold">
+                13,950
+              </td>
+<td class="py-3 px-space-md text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-code-xs font-semibold">
+                  98.8% Cleared
+                </span>
+</td>
+<td class="py-3 px-space-md text-center font-mono font-semibold text-primary">
+                36.7% Div I (Mean: 25.4)
+              </td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 text-code-xs text-primary font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+                  Certified
+                </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="h-7 px-2.5 rounded bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-code-xs inline-flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+                  View Archive
+                </button>
+</td>
+</tr>
+<!-- Row 3: 2022/2023 Finals -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-space-md">
+<div class="font-semibold text-primary font-code-sm text-body-sm">2022/2023 Mock Finals</div>
+<div class="font-code-xs text-[10px] text-on-surface-variant">KAES-ARC-22-740</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="text-body-sm">UCE &amp; UACE</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm">169 Centres</span>
+<span class="text-on-surface-variant text-code-xs block">6 Deaneries</span>
+</td>
+<td class="py-3 px-space-md text-right font-mono font-semibold">
+                13,105
+              </td>
+<td class="py-3 px-space-md text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-code-xs font-semibold">
+                  100% Cleared
+                </span>
+</td>
+<td class="py-3 px-space-md text-center font-mono font-semibold text-primary">
+                34.9% Div I (Mean: 26.2)
+              </td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 text-code-xs text-primary font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+                  Certified
+                </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="h-7 px-2.5 rounded bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-code-xs inline-flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+                  View Archive
+                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-sm bg-surface-container-low/50 flex items-center justify-between px-space-md text-code-xs text-on-surface-variant">
+<span>Archived records are maintained in cold ledger storage per Catholic Education Secretariat ordinance.</span>
+<span class="font-mono">Showing 3 of 14 Completed Diocesan Sessions</span>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

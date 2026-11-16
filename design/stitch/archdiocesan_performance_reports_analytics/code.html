@@ -1,0 +1,658 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"secondary-fixed":"#d0e4ff","on-primary-fixed":"#001c3b","surface-container-highest":"#d8e3f5","on-tertiary-container":"#47aea9","inverse-on-surface":"#e9f1ff","on-tertiary-fixed-variant":"#00504d","on-surface":"#111c29","on-primary":"#ffffff","on-primary-fixed-variant":"#2b486f","surface-tint":"#435f89","on-tertiary-fixed":"#00201f","surface-container-low":"#eef4ff","primary-fixed-dim":"#acc8f7","surface-container":"#e4efff","on-secondary-container":"#4f647c","primary":"#002043","on-secondary-fixed":"#051d32","outline-variant":"#c4c6cf","surface":"#f8f9ff","primary-container":"#17365d","tertiary":"#002524","on-error":"#ffffff","inverse-surface":"#26313e","on-secondary":"#ffffff","background":"#f8f9ff","on-error-container":"#93000a","tertiary-fixed-dim":"#73d7d2","inverse-primary":"#acc8f7","secondary-container":"#cce2fe","tertiary-fixed":"#90f3ee","primary-fixed":"#d5e3ff","secondary-fixed-dim":"#b3c8e4","tertiary-container":"#003d3b","surface-dim":"#cfdbec","error":"#ba1a1a","surface-variant":"#d8e3f5","on-background":"#111c29","on-surface-variant":"#43474e","on-secondary-fixed-variant":"#33485f","surface-bright":"#f8f9ff","surface-container-lowest":"#ffffff","on-tertiary":"#ffffff","outline":"#74777f","secondary":"#4b6078","on-primary-container":"#84a0cd","error-container":"#ffdad6","surface-container-high":"#dee9fb"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xl":"1.5rem","gutter-compact":"0.5rem","space-sm":"0.5rem","margin-mobile":"1rem","gutter":"1rem","space-lg":"1rem","space-xs":"0.25rem","margin":"1.5rem","space-md":"0.75rem"},"fontFamily":{"code-xs":["JetBrains Mono"],"label-md":["Inter"],"body-md":["Inter"],"headline-lg":["Inter"],"headline-xl":["Inter"],"body-sm":["Inter"],"code-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-md":["Inter"],"headline-xl-mobile":["Inter"],"label-lg":["Inter"]},"fontSize":{"code-xs":["11px",{"lineHeight":"14px","fontWeight":"400"}],"label-md":["11px",{"lineHeight":"14px","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-xl-mobile":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-lg":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col border-r border-outline-variant/30 select-none"><div class="h-14 px-space-lg flex items-center gap-space-md border-b border-outline-variant/30 bg-surface-container-low/40"><div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-headline-md font-bold text-label-md shrink-0 shadow-sm">KAES</div><div class="flex flex-col min-w-0 leading-tight"><span class="font-headline-md text-body-md text-primary font-bold tracking-tight truncate">ACEITEKA EBMIS</span><span class="font-label-md text-code-xs text-on-surface-variant truncate uppercase tracking-wider">Kampala Archdiocese Education Dept.</span></div></div><div class="flex-1 overflow-y-auto py-space-sm px-space-xs"><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Archdiocesan Registry</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examination-cycles-management" href="#">Examination Cycles Management</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="schools-and-examination-centres" href="#">Schools &amp; Examination Centres</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="candidate-registration" href="#">Candidate Registration</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="alphabetical-register-and-gazette" href="#">Alphabetical Register &amp; Gazette</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="subject-and-combinations-configuration" href="#">Subject &amp; Combinations Configuration</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Archdiocese Operations</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="paper-setting-and-review-vault" href="#">Paper Setting &amp; Review Vault</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="printing-and-production" href="#">Printing &amp; Production</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="examiner-management" href="#">Examiner Management</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="marking-operations" href="#">Marking Operations</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-entry-and-verification" href="#">Results Entry &amp; Verification</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="results-approval-and-discrepancies" href="#">Results Approval &amp; Discrepancies</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="performance-reports-and-analytics" href="#">Performance Reports &amp; Analytics</a></nav><div class="my-space-sm border-t border-outline-variant/30"></div><div class="px-space-md py-space-xs"><span class="font-label-md text-code-xs uppercase tracking-widest text-on-surface-variant/70">Governance &amp; Clearances</span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary text-on-primary font-medium shadow-sm"><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="finance-and-centre-clearance" href="#">Finance &amp; Centre Clearance</a><a class="flex items-center px-space-md py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md truncate" data-path="task-accountability-and-reports" href="#">Task Accountability &amp; Reports</a></nav></div><div class="p-space-sm border-t border-outline-variant/30 bg-surface-container-low/50"><div class="flex items-center justify-between px-space-xs text-code-xs text-on-surface-variant"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>ARCHDIOCESE EBMIS CORE</span><span class="font-code-xs text-on-surface-variant">v4.3.0</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg"><div class="relative flex items-center bg-surface-container-low border border-outline-variant/40 rounded px-2.5 py-1 text-on-surface hover:border-outline transition-colors"><span class="material-symbols-outlined text-[16px] text-primary mr-1.5">church</span><span class="font-label-lg text-body-sm font-semibold tracking-tight text-primary">Archdiocese of Kampala Mock &amp; Joint Exams</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant ml-1.5">expand_more</span></div><div class="hidden xl:flex items-center gap-1.5 text-on-surface-variant text-body-sm font-body-sm"><span class="hover:text-primary cursor-pointer">Kampala Archdiocese Education Dept.</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-medium">Deanery Operations &amp; Verification</span></div></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-low border border-outline-variant/30 text-on-surface-variant"><span class="font-code-xs text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant/80">CURRENCY:</span><span class="font-code-xs text-code-xs font-semibold text-primary">UGX</span></div><div class="relative hidden md:flex items-center w-72 h-8 bg-surface-container-low border border-outline-variant/40 rounded px-2.5 text-on-surface-variant"><span class="material-symbols-outlined text-[18px] mr-2 text-on-surface-variant">search</span><span class="font-body-sm text-body-sm flex-1 text-on-surface-variant/70">Deanery, parish centre, student index...</span><kbd class="font-code-xs text-code-xs bg-surface-container-highest px-1.5 py-0.5 rounded border border-outline-variant/40 text-on-surface-variant font-medium">Ctrl+K</kbd></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-1"><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Archdiocese Audit Security" type="button"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></button><button class="relative p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" title="Secretariat Notifications" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-on-tertiary-container rounded-full ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low text-code-xs text-on-surface-variant border border-outline-variant/30"><span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span><span class="font-code-xs uppercase">SECRETARIAT ACTIVE</span></div></div><div class="h-5 w-px bg-outline-variant/30 mx-1"></div><div class="flex items-center gap-2.5 pl-1"><div class="text-right leading-none hidden sm:block"><div class="font-headline-md text-body-sm font-semibold text-primary">Fr. Education Secretary</div><div class="font-label-md text-code-xs text-on-surface-variant mt-0.5">Kampala Archdiocese Education Dept.</div></div><img alt="Archdiocese Secretary Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida/ALJJyrDEJqiGNArZPqgqf6y3pbseQDUKnlwcDusKp7Fb38UCBXsA3QkhMOme_Rpb221aBmyheUlvp2oellA7LWWNhGXr7zC9D0BhMIKnyeJM4-idrYY9MmZqdC-Py822mo9Ni04am7HFwbnZh9w7g9J9QZ7E2q6EfBI_JNHSZIdYquOiXNTneen6S2YM494B2ymMORsxBu8_xSh-AhMNfR2tkUJ3Oa40QYczkSIXLM9CwE4"></div></div></header><main class="relative w-full pt-14 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Command Ribbon & Header Context -->
+<div class="bg-surface-container-low px-space-xl py-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-secondary mb-1">
+<span class="font-code-xs text-code-xs tracking-wider uppercase text-on-surface-variant">Archdiocesan Secretariat</span>
+<span class="text-on-surface-variant font-code-xs">/</span>
+<span class="font-code-xs text-code-xs tracking-wider uppercase text-on-surface-variant">Statistical Assessment Division</span>
+<span class="text-on-surface-variant font-code-xs">/</span>
+<span class="font-code-xs text-code-xs text-on-tertiary-container font-semibold uppercase">Official Release Confirmed</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Archdiocesan Examination Performance Reports &amp; Analytics</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-4xl mt-1">
+          Comprehensive comparative analytics, deanery performance rankings, subject division distributions, and fee collection reconciliation for Kampala Archdiocese Catholic Schools.
+        </p>
+</div>
+<!-- Quick Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="bg-surface-container-lowest text-primary hover:bg-surface-container-high font-label-lg text-label-lg px-3.5 py-2 rounded shadow-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">table_view</span>
+          Export Roster (.XLSX)
+        </button>
+<button class="bg-surface-container-lowest text-primary hover:bg-surface-container-high font-label-lg text-label-lg px-3.5 py-2 rounded shadow-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">print</span>
+          Print League Table
+        </button>
+<button class="bg-primary text-on-primary hover:bg-primary-container font-label-lg text-label-lg px-4 py-2 rounded shadow-sm flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+          Download Full Executive Gazette (PDF)
+        </button>
+</div>
+</div>
+<!-- Institutional Filter Controls Tray -->
+<div class="mt-space-lg pt-space-md bg-surface-container-lowest rounded-lg p-space-md shadow-sm">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md items-end">
+<div class="flex flex-col">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Academic Session Cycle</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-primary font-body-md text-body-md py-1.5 px-3 rounded appearance-none cursor-pointer pr-8 focus:outline-none focus:bg-surface-container">
+<option selected="">2024/2025 Archdiocese Mock Finals</option>
+<option>2023/2024 Archdiocesan Joint Trial</option>
+<option>2023 Mid-Year Deanery Assessments</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-2 text-[18px] text-secondary">arrow_drop_down</span>
+</div>
+</div>
+<div class="flex flex-col">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Deanery Jurisdiction</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-primary font-body-md text-body-md py-1.5 px-3 rounded appearance-none cursor-pointer pr-8 focus:outline-none focus:bg-surface-container">
+<option selected="">All 6 Deaneries (Consolidated)</option>
+<option>Kisubi Deanery</option>
+<option>Gayaza Deanery</option>
+<option>Rubaga Deanery</option>
+<option>Gaba Deanery</option>
+<option>Christ the King Deanery</option>
+<option>Wakiso Deanery</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-2 text-[18px] text-secondary">arrow_drop_down</span>
+</div>
+</div>
+<div class="flex flex-col">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Examination Level</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-primary font-body-md text-body-md py-1.5 px-3 rounded appearance-none cursor-pointer pr-8 focus:outline-none focus:bg-surface-container">
+<option selected="">UCE &amp; UACE Unified Standard</option>
+<option>Uganda Certificate of Education (UCE)</option>
+<option>Uganda Advanced Certificate (UACE)</option>
+<option>PLE Pilot Archdiocesan Mock</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-2 text-[18px] text-secondary">arrow_drop_down</span>
+</div>
+</div>
+<div class="flex flex-col">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">School Classification</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-primary font-body-md text-body-md py-1.5 px-3 rounded appearance-none cursor-pointer pr-8 focus:outline-none focus:bg-surface-container">
+<option selected="">Catholic Founded &amp; Affiliated</option>
+<option>Pure Diocesan Owned (Diocesan Trust)</option>
+<option>Religious Congregational Schools</option>
+<option>Private Partner Catholic Centres</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-2 text-[18px] text-secondary">arrow_drop_down</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="flex-1 bg-surface-container-highest hover:bg-secondary-container text-primary font-label-lg text-label-lg py-2 px-3 rounded flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">filter_alt</span>
+            Apply Filter
+          </button>
+<button class="bg-surface-container-low text-secondary hover:text-primary p-2 rounded flex items-center justify-center transition-colors" title="Reset Filters">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="px-space-xl py-space-lg flex flex-col gap-space-lg">
+<!-- Section 1: Executive Performance Highlights (Key Metrics) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Archdiocese Pass Rate</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-low text-on-tertiary-container font-code-xs text-code-xs font-semibold">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>+1.6%
+          </span>
+</div>
+<div class="my-space-sm">
+<div class="font-headline-xl text-headline-xl font-bold text-primary">94.8%</div>
+<div class="font-body-sm text-body-sm text-secondary mt-0.5">Vs 93.2% in 2024 Synod Year</div>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-on-tertiary-container h-full" style="width: 94.8%;"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Div 1 / Grade A Yield</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-secondary-container text-on-primary-fixed font-code-xs text-code-xs font-semibold">
+            High Distinction
+          </span>
+</div>
+<div class="my-space-sm">
+<div class="font-headline-xl text-headline-xl font-bold text-primary">32.4%</div>
+<div class="font-body-sm text-body-sm text-secondary mt-0.5"><span class="font-code-sm text-code-sm font-semibold text-primary">15,633</span> Candidates Div 1 / P3P</div>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 32.4%;"></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Leading Deanery</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-xs text-code-xs font-semibold">
+<span class="material-symbols-outlined text-[13px] text-primary">workspace_premium</span> Rank #1
+          </span>
+</div>
+<div class="my-space-sm">
+<div class="font-headline-lg text-headline-lg font-bold text-primary truncate">Kisubi Deanery</div>
+<div class="font-body-sm text-body-sm text-secondary mt-0.5">Mean Agg: <span class="font-code-sm text-code-sm font-bold text-primary">14.2</span> (GPA 3.82)</div>
+</div>
+<div class="text-code-xs font-code-xs text-on-surface-variant">12 Parochial Centres Accredited</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Candidature Assessed</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-code-xs text-code-xs font-semibold">
+            184 Centres
+          </span>
+</div>
+<div class="my-space-sm">
+<div class="font-headline-xl text-headline-xl font-bold text-primary font-code-sm">48,250</div>
+<div class="font-body-sm text-body-sm text-secondary mt-0.5">99.1% Turnout recorded</div>
+</div>
+<div class="text-code-xs font-code-xs text-on-surface-variant">Absconded / Absent: 432 pupils</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Exam Levy Realization</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-surface-container-low text-primary font-code-xs text-code-xs font-semibold">
+            82.0% Settled
+          </span>
+</div>
+<div class="my-space-sm">
+<div class="font-headline-md text-headline-md font-bold text-primary font-code-sm truncate">UGX 1.186B</div>
+<div class="font-body-sm text-body-sm text-secondary mt-0.5">Target: <span class="font-code-xs text-code-xs font-medium">UGX 1.447B</span></div>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 82%;"></div>
+</div>
+</div>
+</div>
+<!-- Section 2: Contextual Visual Cards (Deanery Overview Banner & Secretariat Stamp) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Graphic Banner & Deanery Geographical Overview -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-space-md gap-2">
+<div>
+<span class="font-label-md text-code-xs uppercase tracking-widest text-on-tertiary-container font-semibold">Secretariat Verification Certified</span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary">Archdiocesan Comparative Distribution Dynamics</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 text-code-xs font-code-xs text-secondary bg-surface-container-low px-2 py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> UCE Secondary
+            </span>
+<span class="inline-flex items-center gap-1 text-code-xs font-code-xs text-secondary bg-surface-container-low px-2 py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span> UACE Collegiate
+            </span>
+</div>
+</div>
+<!-- Inline SVG Performance Radar / Progress Dynamics Graphic -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md my-space-sm items-center">
+<div class="md:col-span-2 flex flex-col gap-space-sm">
+<div class="space-y-2">
+<div>
+<div class="flex justify-between text-body-sm font-body-sm mb-1">
+<span class="font-medium text-primary">Kisubi &amp; Entebbe Maritime Corridor</span>
+<span class="font-code-sm text-code-sm font-semibold text-primary">98.2% Pass</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 98.2%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm font-body-sm mb-1">
+<span class="font-medium text-primary">Gayaza &amp; North East Deanery</span>
+<span class="font-code-sm text-code-sm font-semibold text-primary">96.5% Pass</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 96.5%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm font-body-sm mb-1">
+<span class="font-medium text-primary">Rubaga Cathedral &amp; Western Sector</span>
+<span class="font-code-sm text-code-sm font-semibold text-primary">95.1% Pass</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 95.1%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm font-body-sm mb-1">
+<span class="font-medium text-primary">Central Urban &amp; Wakiso Rural Belt</span>
+<span class="font-code-sm text-code-sm font-semibold text-primary">92.4% Pass</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-container" style="width: 92.4%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Circular Metric Representation (Donut SVG) -->
+<div class="flex flex-col items-center justify-center p-space-sm bg-surface-container-low rounded-lg">
+<svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-container-high stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5"></path>
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="94.8, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="-mt-20 flex flex-col items-center justify-center mb-6">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">94.8%</span>
+<span class="font-code-xs text-[10px] text-secondary uppercase font-semibold">Total Pass</span>
+</div>
+<div class="text-center font-body-sm text-body-sm text-on-surface-variant mt-2">
+              Valid candidate certificates issued: 45,741
+            </div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex flex-wrap items-center justify-between text-code-xs font-code-xs text-on-surface-variant bg-surface-container-low/50 px-space-md py-2 rounded">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-on-tertiary-container">verified</span> Tamper-Resistant Cryptographic Gazette Ledger Hash: 0x8F9C...41A2</span>
+<span>Archdiocesan Curia Approved • Fr. Ronald Ssenyondo</span>
+</div>
+</div>
+<!-- Institutional Verification Vignette Card -->
+
+</div>
+<!-- Section 3: Deanery Comparative League Table -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden">
+<div class="px-space-lg py-space-md bg-surface-container-low flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-sm">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Deanery Comparative League Standings</h2>
+<p class="font-body-sm text-body-sm text-secondary">Official institutional ranking based on aggregate points average, pass volume, and Division 1 yield.</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-code-xs text-code-xs text-on-surface-variant bg-surface-container-lowest px-2 py-1 rounded">Rank Algorithm: KAES Rule 14.b</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-2.5 px-space-md font-semibold text-center w-16">Rank</th>
+<th class="py-2.5 px-space-md font-semibold">Deanery Jurisdiction</th>
+<th class="py-2.5 px-space-md font-semibold text-right">Centres</th>
+<th class="py-2.5 px-space-md font-semibold text-right">Candidates Sat</th>
+<th class="py-2.5 px-space-md font-semibold text-right">Overall Pass</th>
+<th class="py-2.5 px-space-md font-semibold text-right">Div 1 / Grade A</th>
+<th class="py-2.5 px-space-md font-semibold">Flagship Centre of Excellence</th>
+<th class="py-2.5 px-space-md font-semibold text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-primary text-on-primary font-code-sm text-code-xs font-bold">1</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-headline-md text-body-md font-semibold text-primary">Kisubi Deanery</div>
+<div class="font-code-xs text-code-xs text-secondary">Entebbe Sub-Region • St. Don Bosco Zone</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md text-primary">12</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md font-semibold text-primary">8,420</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-on-tertiary-container">98.2%</span>
+<span class="block font-code-xs text-[10px] text-secondary">8,268 Passed</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-primary">42.1%</span>
+<span class="block font-code-xs text-[10px] text-secondary">3,544 Div 1</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-body-md text-body-md font-medium text-primary">St. Mary's College Kisubi</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Mean Score: 12.8 Div 1 Yield: 94.6%</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-primary font-label-md text-code-xs font-semibold">Exemplary</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-primary-container text-on-primary font-code-sm text-code-xs font-bold">2</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-headline-md text-body-md font-semibold text-primary">Gayaza Deanery</div>
+<div class="font-code-xs text-code-xs text-secondary">Kyadondo North • Our Lady of Perpetual Help</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md text-primary">14</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md font-semibold text-primary">7,150</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-on-tertiary-container">96.5%</span>
+<span class="block font-code-xs text-[10px] text-secondary">6,900 Passed</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-primary">38.6%</span>
+<span class="block font-code-xs text-[10px] text-secondary">2,760 Div 1</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-body-md text-body-md font-medium text-primary">Mt. St. Mary's Namagunga</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Mean Score: 13.4 Div 1 Yield: 91.2%</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-primary font-label-md text-code-xs font-semibold">Validated</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-secondary text-on-primary font-code-sm text-code-xs font-bold">3</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-headline-md text-body-md font-semibold text-primary">Rubaga Deanery</div>
+<div class="font-code-xs text-code-xs text-secondary">Cathedral Base • St. Mary's Rubaga Basin</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md text-primary">18</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md font-semibold text-primary">9,840</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-on-tertiary-container">95.1%</span>
+<span class="block font-code-xs text-[10px] text-secondary">9,358 Passed</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-primary">34.2%</span>
+<span class="block font-code-xs text-[10px] text-secondary">3,365 Div 1</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-body-md text-body-md font-medium text-primary">Uganda Martyrs S.S. Namugongo</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Mean Score: 13.9 Div 1 Yield: 88.5%</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-primary font-label-md text-code-xs font-semibold">Validated</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-surface-container-highest text-primary font-code-sm text-code-xs font-bold">4</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-headline-md text-body-md font-semibold text-primary">Gaba Deanery</div>
+<div class="font-code-xs text-code-xs text-secondary">Lake Shore Belt • St. Charles Lwanga Zone</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md text-primary">11</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md font-semibold text-primary">6,210</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-on-tertiary-container">93.8%</span>
+<span class="block font-code-xs text-[10px] text-secondary">5,825 Passed</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-primary">29.5%</span>
+<span class="block font-code-xs text-[10px] text-secondary">1,832 Div 1</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-body-md text-body-md font-medium text-primary">St. Joseph's Girls S.S. Nsambya</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Mean Score: 15.6 Div 1 Yield: 76.4%</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low text-secondary font-label-md text-code-xs font-semibold">Audited</span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-surface-container-highest text-primary font-code-sm text-code-xs font-bold">5</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-headline-md text-body-md font-semibold text-primary">Christ the King Deanery</div>
+<div class="font-code-xs text-code-xs text-secondary">Central Metropolitan • City Parishes Network</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md text-primary">15</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md font-semibold text-primary">8,930</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-on-tertiary-container">92.4%</span>
+<span class="block font-code-xs text-[10px] text-secondary">8,251 Passed</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-primary">26.8%</span>
+<span class="block font-code-xs text-[10px] text-secondary">2,393 Div 1</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-body-md text-body-md font-medium text-primary">Caltec Academy Makerere</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Mean Score: 16.2 Div 1 Yield: 68.7%</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low text-secondary font-label-md text-code-xs font-semibold">Audited</span>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-surface-container-highest text-primary font-code-sm text-code-xs font-bold">6</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-headline-md text-body-md font-semibold text-primary">Wakiso Deanery</div>
+<div class="font-code-xs text-code-xs text-secondary">Western Peri-Urban • St. Joseph Worker</div>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md text-primary">16</td>
+<td class="py-3 px-space-md text-right font-code-sm text-body-md font-semibold text-primary">7,700</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-on-tertiary-container">91.2%</span>
+<span class="block font-code-xs text-[10px] text-secondary">7,022 Passed</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<span class="font-code-sm text-body-md font-bold text-primary">24.1%</span>
+<span class="block font-code-xs text-[10px] text-secondary">1,856 Div 1</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="font-body-md text-body-md font-medium text-primary">St. Peter's S.S. Nsambya</div>
+<div class="font-code-xs text-code-xs text-on-surface-variant">Mean Score: 17.1 Div 1 Yield: 64.0%</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low text-secondary font-label-md text-code-xs font-semibold">Audited</span>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="bg-surface-container text-primary font-bold font-body-sm">
+<td class="py-2.5 px-space-md text-center font-code-xs uppercase">TOTAL</td>
+<td class="py-2.5 px-space-md">Kampala Archdiocese Combined (All 6 Deaneries)</td>
+<td class="py-2.5 px-space-md text-right font-code-sm">86 Centres</td>
+<td class="py-2.5 px-space-md text-right font-code-sm">48,250 Candidates</td>
+<td class="py-2.5 px-space-md text-right font-code-sm">94.8% Pass Mean</td>
+<td class="py-2.5 px-space-md text-right font-code-sm">32.4% Div 1 Mean</td>
+<td class="py-2.5 px-space-md text-secondary font-body-sm font-normal">All qualifying centres cleared</td>
+<td class="py-2.5 px-space-md text-center font-code-xs text-on-tertiary-container uppercase">100% RETURNED</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- Section 4: Subject Performance & Quality Indicators Summary -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Division Distribution Visual Breakdown -->
+<div class="lg:col-span-6 bg-surface-container-lowest rounded-lg p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-primary">Archdiocesan Division Distribution</h3>
+<p class="font-body-sm text-body-sm text-secondary">Aggregate classification across all 48,250 candidates.</p>
+</div>
+<span class="font-code-xs text-code-xs font-semibold text-primary bg-surface-container px-2 py-1 rounded">2024/2025 SESSION</span>
+</div>
+<div class="mt-space-md space-y-space-md">
+<!-- Division 1 -->
+<div>
+<div class="flex justify-between items-center text-body-sm font-body-sm mb-1">
+<span class="font-semibold text-primary flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-primary"></span>
+                Division 1 (Distinction Grade A)
+              </span>
+<span class="font-code-sm text-code-sm font-bold text-primary">32.4% <span class="font-normal text-secondary">(15,633)</span></span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 32.4%;"></div>
+</div>
+</div>
+<!-- Division 2 -->
+<div>
+<div class="flex justify-between items-center text-body-sm font-body-sm mb-1">
+<span class="font-semibold text-primary flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-primary-container"></span>
+                Division 2 (Credit Grade B)
+              </span>
+<span class="font-code-sm text-code-sm font-bold text-primary">44.1% <span class="font-normal text-secondary">(21,278)</span></span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 44.1%;"></div>
+</div>
+</div>
+<!-- Division 3 -->
+<div>
+<div class="flex justify-between items-center text-body-sm font-body-sm mb-1">
+<span class="font-semibold text-primary flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-secondary"></span>
+                Division 3 (Ordinary Pass C)
+              </span>
+<span class="font-code-sm text-code-sm font-bold text-primary">18.3% <span class="font-normal text-secondary">(8,830)</span></span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 18.3%;"></div>
+</div>
+</div>
+<!-- Division 4 -->
+<div>
+<div class="flex justify-between items-center text-body-sm font-body-sm mb-1">
+<span class="font-semibold text-primary flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-surface-container-highest"></span>
+                Division 4 (Marginal Pass D)
+              </span>
+<span class="font-code-sm text-code-sm font-bold text-primary">4.2% <span class="font-normal text-secondary">(2,026)</span></span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden">
+<div class="bg-surface-container-highest h-full rounded-full" style="width: 4.2%;"></div>
+</div>
+</div>
+<!-- Division 9 / Fail -->
+<div>
+<div class="flex justify-between items-center text-body-sm font-body-sm mb-1">
+<span class="font-semibold text-error flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-error"></span>
+                Division 9 / Ungraded (Fail)
+              </span>
+<span class="font-code-sm text-code-sm font-bold text-error">1.0% <span class="font-normal text-on-surface-variant">(483)</span></span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 1.0%;"></div>
+</div>
+</div>
+</div>
+<div class="mt-space-md p-space-sm bg-surface-container-low rounded flex items-center justify-between text-code-xs font-code-xs text-on-surface-variant">
+<span>Overall Competency Coefficient: <strong class="text-primary">87.5 / 100</strong></span>
+<span class="text-on-tertiary-container font-semibold">Exceeds National Baseline (+18.4%)</span>
+</div>
+</div>
+<!-- Subject Performance Spectrum (Sciences vs Humanities) -->
+<div class="lg:col-span-6 bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-primary">Subject Benchmark Indicators</h3>
+<p class="font-body-sm text-body-sm text-secondary">Key learning area pass trends across Catholic Schools.</p>
+</div>
+<span class="font-code-xs text-code-xs font-semibold text-on-tertiary-container bg-surface-container-low px-2 py-1 rounded">CURIA SYLLABUS AUDIT</span>
+</div>
+<div class="mt-space-md grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<!-- Subject Box 1 -->
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-sm font-semibold text-primary">Divinity / CRE</span>
+<span class="font-code-sm text-code-sm font-bold text-on-tertiary-container">99.4%</span>
+</div>
+<div class="font-body-sm text-code-xs text-secondary mt-1">Archdiocesan Core Religious Curriculum</div>
+<div class="mt-2 text-code-xs font-code-xs text-on-surface-variant flex items-center justify-between">
+<span>Distinction rate: <strong>68.2%</strong></span>
+<span>Top: Namugongo</span>
+</div>
+</div>
+<!-- Subject Box 2 -->
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-sm font-semibold text-primary">English Language</span>
+<span class="font-code-sm text-code-sm font-bold text-on-tertiary-container">96.8%</span>
+</div>
+<div class="font-body-sm text-code-xs text-secondary mt-1">Written Expression &amp; Grammar Mastery</div>
+<div class="mt-2 text-code-xs font-code-xs text-on-surface-variant flex items-center justify-between">
+<span>Distinction rate: <strong>41.5%</strong></span>
+<span>Top: Gayaza</span>
+</div>
+</div>
+<!-- Subject Box 3 -->
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-sm font-semibold text-primary">Mathematics (General)</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">89.2%</span>
+</div>
+<div class="font-body-sm text-code-xs text-secondary mt-1">Applied Numeracy &amp; Geometry</div>
+<div class="mt-2 text-code-xs font-code-xs text-on-surface-variant flex items-center justify-between">
+<span>Distinction rate: <strong>28.7%</strong></span>
+<span>Top: SMACK Kisubi</span>
+</div>
+</div>
+<!-- Subject Box 4 -->
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-sm font-semibold text-primary">Physics &amp; Chemistry</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">87.6%</span>
+</div>
+<div class="font-body-sm text-code-xs text-secondary mt-1">Laboratory Practical Moderation Pass</div>
+<div class="mt-2 text-code-xs font-code-xs text-on-surface-variant flex items-center justify-between">
+<span>Distinction rate: <strong>24.3%</strong></span>
+<span>Top: Nsambya Girls</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container flex flex-col sm:flex-row items-center justify-between p-space-sm rounded gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">school</span>
+<span class="font-body-sm text-body-sm text-primary font-medium">Science Practical Lab Subsidies fully cleared across 184 centres.</span>
+</div>
+<button class="bg-primary text-on-primary text-label-md font-label-md px-3 py-1 rounded shrink-0 hover:bg-primary-container transition-colors">
+            Subject Matrix
+          </button>
+</div>
+</div>
+</div>
+<!-- Section 5: Institutional Ledger & Fee Collection Clearance Strip -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm">
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded bg-primary-container text-on-primary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div>
+<div class="font-headline-md text-body-md font-bold text-primary">Archdiocesan Examination Levy Clearance Ledger</div>
+<div class="font-body-sm text-body-sm text-secondary">
+              Centres with full financial clearance receive authenticated physical candidate gazette certificates instantly.
+            </div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md text-body-sm">
+<div class="flex flex-col text-right">
+<span class="font-code-xs text-code-xs text-on-surface-variant uppercase">Reconciliation Status</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">162 / 184 Centres Discharged</span>
+</div>
+<div class="h-8 w-px bg-surface-container-high hidden sm:block"></div>
+<div class="flex flex-col text-right">
+<span class="font-code-xs text-code-xs text-on-surface-variant uppercase">Outstanding Balance</span>
+<span class="font-code-sm text-code-sm font-bold text-error">UGX 260,550,000</span>
+</div>
+<button class="bg-surface-container-highest hover:bg-secondary-container text-primary font-label-lg text-label-lg px-3.5 py-1.5 rounded transition-colors">
+            Audit Clearance Queue
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div></main></div>
+
+</body></html>
