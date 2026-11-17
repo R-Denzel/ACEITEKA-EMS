@@ -71,6 +71,61 @@ model ExamMaterialSubmission {
   @@index([submittedById, createdAt])
 }
 
+enum OfficialEntryStatus {
+  SUBMITTED
+  CHANGES_REQUIRED
+  APPROVED
+}
+
+enum OfficialEntrySource {
+  PHOTO
+  UACE_WORKBOOK
+}
+
+enum OfficialEntryType {
+  UCE_SUMMARY
+  UACE_GENERAL
+}
+
+model OfficialEntryImport {
+  id           String                @id @default(cuid())
+  sessionId    String
+  uploadedById String
+  reviewedById String?
+  originalName String
+  storageKey   String                @unique
+  mimeType     String
+  sizeBytes    Int
+  source       OfficialEntrySource
+  formType     OfficialEntryType
+  formYear     Int
+  status       OfficialEntryStatus   @default(SUBMITTED)
+  reviewNote   String?
+  createdAt    DateTime              @default(now())
+  reviewedAt   DateTime?
+  session      ExaminationSession    @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  uploadedBy   User                  @relation("OfficialEntryUploader", fields: [uploadedById], references: [id])
+  reviewedBy   User?                 @relation("OfficialEntryReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+  records      OfficialEntryRecord[]
+
+  @@index([sessionId, status, createdAt])
+}
+
+model OfficialEntryRecord {
+  id            String              @id @default(cuid())
+  importId      String
+  schoolId      String?
+  schoolName    String
+  extractedData Json
+  reviewedData  Json?
+  warnings      Json?
+  import        OfficialEntryImport @relation(fields: [importId], references: [id], onDelete: Cascade)
+  school        School?             @relation(fields: [schoolId], references: [id], onDelete: SetNull)
+
+  @@unique([importId, schoolName])
+  @@index([schoolId])
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -83,27 +138,29 @@ enum UserType {
 }
 
 model User {
-  id                 String                   @id @default(cuid())
-  email              String                   @unique
-  passwordHash       String
-  fullName           String
-  phone              String?
-  userType           UserType                 @default(STAFF)
-  isActive           Boolean                  @default(true)
-  mustChangePassword Boolean                  @default(false)
+  id                    String                   @id @default(cuid())
+  email                 String                   @unique
+  passwordHash          String
+  fullName              String
+  phone                 String?
+  userType              UserType                 @default(STAFF)
+  isActive              Boolean                  @default(true)
+  mustChangePassword    Boolean                  @default(false)
   // Set only for SCHOOL users. Always read from the database on the server, never from the browser.
-  schoolId           String?
-  school             School?                  @relation(fields: [schoolId], references: [id])
-  roles              UserRole[]
-  failedLogins       Int                      @default(0)
-  lockedUntil        DateTime?
-  lastLoginAt        DateTime?
-  createdAt          DateTime                 @default(now())
-  updatedAt          DateTime                 @updatedAt
-  resetTokens        PasswordReset[]
-  assignedMilestones PrepMilestone[]          @relation("MilestoneAssignee")
-  submittedMaterials ExamMaterialSubmission[] @relation("MaterialSubmitter")
-  reviewedMaterials  ExamMaterialSubmission[] @relation("MaterialReviewer")
+  schoolId              String?
+  school                School?                  @relation(fields: [schoolId], references: [id])
+  roles                 UserRole[]
+  failedLogins          Int                      @default(0)
+  lockedUntil           DateTime?
+  lastLoginAt           DateTime?
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+  resetTokens           PasswordReset[]
+  assignedMilestones    PrepMilestone[]          @relation("MilestoneAssignee")
+  submittedMaterials    ExamMaterialSubmission[] @relation("MaterialSubmitter")
+  reviewedMaterials     ExamMaterialSubmission[] @relation("MaterialReviewer")
+  submittedEntryImports OfficialEntryImport[]    @relation("OfficialEntryUploader")
+  reviewedEntryImports  OfficialEntryImport[]    @relation("OfficialEntryReviewer")
 
   @@index([schoolId])
 }
@@ -163,23 +220,24 @@ model ExaminationCentre {
 }
 
 model School {
-  id            String                     @id @default(cuid())
-  code          String                     @unique
-  name          String
-  address       String?
-  email         String?
-  phone         String?
-  isActive      Boolean                    @default(true)
-  centreId      String?
-  centre        ExaminationCentre?         @relation(fields: [centreId], references: [id])
-  users         User[]
-  candidates    Candidate[]
-  resultBatches ResultBatch[]
-  submissions   CandidateSubmission[]
-  nominations   ExaminerNomination[]
-  distributions ResultDistributionSchool[]
-  reminders     SessionSchoolReminder[]
-  createdAt     DateTime                   @default(now())
+  id                   String                     @id @default(cuid())
+  code                 String                     @unique
+  name                 String
+  address              String?
+  email                String?
+  phone                String?
+  isActive             Boolean                    @default(true)
+  centreId             String?
+  centre               ExaminationCentre?         @relation(fields: [centreId], references: [id])
+  users                User[]
+  candidates           Candidate[]
+  resultBatches        ResultBatch[]
+  submissions          CandidateSubmission[]
+  nominations          ExaminerNomination[]
+  distributions        ResultDistributionSchool[]
+  reminders            SessionSchoolReminder[]
+  officialEntryRecords OfficialEntryRecord[]
+  createdAt            DateTime                   @default(now())
 }
 
 enum SessionStatus {
@@ -193,23 +251,24 @@ enum SessionStatus {
 
 // "Examination Session" in the interface
 model ExaminationSession {
-  id                 String                   @id @default(cuid())
-  name               String
-  year               Int
-  status             SessionStatus            @default(PLANNED)
-  registrationOpens  DateTime?
-  registrationCloses DateTime?
-  examStarts         DateTime?
-  examEnds           DateTime?
-  subjects           SessionSubject[]
-  submissions        CandidateSubmission[]
-  nominations        ExaminerNomination[]
-  candidates         Candidate[]
-  resultBatches      ResultBatch[]
-  prepMilestones     PrepMilestone[]
-  schoolReminders    SessionSchoolReminder[]
-  examMaterials      ExamMaterialSubmission[]
-  createdAt          DateTime                 @default(now())
+  id                   String                   @id @default(cuid())
+  name                 String
+  year                 Int
+  status               SessionStatus            @default(PLANNED)
+  registrationOpens    DateTime?
+  registrationCloses   DateTime?
+  examStarts           DateTime?
+  examEnds             DateTime?
+  subjects             SessionSubject[]
+  submissions          CandidateSubmission[]
+  nominations          ExaminerNomination[]
+  candidates           Candidate[]
+  resultBatches        ResultBatch[]
+  prepMilestones       PrepMilestone[]
+  schoolReminders      SessionSchoolReminder[]
+  examMaterials        ExamMaterialSubmission[]
+  officialEntryImports OfficialEntryImport[]
+  createdAt            DateTime                 @default(now())
 
   @@unique([name, year])
 }

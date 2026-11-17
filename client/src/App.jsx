@@ -23,6 +23,7 @@ import Preparation from './pages/Preparation';
 import ExamSetter from './pages/ExamSetter';
 import ExamMaterials from './pages/ExamMaterials';
 import PrinterDashboard from './pages/PrinterDashboard';
+import OfficialEntries from './pages/OfficialEntries';
 
 const RESULTS_ANY = ['results.enter', 'results.review', 'results.approve', 'results.release'];
 function Protected({ children, permission, anyOf }) {
@@ -55,8 +56,10 @@ export default function App() {
         <Route path="/setter" element={<Protected permission="materials.submit"><ExamSetter /></Protected>} />
         <Route path="/subjects" element={<Protected permission="schools.view"><Subjects /></Protected>} />
         <Route path="/student-entries" element={<Protected permission="students.view"><StudentEntries /></Protected>} />
+        <Route path="/official-entry-forms" element={<Protected permission="students.view"><OfficialEntries /></Protected>} />
         <Route path="/student-register" element={<Protected permission="students.view"><StudentRegister /></Protected>} />
         <Route path="/school/students" element={<Protected permission="students.upload"><StudentEntries /></Protected>} />
+        <Route path="/school/official-entry-forms" element={<Protected permission="students.upload"><OfficialEntries /></Protected>} />
         <Route path="/examiners" element={<Protected permission="examiners.review"><Examiners /></Protected>} />
         <Route path="/assign-examiners" element={<Protected permission="examiners.review"><AssignExaminers /></Protected>} />
         <Route path="/school/examiners" element={<Protected permission="examiners.nominate"><Examiners /></Protected>} />

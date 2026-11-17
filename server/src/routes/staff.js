@@ -10,6 +10,7 @@ import { registerCommunicationStaff, registerCommunicationPortal } from './commu
 import { registerResultsStaff, registerResultsPortal } from './results.js';
 import { registerExaminerStaff, registerExaminerPortal } from './examiners.js';
 import { registerPreparationStaff, registerSetterPortal, registerPrinterPortal } from './preparation.js';
+import { registerOfficialEntryPortal, registerOfficialEntryStaff } from './officialEntries.js';
 
 export const staffRouter = Router();
 staffRouter.use(authenticate);
@@ -182,6 +183,8 @@ registerResultsPortal(portal);
 registerCommunicationStaff(staff);
 registerCommunicationPortal(portal);
 registerPreparationStaff(staff);
+registerOfficialEntryStaff(staff);
+registerOfficialEntryPortal(portal);
 registerSetterPortal(staff);
 registerPrinterPortal(staff);
 

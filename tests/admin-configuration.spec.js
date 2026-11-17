@@ -13,8 +13,8 @@ test('admin can target announcements and configure subjects and examination sess
 
   await page.goto('/announcements');
   await page.getByRole('button', { name: 'Create announcement' }).click();
-  await page.getByLabel('Audience', { exact: true }).selectOption('DEPARTMENT');
-  await page.getByLabel('Department', { exact: true }).selectOption('registration');
+  await page.getByRole('combobox', { name: 'Audience' }).selectOption('DEPARTMENT');
+  await page.getByRole('combobox', { name: 'Department' }).selectOption('registration');
   const title = `Registration update ${Date.now()}`;
   await page.getByLabel('Title').fill(title);
   await page.getByLabel('Announcement').fill('Review school entries before the closing date.');

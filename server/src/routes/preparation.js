@@ -329,19 +329,43 @@ export function registerPrinterPortal(staff) {
         include: { subjects: { include: { subject: { select: { code: true, name: true } } } } },
       });
       if (!session) throw new HttpError(404, 'Examination session not found.');
-      const [candidates, materials] = await Promise.all([
+      const [candidates, materials, officialRecords] = await Promise.all([
         prisma.candidate.findMany({ where: { sessionId }, select: { subjectCodes: true } }),
         prisma.examMaterialSubmission.findMany({ where: { sessionId, status: 'APPROVED' }, orderBy: { createdAt: 'desc' }, include: { session: true } }),
+        prisma.officialEntryRecord.findMany({
+          where: { import: { sessionId, status: 'APPROVED' } },
+          include: { import: { select: { createdAt: true } } },
+        }),
       ]);
       const counts = new Map();
       for (const candidate of candidates) for (const code of new Set(candidate.subjectCodes)) counts.set(code, (counts.get(code) || 0) + 1);
       const subjects = session.subjects.map(({ subject }) => ({ ...subject, candidateCount: counts.get(subject.code) || 0 }));
+      officialRecords.sort((a, b) => b.import.createdAt - a.import.createdAt);
+      const latestBySchool = new Map();
+      for (const record of officialRecords) {
+        const key = record.schoolId ? `school:${record.schoolId}` : `name:${record.schoolName.trim().toLocaleLowerCase()}`;
+        if (!latestBySchool.has(key)) latestBySchool.set(key, record);
+      }
+      const paperCounts = new Map();
+      for (const record of latestBySchool.values()) {
+        const verified = record.reviewedData;
+        if (!verified || !Array.isArray(verified.subjects)) continue;
+        for (const subject of verified.subjects) {
+          for (const paper of subject.papers || []) {
+            const key = `${subject.code}:${paper.number}`;
+            const count = paperCounts.get(key) || { subjectCode: subject.code, subjectName: subject.name, paperNumber: paper.number, count: 0 };
+            count.count += paper.count;
+            paperCounts.set(key, count);
+          }
+        }
+      }
       const latestMaterials = new Map();
       for (const item of materials) if (!latestMaterials.has(item.subjectCode)) latestMaterials.set(item.subjectCode, item);
       res.json({
         session: { id: session.id, name: session.name, year: session.year, status: session.status },
         totalApprovedStudents: candidates.length,
         subjects,
+        officialPaperCounts: [...paperCounts.values()].sort((a, b) => a.subjectCode.localeCompare(b.subjectCode) || a.paperNumber - b.paperNumber),
         materials: [...latestMaterials.values()].map(materialSummary),
       });
     } catch (e) { next(e); }

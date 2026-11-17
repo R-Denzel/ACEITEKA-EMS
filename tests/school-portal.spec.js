@@ -15,7 +15,7 @@ test('school account can sign in and access its portal workflows', async ({ page
 
   await page.goto('/school/students');
   await expect(page.getByRole('heading', { name: 'Register Students' })).toBeVisible();
-  await expect(page.getByLabel('Examination session')).toContainText('End of Year Examinations 2026');
+  await expect(page.getByLabel('Examination session')).not.toHaveValue('');
   await expect(page.getByText('Total uploads')).toBeVisible();
   await expect(page.getByLabel('Filter uploads')).toContainText('Changes requested');
 

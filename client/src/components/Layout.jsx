@@ -15,6 +15,7 @@ const STAFF_NAV = [
   { to: '/setter', label: 'Exam Setter Workspace', icon: FileCheck, perm: 'materials.submit' },
   { to: '/subjects', label: 'Subjects and Subject Groups', icon: BookOpen, perm: 'schools.view' },
   { to: '/student-entries', label: 'Student Entries', icon: ClipboardCheck, perm: 'students.view' },
+  { to: '/official-entry-forms', label: 'Official Entry Forms', icon: FileCheck, perm: 'students.view' },
   { to: '/student-register', label: 'Student Register', icon: Users, perm: 'students.view' },
   { to: '/examiners', label: 'Recommended Examiners', icon: UserCheck, perm: 'examiners.review' },
   { to: '/assign-examiners', label: 'Assign Examiners', icon: UserPlus, perm: 'examiners.review' },
@@ -28,6 +29,7 @@ const STAFF_NAV = [
 const SCHOOL_NAV = [
   { to: '/school', label: 'My School', icon: Home, end: true },
   { to: '/school/students', label: 'Register Students', icon: ClipboardCheck, perm: 'students.upload' },
+  { to: '/school/official-entry-forms', label: 'Official Entry Summary', icon: FileCheck, perm: 'students.upload' },
   { to: '/school/examiners', label: 'Recommend Examiners', icon: UserCheck, perm: 'examiners.nominate' },
   { to: '/school/results', label: 'My Results', icon: FileCheck, perm: 'school.portal' },
   { to: '/school/announcements', label: 'Announcements', icon: Megaphone, perm: 'school.portal' },

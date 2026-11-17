@@ -28,6 +28,7 @@ Notes:
 - `JWT_SECRET` must be strong and unique per environment.
 - Never commit `.env` files to source control.
 - `UPLOAD_DIR` must point to a private, persistent directory outside the web server's public document root. If omitted, uploads are stored under `server/uploads`.
+- Official entry-form photos use the bundled English Tesseract model and are processed locally; handwritten counts must be entered and cross-checked by a person before approval. Keep the application dependencies installed with `npm install` so the model package is available. The uploaded originals are stored in the private `UPLOAD_DIR`.
 
 ## 3. Database setup
 
@@ -134,6 +135,7 @@ server {
 - Limit admin accounts to trusted personnel only.
 - Keep PostgreSQL backups and retention policies in place.
 - Protect the private upload directory with restrictive filesystem permissions and include approved exam materials in secure backups. Do not serve this directory as static content.
+- Treat original school entry-form photos and workbooks as confidential records. Access is permission-checked in the API; do not make the upload directory public or share it through a web-server alias.
 
 ## 9. Health checks
 
