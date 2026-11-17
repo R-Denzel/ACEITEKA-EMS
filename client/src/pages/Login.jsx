@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { GraduationCap } from 'lucide-react';
 import { useAuth } from '../auth';
 
 export default function Login() {
@@ -20,7 +19,7 @@ export default function Login() {
     <div className="login-shell flex min-h-screen items-center justify-center p-4">
       <form onSubmit={submit} className="card w-full max-w-md space-y-4">
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2 text-navy"><GraduationCap /><span className="text-lg font-bold">ACEITEKA Examination System</span></div>
+          <div className="flex items-center gap-3 text-navy"><img src="/aceiteka-logo.png" alt="ACEITEKA logo" className="h-14 w-14 rounded bg-white object-contain" /><span className="text-lg font-bold">ACEITEKA Examination System</span></div>
         </div>
         <p className="text-sm text-slate">Sign in with the email and password given to you by ACEITEKA.</p>
         {error && <p role="alert" className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</p>}

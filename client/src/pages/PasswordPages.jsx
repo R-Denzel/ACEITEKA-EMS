@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { GraduationCap } from 'lucide-react';
 import { api } from '../api';
 import { useAuth } from '../auth';
 import PageHeader from '../components/PageHeader';
@@ -12,7 +11,7 @@ function Shell({ children }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-page p-4">
       <div className="card w-full max-w-md space-y-4">
-        <div className="flex items-center gap-2 text-navy"><GraduationCap /><span className="text-lg font-bold">ACEITEKA Examination System</span></div>
+        <div className="flex items-center gap-3 text-navy"><img src="/aceiteka-logo.png" alt="ACEITEKA logo" className="h-14 w-14 rounded bg-white object-contain" /><span className="text-lg font-bold">ACEITEKA Examination System</span></div>
         {children}
       </div>
     </div>

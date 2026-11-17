@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { Home, School, History, CalendarDays, BookOpen, ClipboardCheck, Users, LogOut, Menu, X, GraduationCap, UserCheck, UserPlus, FileCheck, Megaphone, Mail, BarChart3, KeyRound, Printer, ClipboardList, FileLock2 } from 'lucide-react';
+import { Home, School, History, CalendarDays, BookOpen, ClipboardCheck, Users, LogOut, Menu, X, UserCheck, UserPlus, FileCheck, Megaphone, Mail, BarChart3, KeyRound, Printer, ClipboardList, FileLock2 } from 'lucide-react';
 import { useAuth } from '../auth';
 import ThemeSelector from './ThemeSelector';
 
@@ -55,7 +55,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen lg:flex">
       <aside className="hidden w-64 shrink-0 bg-deep p-5 lg:block">
-        <div className="flex items-center gap-2 text-white"><GraduationCap /> <span className="font-bold">ACEITEKA</span></div>
+        <div className="flex items-center gap-2 text-white"><img src="/aceiteka-logo.png" alt="ACEITEKA logo" className="h-12 w-12 rounded bg-white object-contain" /> <span className="font-bold">ACEITEKA</span></div>
         {links}
       </aside>
       {open && (
@@ -63,7 +63,7 @@ export default function Layout() {
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
           <aside className="relative h-full w-64 bg-deep p-5">
             <button className="absolute right-3 top-3 text-white" onClick={() => setOpen(false)} aria-label="Close menu"><X /></button>
-            <div className="flex items-center gap-2 text-white"><GraduationCap /> <span className="font-bold">ACEITEKA</span></div>
+            <div className="flex items-center gap-2 text-white"><img src="/aceiteka-logo.png" alt="ACEITEKA logo" className="h-12 w-12 rounded bg-white object-contain" /> <span className="font-bold">ACEITEKA</span></div>
             {links}
           </aside>
         </div>
