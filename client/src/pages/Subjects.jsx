@@ -28,17 +28,42 @@ export default function Subjects() {
       {error && <p role="alert" className="mb-3 text-red-700">{error}</p>}
       <div className="grid gap-6 lg:grid-cols-2">
         <section>
-          <div className="mb-2 flex items-center justify-between"><h2 className="font-semibold text-navy">Subjects</h2>{manage && <button className="btn-primary" onClick={() => setSub({ code: '', name: '' })}>Add a subject</button>}</div>
+          <div className="mb-2 flex items-center justify-between"><h2 className="font-semibold text-navy">Subjects</h2>{manage && <button className="btn-primary" onClick={() => setSub({ code: '', name: '', papers: [] })}>Add a subject</button>}</div>
           {sub && (
             <form className="card mb-3 grid gap-3" onSubmit={(e) => { e.preventDefault(); submit('/subjects', sub, () => setSub(null)); }}>
               <label className="text-sm font-medium">Subject code *<input className="field mt-1" value={sub.code} onChange={(e) => setSub({ ...sub, code: e.target.value })} placeholder="For example MATH" /><span className="text-xs text-red-700">{errs.code}</span></label>
               <label className="text-sm font-medium">Subject name *<input className="field mt-1" value={sub.name} onChange={(e) => setSub({ ...sub, name: e.target.value })} /><span className="text-xs text-red-700">{errs.name}</span></label>
+              <fieldset className="space-y-2">
+                <legend className="text-sm font-medium">Examination papers (optional)</legend>
+                <p className="text-xs text-slate">Select the papers this subject has, then enter the official paper code for each.</p>
+                {[1, 2, 3].map((number) => {
+                  const paper = sub.papers.find((item) => item.number === number);
+                  return (
+                    <div key={number} className="grid items-center gap-2 sm:grid-cols-[auto_1fr]">
+                      <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={Boolean(paper)} onChange={(e) => setSub({
+                        ...sub,
+                        papers: e.target.checked
+                          ? [...sub.papers, { number, code: '' }]
+                          : sub.papers.filter((item) => item.number !== number),
+                      })} />Paper {number}</label>
+                      {paper && <input className="field" aria-label={`Paper ${number} code`} value={paper.code} onChange={(e) => setSub({
+                        ...sub,
+                        papers: sub.papers.map((item) => item.number === number ? { ...item, code: e.target.value } : item),
+                      })} placeholder={`Paper ${number} code`} required />}
+                    </div>
+                  );
+                })}
+              </fieldset>
               <div className="flex gap-2"><button className="btn-primary">Save</button><button type="button" className="btn-ghost" onClick={() => setSub(null)}>Cancel</button></div>
             </form>
           )}
           <div className="card overflow-x-auto p-0"><table className="w-full text-left text-sm"><tbody>
             {subjects.map((s) => (
-              <tr key={s.id} className="border-b border-line last:border-0"><td className="p-3 font-mono">{s.code}</td><td className="p-3">{s.name}</td>
+              <tr key={s.id} className="border-b border-line last:border-0"><td className="p-3 font-mono">{s.code}</td><td className="p-3">{s.name}
+                <div className="mt-1 flex flex-wrap gap-1">{(s.papers || []).length
+                  ? s.papers.map((paper) => <span key={paper.id} className="rounded bg-page px-2 py-0.5 text-xs text-slate">Paper {paper.number}: <span className="font-mono">{paper.code}</span></span>)
+                  : <span className="text-xs text-slate">No papers configured</span>}</div>
+              </td>
                 <td className="p-3 text-right">{manage ? <button className="btn-ghost" onClick={() => toggle(s)}>{s.isActive ? 'Switch off' : 'Switch on'}</button> : (s.isActive ? 'Active' : 'Off')}</td></tr>
             ))}
             {subjects.length === 0 && <tr><td className="p-6 text-center text-slate">No subjects yet.</td></tr>}

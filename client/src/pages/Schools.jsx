@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useMemo, useState } from 'react';
+import { Building2, MapPin, Plus, Search } from 'lucide-react';
 import { api } from '../api';
 import { useAuth } from '../auth';
 import PageHeader from '../components/PageHeader';
@@ -21,6 +22,12 @@ export default function Schools() {
   useEffect(() => { load(); }, [q, page]);
   useEffect(() => { loadCentres(); }, []);
 
+  const overview = useMemo(() => {
+    const active = data?.items.filter((s) => s.isActive).length || 0;
+    const inactive = (data?.items.length || 0) - active;
+    return { total: data?.total || 0, active, inactive, centres: centres.length };
+  }, [data, centres]);
+
   async function save(e) {
     e.preventDefault(); setFieldErrors({}); setError('');
     try { await api('/schools', { method: 'POST', body: form }); setForm(null); load(); }
@@ -42,8 +49,15 @@ export default function Schools() {
   return (
     <>
       <PageHeader title="Schools and Centres" description="See the schools that take part in ACEITEKA examinations and the centres where they sit them.">
-        {can('schools.create') && <button className="btn-primary" onClick={() => setForm({ code: '', name: '', email: '' })}>Add a school</button>}
+        {can('schools.create') && <button className="btn-primary" onClick={() => setForm({ code: '', name: '', email: '' })}><Plus size={16} /> Add a school</button>}
       </PageHeader>
+
+      <div className="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="card"><div className="flex items-center gap-2 text-slate"><Building2 size={16} /> Total schools</div><div className="mt-2 text-3xl font-bold text-navy">{overview.total}</div></div>
+        <div className="card"><div className="flex items-center gap-2 text-slate"><Building2 size={16} /> Active</div><div className="mt-2 text-3xl font-bold text-navy">{overview.active}</div></div>
+        <div className="card"><div className="flex items-center gap-2 text-slate"><MapPin size={16} /> Centres</div><div className="mt-2 text-3xl font-bold text-navy">{overview.centres}</div></div>
+        <div className="card"><div className="flex items-center gap-2 text-slate"><Building2 size={16} /> Inactive</div><div className="mt-2 text-3xl font-bold text-navy">{overview.inactive}</div></div>
+      </div>
 
       {form && (
         <form onSubmit={save} className="card mb-6 grid gap-4 sm:grid-cols-3">
@@ -70,7 +84,14 @@ export default function Schools() {
       )}
       {error && <p role="alert" className="mb-3 text-red-700">{error}</p>}
 
-      <input className="field mb-4 max-w-sm" placeholder="Search by school name or code" value={q} onChange={(e) => { setQ(e.target.value); setPage(1); }} />
+      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <label className="relative block w-full max-w-sm">
+          <Search size={16} className="absolute left-3 top-3 text-slate" />
+          <input className="field pl-9" placeholder="Search by school name or code" value={q} onChange={(e) => { setQ(e.target.value); setPage(1); }} />
+        </label>
+        <div className="text-sm text-slate">{data ? `${data.total} schools` : 'Loading…'}</div>
+      </div>
+
       <div className="card overflow-x-auto p-0">
         <table className="w-full text-left text-sm">
           <thead className="border-b border-line bg-page text-slate"><tr><th className="p-3">Code</th><th className="p-3">School</th><th className="p-3">Centre</th><th className="p-3">Status</th>{can('schools.update') && <th className="p-3"></th>}</tr></thead>
@@ -88,7 +109,7 @@ export default function Schools() {
       </div>
       {data && (
         <div className="mt-4 flex items-center justify-between text-sm text-slate">
-          <span>{data.total} schools</span>
+          <span>Page {page}</span>
           <div className="flex gap-2">
             <button className="btn-ghost" disabled={page <= 1} onClick={() => setPage(page - 1)}>Previous</button>
             <button className="btn-ghost" disabled={page * 10 >= data.total} onClick={() => setPage(page + 1)}>Next</button>
@@ -104,15 +125,15 @@ export default function Schools() {
         <form onSubmit={saveCentre} className="card mb-4 grid gap-4 sm:grid-cols-3">
           <label className="text-sm font-medium">Centre code *<input className="field mt-1" value={centreForm.code} onChange={(e) => setCentreForm({ ...centreForm, code: e.target.value })} placeholder="For example C003" /><span className="text-xs text-red-700">{fieldErrors.code}</span></label>
           <label className="text-sm font-medium">Centre name *<input className="field mt-1" value={centreForm.name} onChange={(e) => setCentreForm({ ...centreForm, name: e.target.value })} /><span className="text-xs text-red-700">{fieldErrors.name}</span></label>
-          <label className="text-sm font-medium">Address<input className="field mt-1" value={centreForm.address} onChange={(e) => setCentreForm({ ...centreForm, address: e.target.value })} /></label>
+          <label className="text-sm font-medium">Address<input className="field mt-1" value={centreForm.address || ''} onChange={(e) => setCentreForm({ ...centreForm, address: e.target.value })} /></label>
           <div className="flex gap-2 sm:col-span-3"><button className="btn-primary">Save centre</button><button type="button" className="btn-ghost" onClick={() => setCentreForm(null)}>Cancel</button></div>
         </form>
       )}
       <div className="card overflow-x-auto p-0">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-line bg-page text-slate"><tr><th className="p-3">Code</th><th className="p-3">Centre</th><th className="p-3">Address</th><th className="p-3">Schools</th></tr></thead>
+          <thead className="border-b border-line bg-page text-slate"><tr><th className="p-3">Code</th><th className="p-3">Centre</th><th className="p-3">Schools</th><th className="p-3">Address</th></tr></thead>
           <tbody>
-            {centres.map((c) => <tr key={c.id} className="border-b border-line last:border-0"><td className="p-3 font-mono">{c.code}</td><td className="p-3">{c.name}</td><td className="p-3">{c.address || '-'}</td><td className="p-3">{c._count?.schools ?? 0}</td></tr>)}
+            {centres.map((c) => <tr key={c.id} className="border-b border-line last:border-0"><td className="p-3 font-mono">{c.code}</td><td className="p-3">{c.name}</td><td className="p-3">{c._count?.schools ?? 0}</td><td className="p-3">{c.address || '—'}</td></tr>)}
             {centres.length === 0 && <tr><td colSpan="4" className="p-6 text-center text-slate">No centres yet.</td></tr>}
           </tbody>
         </table>

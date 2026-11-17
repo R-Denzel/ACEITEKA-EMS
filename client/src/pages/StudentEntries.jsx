@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { CheckCircle2, Clock3, FileWarning, Upload } from 'lucide-react';
 import { api } from '../api';
 import { useAuth } from '../auth';
 import PageHeader from '../components/PageHeader';
@@ -22,13 +23,47 @@ function SchoolEntries() {
   const [sessions, setSessions] = useState([]);
   const [sessionId, setSessionId] = useState('');
   const [list, setList] = useState([]);
+  const [filter, setFilter] = useState('all');
+  const [loading, setLoading] = useState(true);
   const [file, setFile] = useState(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [open, setOpen] = useState(null);
 
-  const load = () => api('/school-portal/submissions').then((d) => setList(d.items));
-  useEffect(() => { api('/school-portal/sessions').then((d) => { const o = d.items.filter((s) => s.status === 'REGISTRATION_OPEN'); setSessions(o); if (o[0]) setSessionId(o[0].id); }); load(); }, []);
+  const load = async () => {
+    setLoading(true);
+    try {
+      const data = await api('/school-portal/submissions');
+      setList(data.items);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    api('/school-portal/sessions')
+      .then((data) => {
+        const openSessions = data.items.filter((session) => session.status === 'REGISTRATION_OPEN');
+        setSessions(openSessions);
+        if (openSessions[0]) setSessionId(openSessions[0].id);
+      })
+      .catch((err) => setError(err.message));
+    load();
+  }, []);
+
+  const counts = useMemo(() => ({
+    total: list.length,
+    pending: list.filter((submission) => ['SUBMITTED', 'UNDER_REVIEW'].includes(submission.status)).length,
+    changes: list.filter((submission) => submission.status === 'CHANGES_REQUIRED').length,
+    approved: list.filter((submission) => submission.status === 'APPROVED').length,
+  }), [list]);
+  const visibleSubmissions = useMemo(() => list.filter((submission) => {
+    if (filter === 'pending') return ['SUBMITTED', 'UNDER_REVIEW'].includes(submission.status);
+    if (filter === 'changes') return submission.status === 'CHANGES_REQUIRED';
+    if (filter === 'approved') return submission.status === 'APPROVED';
+    return true;
+  }), [filter, list]);
 
   async function send(e) {
     e.preventDefault(); setError('');
@@ -42,7 +77,11 @@ function SchoolEntries() {
       setFile(null); e.target.reset(); await load(); await show(data.id);
     } catch (err) { setError(err.message); } finally { setBusy(false); }
   }
-  const show = (id) => api(`/school-portal/submissions/${id}`).then(setOpen);
+  const show = async (id) => {
+    setError('');
+    try { setOpen(await api(`/school-portal/submissions/${id}`)); }
+    catch (err) { setError(err.message); }
+  };
 
   return (
     <>
@@ -65,7 +104,7 @@ function SchoolEntries() {
 
       {open && (
         <div className="card mb-6">
-          <div className="flex items-center justify-between"><h2 className="font-semibold text-navy">{open.fileName}</h2><StatusBadge status={open.status} /></div>
+          <div className="flex items-center justify-between gap-3"><h2 className="font-semibold text-navy">{open.fileName}</h2><div className="flex items-center gap-2"><StatusBadge status={open.status} /><button type="button" className="btn-ghost" onClick={() => setOpen(null)}>Close</button></div></div>
           <p className="mt-1 text-sm text-slate">{open.totalRecords} students checked: {open.validRecords} correct, {open.invalidRecords} need fixing.</p>
           {open.reviewNote && <p className="mt-2 rounded-md bg-amber-50 p-3 text-sm text-amber-900">Message from ACEITEKA: {open.reviewNote}</p>}
           {open.errorRows?.length > 0 && <ErrorRows rows={open.errorRows} />}
@@ -73,13 +112,32 @@ function SchoolEntries() {
         </div>
       )}
 
-      <h2 className="mb-2 font-semibold text-navy">Your uploads</h2>
+      <div className="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="card"><div className="flex items-center gap-2 text-slate"><Upload size={16} /> Total uploads</div><div className="mt-2 text-3xl font-bold text-navy">{counts.total}</div></div>
+        <div className="card"><div className="flex items-center gap-2 text-slate"><Clock3 size={16} /> In review</div><div className="mt-2 text-3xl font-bold text-navy">{counts.pending}</div></div>
+        <div className="card"><div className="flex items-center gap-2 text-slate"><FileWarning size={16} /> Changes requested</div><div className="mt-2 text-3xl font-bold text-navy">{counts.changes}</div></div>
+        <div className="card"><div className="flex items-center gap-2 text-slate"><CheckCircle2 size={16} /> Approved</div><div className="mt-2 text-3xl font-bold text-navy">{counts.approved}</div></div>
+      </div>
+
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+        <h2 className="font-semibold text-navy">Your uploads</h2>
+        <label className="text-sm text-slate">Show
+          <select className="field ml-2 w-auto py-1.5" value={filter} onChange={(e) => setFilter(e.target.value)} aria-label="Filter uploads">
+            <option value="all">All statuses</option>
+            <option value="pending">In review</option>
+            <option value="changes">Changes requested</option>
+            <option value="approved">Approved</option>
+          </select>
+        </label>
+      </div>
       <div className="card overflow-x-auto p-0">
         <table className="w-full text-left text-sm">
           <thead className="border-b border-line bg-page text-slate"><tr><th className="p-3">Date</th><th className="p-3">Session</th><th className="p-3">File</th><th className="p-3">Students</th><th className="p-3">Status</th><th className="p-3"></th></tr></thead>
           <tbody>
-            {list.map((s) => (<tr key={s.id} className="border-b border-line last:border-0"><td className="p-3 text-xs">{new Date(s.submittedAt).toLocaleString()}</td><td className="p-3">{s.session.name} {s.session.year}</td><td className="p-3">{s.fileName}</td><td className="p-3">{s.totalRecords}</td><td className="p-3"><StatusBadge status={s.status} /></td><td className="p-3"><button className="btn-ghost" onClick={() => show(s.id)}>View</button></td></tr>))}
-            {list.length === 0 && <tr><td colSpan="6" className="p-6 text-center text-slate">You have not uploaded anything yet. Download the template, fill it in, and upload it above.</td></tr>}
+            {visibleSubmissions.map((s) => (<tr key={s.id} className="border-b border-line last:border-0"><td className="p-3 text-xs">{new Date(s.submittedAt).toLocaleString()}</td><td className="p-3">{s.session.name} {s.session.year}</td><td className="p-3">{s.fileName}</td><td className="p-3">{s.totalRecords}</td><td className="p-3"><StatusBadge status={s.status} />{s.reviewNote && <p className="mt-1 max-w-xs text-xs text-slate">{s.reviewNote}</p>}</td><td className="p-3"><button className="btn-ghost" onClick={() => show(s.id)}>View</button></td></tr>))}
+            {loading && <tr><td colSpan="6" className="p-6 text-center text-slate">Loading uploads…</td></tr>}
+            {!loading && list.length === 0 && <tr><td colSpan="6" className="p-6 text-center text-slate">You have not uploaded anything yet. Download the template, fill it in, and upload it above.</td></tr>}
+            {!loading && list.length > 0 && visibleSubmissions.length === 0 && <tr><td colSpan="6" className="p-6 text-center text-slate">No uploads match this status.</td></tr>}
           </tbody>
         </table>
       </div>

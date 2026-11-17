@@ -9,6 +9,7 @@ import { registerStudentStaff, registerStudentPortal } from './students.js';
 import { registerCommunicationStaff, registerCommunicationPortal } from './communication.js';
 import { registerResultsStaff, registerResultsPortal } from './results.js';
 import { registerExaminerStaff, registerExaminerPortal } from './examiners.js';
+import { registerPreparationStaff, registerSetterPortal, registerPrinterPortal } from './preparation.js';
 
 export const staffRouter = Router();
 staffRouter.use(authenticate);
@@ -110,9 +111,9 @@ staff.get('/activity-history', requirePermission('activity.view'), async (req, r
   } catch (e) { next(e); }
 });
 
-staff.get('/dashboard', requirePermission('reports.view'), async (_req, res, next) => {
+staff.get('/dashboard', requirePermission('reports.view'), async (req, res, next) => {
   try {
-    const [schools, sessions, candidates, pendingSubmissions, nominationsWaiting, resultsAwaiting, resultsReady] = await Promise.all([
+    const [schools, sessions, candidates, pendingSubmissions, nominationsWaiting, resultsAwaiting, resultsReady, dashboardAnnouncements] = await Promise.all([
       prisma.school.count({ where: { isActive: true } }),
       prisma.examinationSession.count({ where: { status: { notIn: ['COMPLETED', 'PLANNED'] } } }),
       prisma.candidate.count(),
@@ -120,8 +121,13 @@ staff.get('/dashboard', requirePermission('reports.view'), async (_req, res, nex
       prisma.examinerNomination.count({ where: { status: { in: ['SUBMITTED', 'UNDER_REVIEW'] } } }),
       prisma.resultBatch.count({ where: { status: 'SUBMITTED_FOR_APPROVAL' } }),
       prisma.resultBatch.count({ where: { status: 'APPROVED' } }),
+      prisma.announcement.findMany({
+        where: { audience: 'STAFF_DASHBOARD' },
+        orderBy: { createdAt: 'desc' },
+        take: 5,
+      }),
     ]);
-    res.json({ schools, activeSessions: sessions, approvedStudents: candidates, pendingSubmissions, nominationsWaiting, resultsAwaiting, resultsReady });
+    res.json({ schools, activeSessions: sessions, approvedStudents: candidates, pendingSubmissions, nominationsWaiting, resultsAwaiting, resultsReady, dashboardAnnouncements });
   } catch (e) { next(e); }
 });
 
@@ -136,6 +142,36 @@ portal.get('/profile', async (req, res, next) => {
   } catch (e) { next(e); }
 });
 
+portal.get('/summary', async (req, res, next) => {
+  try {
+    const schoolId = req.user.schoolId;
+    const [submissionCounts, nominationCounts, distributionCount, unreadMessages, openSessions, approvedStudents] = await Promise.all([
+      prisma.candidateSubmission.groupBy({ by: ['status'], where: { schoolId }, _count: true }),
+      prisma.examinerNomination.groupBy({ by: ['status'], where: { schoolId }, _count: true }),
+      prisma.resultDistributionSchool.count({ where: { schoolId } }),
+      prisma.message.count({ where: { schoolId, fromSchool: false, readAt: null } }),
+      prisma.examinationSession.count({ where: { status: { notIn: ['PLANNED', 'COMPLETED'] } } }),
+      prisma.candidate.count({ where: { schoolId } }),
+    ]);
+
+    const totalSubmissions = submissionCounts.reduce((sum, item) => sum + item._count, 0);
+    const pendingEntries = submissionCounts.filter((item) => ['SUBMITTED', 'UNDER_REVIEW', 'CHANGES_REQUIRED'].includes(item.status)).reduce((sum, item) => sum + item._count, 0);
+    const pendingNominations = nominationCounts.filter((item) => ['SUBMITTED', 'UNDER_REVIEW', 'CHANGES_REQUIRED'].includes(item.status)).reduce((sum, item) => sum + item._count, 0);
+    const resultsReady = distributionCount;
+
+    res.json({
+      schoolId,
+      totalSubmissions,
+      pendingEntries,
+      pendingNominations,
+      resultsReady,
+      unreadMessages,
+      openSessions,
+      approvedStudents,
+    });
+  } catch (e) { next(e); }
+});
+
 registerAdmin(staff);
 registerStudentStaff(staff);
 registerStudentPortal(portal);
@@ -145,6 +181,9 @@ registerResultsStaff(staff);
 registerResultsPortal(portal);
 registerCommunicationStaff(staff);
 registerCommunicationPortal(portal);
+registerPreparationStaff(staff);
+registerSetterPortal(staff);
+registerPrinterPortal(staff);
 
 // The portal must be mounted before the staff router, whose staff-only gate would otherwise catch every /api path.
 staffRouter.use('/school-portal', portal);

@@ -31,7 +31,7 @@ export default function Sessions() {
   return (
     <>
       <PageHeader title="Examination Sessions" description="Each session is one round of examinations. Schools can only send student entries while registration is open.">
-        {can('sessions.manage') && <button className="btn-primary" onClick={() => setForm({ name: '', year: new Date().getFullYear(), registrationOpens: '', registrationCloses: '' })}>Create a session</button>}
+        {can('sessions.manage') && <button className="btn-primary" onClick={() => setForm({ name: '', year: new Date().getFullYear(), registrationOpens: '', registrationCloses: '' })}>Add an examination session</button>}
       </PageHeader>
       {error && <p role="alert" className="mb-3 text-red-700">{error}</p>}
       {form && (
@@ -78,7 +78,7 @@ export default function Sessions() {
                 )}
               </tr>
             ))}
-            {items?.length === 0 && <tr><td colSpan="5" className="p-6 text-center text-slate">No sessions yet. Create one to start receiving student entries.</td></tr>}
+            {items?.length === 0 && <tr><td colSpan="5" className="p-6 text-center text-slate">No sessions yet. Add an examination session to start receiving student entries.</td></tr>}
           </tbody>
         </table>
       </div>

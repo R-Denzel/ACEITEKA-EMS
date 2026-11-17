@@ -4,3 +4,5 @@ dist
 server/.pgdata
 server/uploads
 *.log
+playwright-report/
+test-results/

@@ -7,12 +7,16 @@ process.env.DATABASE_URL = 'postgresql://ebmis:ebmis_dev@localhost:5433/ebmis_te
 process.env.JWT_SECRET = 'test-secret-test-secret-test-secret-123456';
 process.env.CLIENT_URL = 'http://localhost:5173';
 
-let request, prisma, session, app, sch1, sch2;
+let request, prisma, session, app, sch1, sch2, paper;
 const A = {};
 const O = () => process.env.CLIENT_URL;
 const post = (agent, url, body = {}) => agent.post(url).set('Origin', O()).send(body);
 const csv = (rows) => Buffer.from(['registration_number,mark', ...rows].join('\n'));
-const enter = (agent, buf, subjectCode = 'MATH') => agent.post('/api/result-batches').set('Origin', O()).field('sessionId', session.id).field('subjectCode', subjectCode).attach('file', buf, 'marks.csv');
+const enter = (agent, buf, subjectCode = 'MATH') => {
+  const req = agent.post('/api/result-batches').set('Origin', O()).field('sessionId', session.id).field('subjectCode', subjectCode);
+  if (subjectCode === 'MATH' && paper) req.field('paperCode', paper.code);
+  return req.attach('file', buf, 'marks.csv');
+};
 
 async function login(email) {
   const agent = request.agent(app);
@@ -31,6 +35,9 @@ before(async () => {
   session = await prisma.examinationSession.findFirstOrThrow({ where: { name: 'End of Year Examinations', year: 2026 } });
   sch1 = await prisma.school.findFirstOrThrow({ where: { code: 'SCH001' } });
   sch2 = await prisma.school.findFirstOrThrow({ where: { code: 'SCH002' } });
+  const math = await prisma.subject.findUniqueOrThrow({ where: { code: 'MATH' } });
+  await prisma.subjectPaper.deleteMany({ where: { subjectId: math.id, number: 1 } });
+  paper = await prisma.subjectPaper.create({ data: { subjectId: math.id, number: 1, code: `MATH-P${Date.now()}` } });
   await prisma.examinationSession.update({ where: { id: session.id }, data: { status: 'EXAM_ONGOING' } });
   await prisma.resultCorrection.deleteMany({}); await prisma.resultDistributionSchool.deleteMany({}); await prisma.result.deleteMany({});
   await prisma.resultBatch.deleteMany({}); await prisma.candidate.deleteMany({ where: { sessionId: session.id } });
@@ -54,6 +61,34 @@ test('marks are validated: missing, out of range, duplicate, unknown student, st
 test('staff without enter permission, and schools, cannot enter results', async () => {
   assert.equal((await enter(A.approver, csv(['R1,50']))).status, 403);
   assert.equal((await enter(A.school1, csv(['R1,50']))).status, 403);
+  assert.equal((await A.enterer.get(`/api/reports/summary?sessionId=${session.id}`)).status, 403);
+  assert.equal((await A.approver.get(`/api/reports/summary?sessionId=${session.id}`)).status, 403);
+});
+
+test('manual mark entry loads only the selected school and saves marks for its registered students', async () => {
+  const query = new URLSearchParams({ sessionId: session.id, schoolId: sch1.id, subjectCode: 'MATH', paperCode: paper.code });
+  const loaded = await A.enterer.get(`/api/result-entry/students?${query}`);
+  assert.equal(loaded.status, 200);
+  assert.deepEqual(loaded.body.students.map((student) => student.registrationNumber), ['R1', 'R2']);
+
+  const foreign = await post(A.enterer, '/api/result-batches/manual', {
+    sessionId: session.id, schoolId: sch1.id, subjectCode: 'MATH', paperCode: paper.code,
+    marks: loaded.body.students.map((student) => ({ candidateId: student.id, mark: student.registrationNumber === 'R1' ? 65 : '' }))
+      .concat({ candidateId: (await prisma.candidate.findFirstOrThrow({ where: { registrationNumber: 'R3' } })).id, mark: 70 }),
+  });
+  assert.equal(foreign.status, 422);
+  assert.equal(await prisma.resultBatch.count({ where: { paperCode: paper.code } }), 0, 'invalid marks are not saved');
+
+  const saved = await post(A.enterer, '/api/result-batches/manual', {
+    sessionId: session.id, schoolId: sch1.id, subjectCode: 'MATH', paperCode: paper.code,
+    marks: loaded.body.students.map((student, index) => ({ candidateId: student.id, mark: index === 0 ? 65 : 75 })),
+  });
+  assert.equal(saved.status, 201);
+  const otherSchoolQuery = new URLSearchParams({ sessionId: session.id, schoolId: sch2.id, subjectCode: 'MATH', paperCode: paper.code });
+  const otherSchool = await A.enterer.get(`/api/result-entry/students?${otherSchoolQuery}`);
+  assert.deepEqual(otherSchool.body.students.map((student) => student.registrationNumber), ['R3']);
+  const refreshed = await A.enterer.get(`/api/result-entry/students?${query}`);
+  assert.deepEqual(refreshed.body.students.map((student) => student.mark), [65, 75]);
 });
 
 test('valid marks are saved and wait for checking', async () => {

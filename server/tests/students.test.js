@@ -142,8 +142,15 @@ test('official register is searchable and exportable by staff', async () => {
 test('subjects, groups and sessions: only the right staff can change them', async () => {
   assert.equal((await post(A.reg, '/api/subjects', { code: 'GEO', name: 'Geography' })).status, 403);
   const code = 'G' + Date.now().toString().slice(-5);
-  assert.equal((await post(A.examadmin, '/api/subjects', { code, name: 'Test Subject' })).status, 201);
+  const created = await post(A.examadmin, '/api/subjects', {
+    code, name: 'Test Subject', papers: [{ number: 1, code: `${code}1` }, { number: 3, code: `${code}3` }],
+  });
+  assert.equal(created.status, 201);
+  assert.deepEqual(created.body.papers.map((paper) => [paper.number, paper.code]), [[1, `${code}1`], [3, `${code}3`]]);
   assert.equal((await post(A.examadmin, '/api/subjects', { code, name: 'Test Subject' })).status, 409);
+  assert.equal((await post(A.examadmin, '/api/subjects', { code: `${code}2`, name: 'Invalid papers', papers: [{ number: 1, code: 'PAPER-X' }, { number: 1, code: 'PAPER-Y' }] })).status, 400);
+  const listed = (await A.examadmin.get('/api/subjects')).body.items.find((subject) => subject.id === created.body.id);
+  assert.equal(listed.papers.length, 2);
   assert.equal((await post(A.examadmin, '/api/sessions', { name: 'Bad', year: 2026, registrationOpens: '2026-05-01', registrationCloses: '2026-04-01' })).status, 400);
   assert.equal((await A.school1.get('/api/subjects')).status, 403);
 });

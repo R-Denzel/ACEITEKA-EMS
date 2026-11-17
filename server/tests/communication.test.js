@@ -37,13 +37,29 @@ before(async () => {
 });
 after(async () => { await prisma.$disconnect(); });
 
-test('announcements: only announcers publish; every school and staff can read; schools cannot publish', async () => {
+test('announcements are limited to their selected audience and only general notices reach schools', async () => {
   assert.equal((await post(A.school1, '/api/announcements', { title: 'Hello', body: 'Everyone' })).status, 403);
   assert.equal((await post(A.reg, '/api/announcements', { title: 'Hello', body: 'Everyone' })).status, 403);
   assert.equal((await post(A.examadmin, '/api/announcements', { title: '', body: '' })).status, 400);
-  assert.equal((await post(A.examadmin, '/api/announcements', { title: 'Registration closes Friday', body: 'Please upload your entries.' })).status, 201);
+  assert.equal((await post(A.examadmin, '/api/announcements', { title: 'Bad department notice', body: 'Select a department.', audience: 'DEPARTMENT' })).status, 400);
+  const general = await post(A.examadmin, '/api/announcements', { title: 'Registration closes Friday', body: 'Please upload your entries.' });
+  const registration = await post(A.examadmin, '/api/announcements', {
+    title: 'Registration team update', body: 'Review the pending entries.', audience: 'DEPARTMENT', departmentKey: 'registration',
+  });
+  const dashboard = await post(A.examadmin, '/api/announcements', {
+    title: 'Staff dashboard notice', body: 'Internal operational update.', audience: 'STAFF_DASHBOARD',
+  });
+  assert.equal(general.status, 201);
+  assert.equal(general.body.audience, 'GENERAL');
+  assert.equal(registration.status, 201);
+  assert.equal(dashboard.status, 201);
   for (const s of [A.school1, A.school2]) assert.equal((await s.get('/api/school-portal/announcements')).body.items.length, 1);
-  assert.equal((await A.reg.get('/api/announcements')).status, 200);
+  const registrationFeed = await A.reg.get('/api/announcements');
+  assert.equal(registrationFeed.status, 200);
+  assert.deepEqual(registrationFeed.body.items.map((item) => item.id).sort(), [general.body.id, registration.body.id, dashboard.body.id].sort());
+  const resultsFeed = await A.results.get('/api/announcements');
+  assert.deepEqual(resultsFeed.body.items.map((item) => item.id).sort(), [general.body.id, dashboard.body.id].sort());
+  assert.deepEqual((await A.reg.get('/api/dashboard')).body.dashboardAnnouncements.map((item) => item.id), [dashboard.body.id]);
   assert.equal((await request(app).get('/api/school-portal/announcements')).status, 401);
 });
 
@@ -75,6 +91,12 @@ test('reports: counts for the chosen session, staff with reports permission only
   assert.equal(r.body.students.total, 3);
   assert.deepEqual(Object.values(r.body.students.bySchool).sort(), [1, 2]);
   assert.equal(r.body.students.bySubject.MATH, 3); assert.equal(r.body.students.gender.M, 2);
+  const download = await A.examadmin.get(`/api/reports/summary/export?sessionId=${session.id}`);
+  assert.equal(download.status, 200);
+  assert.match(download.headers['content-type'], /text\/csv/);
+  assert.match(download.headers['content-disposition'], /attachment/);
+  assert.match(download.text, /Students by school/);
+  assert.equal((await A.results.get(`/api/reports/summary/export?sessionId=${session.id}`)).status, 403);
   assert.equal((await A.examadmin.get('/api/reports/summary')).status, 400);
   assert.equal((await A.school1.get(`/api/reports/summary?sessionId=${session.id}`)).status, 403);
 });

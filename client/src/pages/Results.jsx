@@ -19,14 +19,14 @@ function SchoolResults() {
       <div className="grid gap-3 sm:grid-cols-2">
         {items?.map((r) => (
           <div key={r.batchId} className="card">
-            <div className="font-semibold text-navy">{r.subjectCode}</div>
+            <div className="font-semibold text-navy">{r.subjectCode}{r.paperCode ? ` / ${r.paperCode}` : ''}</div>
             <div className="text-sm text-slate">{r.session.name} {r.session.year}. Sent {new Date(r.releasedAt).toLocaleDateString()}</div>
             <div className="mt-3 flex gap-2"><button className="btn-ghost" onClick={() => show(r.batchId)}>View</button><a className="btn-ghost" href={`/api/school-portal/results/${r.batchId}/download`}>Download</a></div>
           </div>))}
       </div>
       {open && (
         <div className="card mt-6 overflow-x-auto p-0">
-          <div className="border-b border-line p-3 font-semibold text-navy">{open.subjectCode}: {open.session.name} {open.session.year}</div>
+          <div className="border-b border-line p-3 font-semibold text-navy">{open.subjectCode}{open.paperCode ? ` / ${open.paperCode}` : ''}: {open.session.name} {open.session.year}</div>
           <table className="w-full text-left text-sm"><thead className="border-b border-line bg-page text-slate"><tr><th className="p-3">Registration number</th><th className="p-3">Name</th><th className="p-3">Mark</th></tr></thead>
             <tbody>{open.results.map((r) => <tr key={r.registrationNumber} className="border-b border-line last:border-0"><td className="p-3 font-mono">{r.registrationNumber}</td><td className="p-3">{r.fullName}</td><td className="p-3">{r.mark}</td></tr>)}</tbody></table>
         </div>
@@ -42,10 +42,14 @@ const Tag = ({ s }) => <span className="rounded-full bg-page px-2.5 py-0.5 text-
 function StaffResults() {
   const { user, can } = useAuth();
   const [sessions, setSessions] = useState([]);
+  const [schools, setSchools] = useState([]);
   const [subjects, setSubjects] = useState([]);
   const [list, setList] = useState(null);
   const [open, setOpen] = useState(null);
-  const [form, setForm] = useState({ sessionId: '', subjectCode: '' });
+  const [form, setForm] = useState({ sessionId: '', schoolId: '', subjectCode: '', paperCode: '' });
+  const [entry, setEntry] = useState(null);
+  const [manualErrors, setManualErrors] = useState([]);
+  const [mode, setMode] = useState('manual');
   const [file, setFile] = useState(null);
   const [problems, setProblems] = useState(null);
   const [note, setNote] = useState('');
@@ -54,15 +58,68 @@ function StaffResults() {
   const load = () => api('/result-batches').then((d) => setList(d.items)).catch((e) => setError(e.message));
   useEffect(() => {
     load();
-    api('/sessions').then((d) => { setSessions(d.items); if (d.items[0]) setForm((f) => ({ ...f, sessionId: d.items[0].id })); }).catch(() => {});
-    api('/subjects').then((d) => setSubjects(d.items.filter((s) => s.isActive))).catch(() => {});
+    api('/sessions').then((d) => {
+      setSessions(d.items);
+      if (d.items[0]) setForm((f) => ({ ...f, sessionId: d.items[0].id }));
+    }).catch((e) => setError(e.message));
+    api('/schools?pageSize=100').then((d) => setSchools(d.items.filter((school) => school.isActive))).catch((e) => setError(e.message));
+    api('/subjects').then((d) => setSubjects(d.items.filter((subject) => subject.isActive))).catch((e) => setError(e.message));
   }, []);
+  const selectedSession = sessions.find((session) => session.id === form.sessionId);
+  const sessionSubjectIds = new Set((selectedSession?.subjects || []).map((item) => item.subjectId));
+  const availableSubjects = subjects.filter((subject) => sessionSubjectIds.has(subject.id));
+  const selectedSubject = availableSubjects.find((subject) => subject.code === form.subjectCode);
+
+  useEffect(() => {
+    setEntry(null);
+    setManualErrors([]);
+    if (!form.sessionId || !form.schoolId || !selectedSubject || (selectedSubject.papers.length && !form.paperCode)) return undefined;
+    let active = true;
+    setError('');
+    const params = new URLSearchParams({
+      sessionId: form.sessionId,
+      schoolId: form.schoolId,
+      subjectCode: form.subjectCode,
+      paperCode: form.paperCode,
+    });
+    api(`/result-entry/students?${params}`).then((data) => {
+      if (active) setEntry(data);
+    }).catch((e) => {
+      if (active) setError(e.message);
+    });
+    return () => { active = false; };
+  }, [form.sessionId, form.schoolId, form.subjectCode, form.paperCode, selectedSubject]);
+
   const show = (id) => { setNote(''); setError(''); setMsg(''); api(`/result-batches/${id}`).then(setOpen).catch((e) => setError(e.message)); };
+
+  async function saveManual(e) {
+    e.preventDefault(); setError(''); setMsg(''); setManualErrors([]);
+    try {
+      const result = await api('/result-batches/manual', {
+        method: 'POST',
+        body: {
+          ...form,
+          marks: entry.students.map((student) => ({
+            candidateId: student.id,
+            mark: student.mark === '' ? '' : Number(student.mark),
+          })),
+        },
+      });
+      setMsg(`Results saved for ${result.count} students. They now wait to be checked by someone else.`);
+      await load();
+      show(result.id);
+      const params = new URLSearchParams(form);
+      setEntry(await api(`/result-entry/students?${params}`));
+    } catch (e) {
+      setManualErrors(e.errors || []);
+      setError(e.message);
+    }
+  }
 
   async function send(e) {
     e.preventDefault(); setError(''); setProblems(null); setMsg('');
     if (!file) return setError('Choose a file to upload.');
-    const fd = new FormData(); fd.append('sessionId', form.sessionId); fd.append('subjectCode', form.subjectCode); fd.append('file', file);
+    const fd = new FormData(); fd.append('sessionId', form.sessionId); fd.append('subjectCode', form.subjectCode); fd.append('paperCode', form.paperCode); fd.append('file', file);
     const res = await fetch('/api/result-batches', { method: 'POST', body: fd, credentials: 'include' });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) { setError(data.error || 'The upload failed.'); setProblems(data.errors || null); return; }
@@ -91,16 +148,72 @@ function StaffResults() {
       {msg && <p role="status" className="mb-3 text-teal">{msg}</p>}
       {problems && <div className="card mb-4 max-h-64 overflow-auto text-sm"><ul className="list-disc pl-4 text-red-800">{problems.map((p, i) => <li key={i}>{p.rowNumber ? `Row ${p.rowNumber}: ` : ''}{p.registrationNumber} {p.message}</li>)}</ul></div>}
       {can('results.enter') && (
-        <form onSubmit={send} className="card mb-6 grid gap-4 sm:grid-cols-4">
-          <label className="text-sm font-medium">Examination session<select className="field mt-1" value={form.sessionId} onChange={(e) => setForm({ ...form, sessionId: e.target.value })}>{sessions.map((s) => <option key={s.id} value={s.id}>{s.name} {s.year}</option>)}</select></label>
-          <label className="text-sm font-medium">Subject<select className="field mt-1" value={form.subjectCode} onChange={(e) => setForm({ ...form, subjectCode: e.target.value })} required><option value="">Choose</option>{subjects.map((s) => <option key={s.code} value={s.code}>{s.name}</option>)}</select></label>
-          <label className="text-sm font-medium sm:col-span-2">Marks file (CSV: registration_number, mark)<input className="field mt-1" type="file" accept=".csv" onChange={(e) => setFile(e.target.files[0])} /></label>
-          <div className="sm:col-span-4"><button className="btn-primary">Upload marks</button></div>
-        </form>
+        <section className="card mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div><h2 className="font-semibold text-navy">Enter examination marks</h2><p className="mt-1 text-sm text-slate">Choose a school, subject, and paper to load that school’s registered students.</p></div>
+            <div className="flex gap-2">
+              <button type="button" className={mode === 'manual' ? 'btn-primary' : 'btn-ghost'} onClick={() => setMode('manual')}>Enter on screen</button>
+              <button type="button" className={mode === 'upload' ? 'btn-primary' : 'btn-ghost'} onClick={() => setMode('upload')}>Upload CSV instead</button>
+            </div>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <label className="text-sm font-medium">Examination session
+              <select className="field mt-1" value={form.sessionId} onChange={(e) => setForm({ ...form, sessionId: e.target.value, subjectCode: '', paperCode: '' })}>
+                <option value="">Choose a session</option>{sessions.map((session) => <option key={session.id} value={session.id}>{session.name} {session.year}</option>)}
+              </select>
+            </label>
+            <label className="text-sm font-medium">School
+              <select className="field mt-1" value={form.schoolId} onChange={(e) => setForm({ ...form, schoolId: e.target.value })}>
+                <option value="">Choose a school</option>{schools.map((school) => <option key={school.id} value={school.id}>{school.name}</option>)}
+              </select>
+            </label>
+            <label className="text-sm font-medium">Subject
+              <select className="field mt-1" value={form.subjectCode} onChange={(e) => setForm({ ...form, subjectCode: e.target.value, paperCode: '' })}>
+                <option value="">Choose a subject</option>{availableSubjects.map((subject) => <option key={subject.code} value={subject.code}>{subject.code} — {subject.name}</option>)}
+              </select>
+            </label>
+            {selectedSubject?.papers.length > 0 && <label className="text-sm font-medium">Paper
+              <select className="field mt-1" value={form.paperCode} onChange={(e) => setForm({ ...form, paperCode: e.target.value })}>
+                <option value="">Choose a paper</option>{selectedSubject.papers.map((paper) => <option key={paper.id} value={paper.code}>Paper {paper.number} — {paper.code}</option>)}
+              </select>
+            </label>}
+          </div>
+          {mode === 'manual' && entry && (
+            <form onSubmit={saveManual} className="mt-5">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                <div><h3 className="font-semibold text-navy">{entry.school.name} — {entry.subject.code}{entry.paperCode ? ` / ${entry.paperCode}` : ''}</h3>
+                  <p className="text-sm text-slate">{entry.students.length} registered students. Marks must be whole numbers from 0 to {entry.subject.maxMark}.</p></div>
+                {entry.batch && <Tag s={entry.batch.status} />}
+              </div>
+              {entry.batch && !['SUBMITTED_FOR_CHECK', 'CHANGES_REQUIRED', 'DRAFT'].includes(entry.batch.status) && <p role="status" className="mb-3 text-sm text-amber-800">These results are already checked or approved and cannot be replaced. Use the correction process for an individual mark.</p>}
+              {manualErrors.length > 0 && <div className="mb-3 rounded-lg bg-red-50 p-3 text-sm text-red-800"><ul className="list-disc pl-4">{manualErrors.map((item, index) => <li key={`${item.registrationNumber}-${index}`}>{item.registrationNumber}: {item.message}</li>)}</ul></div>}
+              <div className="max-h-[28rem] overflow-auto rounded-md border border-line">
+                <table className="w-full text-left text-sm">
+                  <thead className="sticky top-0 bg-page text-slate"><tr><th className="p-3">Registration number</th><th className="p-3">Student name</th><th className="w-40 p-3">Mark</th></tr></thead>
+                  <tbody>{entry.students.map((student) => <tr key={student.id} className="border-t border-line">
+                    <td className="p-3 font-mono">{student.registrationNumber}</td><td className="p-3">{student.fullName}</td>
+                    <td className="p-3"><input className="field" type="number" min="0" max={entry.subject.maxMark} step="1" required aria-label={`Mark for ${student.fullName}`} value={student.mark} onChange={(e) => setEntry({ ...entry, students: entry.students.map((item) => item.id === student.id ? { ...item, mark: e.target.value } : item) })} /></td>
+                  </tr>)}</tbody>
+                </table>
+              </div>
+              <button className="btn-primary mt-4" disabled={entry.batch && !['SUBMITTED_FOR_CHECK', 'CHANGES_REQUIRED', 'DRAFT'].includes(entry.batch.status)}>Save marks for checking</button>
+            </form>
+          )}
+          {mode === 'manual' && !entry && form.sessionId && form.schoolId && form.subjectCode && (!selectedSubject?.papers.length || form.paperCode) && <p className="mt-4 text-sm text-slate">Loading registered students…</p>}
+          {mode === 'upload' && (
+            <form onSubmit={send} className="mt-5 grid gap-4 sm:grid-cols-2">
+              <p className="text-sm text-slate sm:col-span-2">Bulk upload for all schools using a CSV with the columns registration_number and mark.</p>
+              <label className="text-sm font-medium sm:col-span-2">Marks file
+                <input className="field mt-1" type="file" accept=".csv" onChange={(e) => setFile(e.target.files[0])} />
+              </label>
+              <div><button className="btn-primary" disabled={!form.sessionId || !form.subjectCode || (selectedSubject?.papers.length > 0 && !form.paperCode)}>Upload marks</button></div>
+            </form>
+          )}
+        </section>
       )}
       {open && (
         <div className="card mb-6 text-sm">
-          <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="font-semibold text-navy">{open.subjectCode}: {open.session.name} {open.session.year}</h2><Tag s={st} /></div>
+          <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="font-semibold text-navy">{open.subjectCode}{open.paperCode ? ` / ${open.paperCode}` : ''}{open.schoolName ? ` — ${open.schoolName}` : ''}: {open.session.name} {open.session.year}</h2><Tag s={st} /></div>
           <p className="mt-1 text-slate">{open.resultCount} marks.{open.note ? ` Note: ${open.note}` : ''}</p>
           {['SUBMITTED_FOR_CHECK', 'CHECKED'].includes(st) && (
             <div className="mt-3 space-y-3">
@@ -124,10 +237,10 @@ function StaffResults() {
       )}
       <div className="card overflow-x-auto p-0">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-line bg-page text-slate"><tr><th className="p-3">Subject</th><th className="p-3">Session</th><th className="p-3">Marks</th><th className="p-3">Status</th><th className="p-3"></th></tr></thead>
+          <thead className="border-b border-line bg-page text-slate"><tr><th className="p-3">School</th><th className="p-3">Subject / paper</th><th className="p-3">Session</th><th className="p-3">Marks</th><th className="p-3">Status</th><th className="p-3"></th></tr></thead>
           <tbody>
-            {list?.map((b) => (<tr key={b.id} className="border-b border-line last:border-0"><td className="p-3 font-mono">{b.subjectCode}</td><td className="p-3">{b.session.name} {b.session.year}</td><td className="p-3">{b.resultCount}</td><td className="p-3"><Tag s={b.status} /></td><td className="p-3"><button className="btn-ghost" onClick={() => show(b.id)}>Open</button></td></tr>))}
-            {list?.length === 0 && <tr><td colSpan="5" className="p-6 text-center text-slate">No results have been entered yet.</td></tr>}
+            {list?.map((b) => (<tr key={b.id} className="border-b border-line last:border-0"><td className="p-3">{b.schoolName || 'All schools'}</td><td className="p-3 font-mono">{b.subjectCode}{b.paperCode ? ` / ${b.paperCode}` : ''}</td><td className="p-3">{b.session.name} {b.session.year}</td><td className="p-3">{b.resultCount}</td><td className="p-3"><Tag s={b.status} /></td><td className="p-3"><button className="btn-ghost" onClick={() => show(b.id)}>Open</button></td></tr>))}
+            {list?.length === 0 && <tr><td colSpan="6" className="p-6 text-center text-slate">No results have been entered yet.</td></tr>}
           </tbody>
         </table>
       </div>

@@ -10,7 +10,7 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "node prisma/seed.js",
-    "test": "node --test --test-concurrency=1 tests/foundation.test.js tests/students.test.js tests/examiners.test.js tests/results.test.js tests/communication.test.js"
+    "test": "node --test --test-concurrency=1 tests/foundation.test.js tests/students.test.js tests/examiners.test.js tests/results.test.js tests/communication.test.js tests/preparation.test.js"
   },
   "prisma": {
     "seed": "node prisma/seed.js"

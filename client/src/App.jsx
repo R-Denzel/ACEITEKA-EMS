@@ -19,6 +19,10 @@ import Reports from './pages/Reports';
 import Accounts from './pages/Accounts';
 import { ForgotPassword, ResetPassword, ChangePassword } from './pages/PasswordPages';
 import ComingSoon from './pages/ComingSoon';
+import Preparation from './pages/Preparation';
+import ExamSetter from './pages/ExamSetter';
+import ExamMaterials from './pages/ExamMaterials';
+import PrinterDashboard from './pages/PrinterDashboard';
 
 const RESULTS_ANY = ['results.enter', 'results.review', 'results.approve', 'results.release'];
 function Protected({ children, permission, anyOf }) {
@@ -33,18 +37,22 @@ function Protected({ children, permission, anyOf }) {
 }
 
 export default function App() {
-  const { user } = useAuth();
-  const home = user?.userType === 'SCHOOL' ? '/school' : '/';
+  const { user, can } = useAuth();
+  const home = user?.userType === 'SCHOOL' ? '/school' : can('materials.submit') ? '/setter' : can('print.view') ? '/printer' : '/';
   return (
     <Routes>
       <Route path="/login" element={user ? <Navigate to={home} replace /> : <Login />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route element={<Protected><Layout /></Protected>}>
-        <Route path="/" element={user?.userType === 'SCHOOL' ? <Navigate to="/school" replace /> : <Dashboard />} />
+        <Route path="/" element={user?.userType === 'SCHOOL' ? <Navigate to="/school" replace /> : can('materials.submit') ? <Navigate to="/setter" replace /> : can('print.view') ? <Navigate to="/printer" replace /> : <Dashboard />} />
         <Route path="/schools" element={<Protected permission="schools.view"><Schools /></Protected>} />
         <Route path="/activity-history" element={<Protected permission="activity.view"><ActivityHistory /></Protected>} />
         <Route path="/sessions" element={<Protected permission="schools.view"><Sessions /></Protected>} />
+        <Route path="/preparation" element={<Protected anyOf={['pipeline.manage', 'entries.remind']}><Preparation /></Protected>} />
+        <Route path="/exam-materials" element={<Protected permission="materials.review"><ExamMaterials /></Protected>} />
+        <Route path="/printer" element={<Protected permission="print.view"><PrinterDashboard /></Protected>} />
+        <Route path="/setter" element={<Protected permission="materials.submit"><ExamSetter /></Protected>} />
         <Route path="/subjects" element={<Protected permission="schools.view"><Subjects /></Protected>} />
         <Route path="/student-entries" element={<Protected permission="students.view"><StudentEntries /></Protected>} />
         <Route path="/student-register" element={<Protected permission="students.view"><StudentRegister /></Protected>} />

@@ -58,6 +58,8 @@ export async function seedDemo() {
   await makeUser('results@aceiteka.test', 'Results Officer', 'results_officer');
   await makeUser('results2@aceiteka.test', 'Second Results Officer', 'results_officer');
   await makeUser('approver@aceiteka.test', 'Results Approver', 'results_approver');
+  await makeUser('setter@aceiteka.test', 'Demo Exam Setter', 'exam_setter');
+  await makeUser('printer@aceiteka.test', 'Demo Printing Officer', 'printer');
   await makeUser('school1@aceiteka.test', 'St. Mary Administrator', 'school_admin', a.id);
   await makeUser('school2@aceiteka.test', 'Hillview Administrator', 'school_admin', b.id);
 }

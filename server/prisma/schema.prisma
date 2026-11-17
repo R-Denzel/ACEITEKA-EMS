@@ -2,6 +2,75 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum PrepMilestoneStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  BLOCKED
+}
+
+model PrepMilestone {
+  id           String              @id @default(cuid())
+  sessionId    String
+  title        String
+  description  String?
+  dueAt        DateTime?
+  status       PrepMilestoneStatus @default(NOT_STARTED)
+  assignedToId String?
+  completedAt  DateTime?
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+  session      ExaminationSession  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  assignedTo   User?               @relation("MilestoneAssignee", fields: [assignedToId], references: [id], onDelete: SetNull)
+
+  @@index([sessionId, dueAt])
+}
+
+model SessionSchoolReminder {
+  id         String             @id @default(cuid())
+  sessionId  String
+  schoolId   String
+  sentById   String
+  lastSentAt DateTime           @default(now())
+  sentCount  Int                @default(1)
+  session    ExaminationSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  school     School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, schoolId])
+}
+
+enum ExamMaterialStatus {
+  SUBMITTED
+  CHANGES_REQUIRED
+  APPROVED
+}
+
+model ExamMaterialSubmission {
+  id              String             @id @default(cuid())
+  sessionId       String
+  subjectCode     String
+  submittedById   String
+  scriptKey       String
+  scriptName      String
+  scriptMimeType  String
+  scriptSizeBytes Int
+  guideKey        String
+  guideName       String
+  guideMimeType   String
+  guideSizeBytes  Int
+  status          ExamMaterialStatus @default(SUBMITTED)
+  reviewNote      String?
+  reviewedById    String?
+  reviewedAt      DateTime?
+  createdAt       DateTime           @default(now())
+  session         ExaminationSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  submittedBy     User               @relation("MaterialSubmitter", fields: [submittedById], references: [id])
+  reviewedBy      User?              @relation("MaterialReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([sessionId, subjectCode, status])
+  @@index([submittedById, createdAt])
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -14,24 +83,27 @@ enum UserType {
 }
 
 model User {
-  id                 String          @id @default(cuid())
-  email              String          @unique
+  id                 String                   @id @default(cuid())
+  email              String                   @unique
   passwordHash       String
   fullName           String
   phone              String?
-  userType           UserType        @default(STAFF)
-  isActive           Boolean         @default(true)
-  mustChangePassword Boolean         @default(false)
+  userType           UserType                 @default(STAFF)
+  isActive           Boolean                  @default(true)
+  mustChangePassword Boolean                  @default(false)
   // Set only for SCHOOL users. Always read from the database on the server, never from the browser.
   schoolId           String?
-  school             School?         @relation(fields: [schoolId], references: [id])
+  school             School?                  @relation(fields: [schoolId], references: [id])
   roles              UserRole[]
-  failedLogins       Int             @default(0)
+  failedLogins       Int                      @default(0)
   lockedUntil        DateTime?
   lastLoginAt        DateTime?
-  createdAt          DateTime        @default(now())
-  updatedAt          DateTime        @updatedAt
+  createdAt          DateTime                 @default(now())
+  updatedAt          DateTime                 @updatedAt
   resetTokens        PasswordReset[]
+  assignedMilestones PrepMilestone[]          @relation("MilestoneAssignee")
+  submittedMaterials ExamMaterialSubmission[] @relation("MaterialSubmitter")
+  reviewedMaterials  ExamMaterialSubmission[] @relation("MaterialReviewer")
 
   @@index([schoolId])
 }
@@ -102,9 +174,11 @@ model School {
   centre        ExaminationCentre?         @relation(fields: [centreId], references: [id])
   users         User[]
   candidates    Candidate[]
+  resultBatches ResultBatch[]
   submissions   CandidateSubmission[]
   nominations   ExaminerNomination[]
   distributions ResultDistributionSchool[]
+  reminders     SessionSchoolReminder[]
   createdAt     DateTime                   @default(now())
 }
 
@@ -119,10 +193,10 @@ enum SessionStatus {
 
 // "Examination Session" in the interface
 model ExaminationSession {
-  id                 String                @id @default(cuid())
+  id                 String                   @id @default(cuid())
   name               String
   year               Int
-  status             SessionStatus         @default(PLANNED)
+  status             SessionStatus            @default(PLANNED)
   registrationOpens  DateTime?
   registrationCloses DateTime?
   examStarts         DateTime?
@@ -132,7 +206,10 @@ model ExaminationSession {
   nominations        ExaminerNomination[]
   candidates         Candidate[]
   resultBatches      ResultBatch[]
-  createdAt          DateTime              @default(now())
+  prepMilestones     PrepMilestone[]
+  schoolReminders    SessionSchoolReminder[]
+  examMaterials      ExamMaterialSubmission[]
+  createdAt          DateTime                 @default(now())
 
   @@unique([name, year])
 }
@@ -144,8 +221,19 @@ model Subject {
   category   String?
   maxMark    Int                   @default(100)
   isActive   Boolean               @default(true)
+  papers     SubjectPaper[]
   sessions   SessionSubject[]
   groupLinks SubjectGroupSubject[]
+}
+
+model SubjectPaper {
+  id        String  @id @default(cuid())
+  subjectId String
+  number    Int
+  code      String  @unique
+  subject   Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  @@unique([subjectId, number])
 }
 
 // "Subject Group": a set of subjects with a minimum and maximum number a student may take
@@ -314,6 +402,8 @@ model ResultBatch {
   id            String                     @id @default(cuid())
   sessionId     String
   subjectCode   String
+  paperCode     String                     @default("")
+  schoolId      String?
   status        ResultStatus               @default(DRAFT)
   enteredById   String
   checkedById   String?
@@ -324,11 +414,12 @@ model ResultBatch {
   approvedAt    DateTime?
   releasedAt    DateTime?
   session       ExaminationSession         @relation(fields: [sessionId], references: [id])
+  school        School?                    @relation(fields: [schoolId], references: [id])
   results       Result[]
   distributions ResultDistributionSchool[]
   createdAt     DateTime                   @default(now())
 
-  @@unique([sessionId, subjectCode])
+  @@unique([sessionId, subjectCode, paperCode, schoolId])
 }
 
 model Result {
@@ -371,11 +462,15 @@ model ResultDistributionSchool {
 
 // ---------- Communication ----------
 model Announcement {
-  id          String   @id @default(cuid())
-  title       String
-  body        String
-  createdById String
-  createdAt   DateTime @default(now())
+  id            String   @id @default(cuid())
+  title         String
+  body          String
+  audience      String   @default("GENERAL")
+  departmentKey String?
+  createdById   String
+  createdAt     DateTime @default(now())
+
+  @@index([audience, departmentKey, createdAt])
 }
 
 model Message {

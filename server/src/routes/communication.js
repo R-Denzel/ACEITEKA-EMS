@@ -2,20 +2,94 @@ import { z } from 'zod';
 import { prisma } from '../db.js';
 import { requirePermission, HttpError } from '../middleware.js';
 import { logActivity } from '../audit.js';
+import { csvEscape } from '../studentFile.js';
 
-const announcementBody = z.object({ title: z.string().trim().min(3, 'Enter a title.').max(150), body: z.string().trim().min(3, 'Enter the announcement.').max(5000) });
+export const ANNOUNCEMENT_DEPARTMENTS = {
+  administration: { label: 'Administration', roles: ['system_admin', 'exam_admin'] },
+  registration: { label: 'Registration', roles: ['registration_officer', 'exam_admin'] },
+  examiner_management: { label: 'Examiner management', roles: ['examiner_officer', 'exam_admin'] },
+  results: { label: 'Results', roles: ['results_officer', 'results_approver', 'exam_admin'] },
+  exam_setters: { label: 'Examination setters', roles: ['exam_setter', 'exam_admin'] },
+  printing: { label: 'Printing', roles: ['printer', 'exam_admin'] },
+};
+
+export function announcementDepartmentKeys(roles = []) {
+  return Object.entries(ANNOUNCEMENT_DEPARTMENTS)
+    .filter(([, department]) => department.roles.some((role) => roles.includes(role)))
+    .map(([key]) => key);
+}
+
+const announcementBody = z.object({
+  title: z.string().trim().min(3, 'Enter a title.').max(150),
+  body: z.string().trim().min(3, 'Enter the announcement.').max(5000),
+  audience: z.enum(['GENERAL', 'DEPARTMENT', 'STAFF_DASHBOARD']).default('GENERAL'),
+  departmentKey: z.string().optional(),
+}).superRefine((announcement, ctx) => {
+  if (announcement.audience === 'DEPARTMENT' && !Object.hasOwn(ANNOUNCEMENT_DEPARTMENTS, announcement.departmentKey || '')) {
+    ctx.addIssue({ code: 'custom', message: 'Choose a department.', path: ['departmentKey'] });
+  }
+  if (announcement.audience !== 'DEPARTMENT' && announcement.departmentKey) {
+    ctx.addIssue({ code: 'custom', message: 'A department can only be set for department announcements.', path: ['departmentKey'] });
+  }
+});
 const messageBody = z.object({ subject: z.string().trim().min(3, 'Enter a subject.').max(150), body: z.string().trim().min(3, 'Enter your message.').max(5000) });
 
+async function reportSummary(sessionId) {
+  if (!sessionId) throw new HttpError(400, 'Choose an examination session.');
+  const session = await prisma.examinationSession.findUnique({ where: { id: sessionId } });
+  if (!session) throw new HttpError(404, 'Examination session not found.');
+  const [cands, subs, noms, batches, marks] = await Promise.all([
+    prisma.candidate.findMany({ where: { sessionId }, select: { gender: true, subjectCodes: true, school: { select: { name: true } } } }),
+    prisma.candidateSubmission.groupBy({ by: ['status'], where: { sessionId }, _count: true }),
+    prisma.examinerNomination.groupBy({ by: ['status'], where: { sessionId }, _count: true }),
+    prisma.resultBatch.groupBy({ by: ['status'], where: { sessionId }, _count: true }),
+    prisma.result.groupBy({ by: ['batchId'], where: { batch: { sessionId, status: { in: ['APPROVED', 'RELEASED'] } } }, _avg: { mark: true }, _min: { mark: true }, _max: { mark: true }, _count: true }),
+  ]);
+  const bySchool = {}, bySubject = {}, gender = { M: 0, F: 0 };
+  for (const candidate of cands) {
+    bySchool[candidate.school.name] = (bySchool[candidate.school.name] || 0) + 1;
+    gender[candidate.gender] = (gender[candidate.gender] || 0) + 1;
+    for (const code of candidate.subjectCodes) bySubject[code] = (bySubject[code] || 0) + 1;
+  }
+  const batchInfo = await prisma.resultBatch.findMany({
+    where: { id: { in: marks.map((mark) => mark.batchId) } },
+    select: { id: true, subjectCode: true, paperCode: true, school: { select: { name: true } } },
+  });
+  const details = Object.fromEntries(batchInfo.map((batch) => [batch.id, batch]));
+  const flat = (rows) => Object.fromEntries(rows.map((row) => [row.status, row._count]));
+  return {
+    session: { id: session.id, name: session.name, year: session.year, status: session.status },
+    students: { total: cands.length, bySchool, bySubject, gender },
+    entries: flat(subs), examinerRecommendations: flat(noms), resultBatches: flat(batches),
+    marks: marks.map((mark) => ({
+      subjectCode: details[mark.batchId].subjectCode,
+      paperCode: details[mark.batchId].paperCode,
+      schoolName: details[mark.batchId].school?.name || 'All schools',
+      count: mark._count,
+      average: mark._avg.mark == null ? null : Math.round(mark._avg.mark * 10) / 10,
+      lowest: mark._min.mark,
+      highest: mark._max.mark,
+    })),
+  };
+}
+
 export function registerCommunicationStaff(staff) {
-  // Announcements go to every school. Any staff member can read them; only announcers write.
-  staff.get('/announcements', async (_req, res, next) => {
-    try { res.json({ items: await prisma.announcement.findMany({ orderBy: { createdAt: 'desc' }, take: 100 }) }); } catch (e) { next(e); }
+  staff.get('/announcements', async (req, res, next) => {
+    try {
+      const departments = announcementDepartmentKeys(req.user.roles);
+      const audienceFilter = [
+        { audience: 'GENERAL' },
+        { audience: 'STAFF_DASHBOARD' },
+        ...(departments.length ? [{ audience: 'DEPARTMENT', departmentKey: { in: departments } }] : []),
+      ];
+      res.json({ items: await prisma.announcement.findMany({ where: { OR: audienceFilter }, orderBy: { createdAt: 'desc' }, take: 100 }) });
+    } catch (e) { next(e); }
   });
   staff.post('/announcements', requirePermission('announcements.manage'), async (req, res, next) => {
     try {
       const b = announcementBody.parse(req.body);
-      const a = await prisma.announcement.create({ data: { ...b, createdById: req.user.id } });
-      await logActivity(req, 'announcements.sent', { entity: 'Announcement', entityId: a.id, after: { title: a.title } });
+      const a = await prisma.announcement.create({ data: { ...b, departmentKey: b.audience === 'DEPARTMENT' ? b.departmentKey : null, createdById: req.user.id } });
+      await logActivity(req, 'announcements.sent', { entity: 'Announcement', entityId: a.id, after: { title: a.title, audience: a.audience, departmentKey: a.departmentKey } });
       res.status(201).json(a);
     } catch (e) { next(e); }
   });
@@ -57,39 +131,43 @@ export function registerCommunicationStaff(staff) {
   // Basic reports. All figures come from the database for the chosen session.
   staff.get('/reports/summary', requirePermission('reports.view'), async (req, res, next) => {
     try {
-      const sessionId = String(req.query.sessionId || '');
-      if (!sessionId) throw new HttpError(400, 'Choose an examination session.');
-      const session = await prisma.examinationSession.findUnique({ where: { id: sessionId } });
-      if (!session) throw new HttpError(404, 'Examination session not found.');
-      const [cands, subs, noms, batches, marks] = await Promise.all([
-        prisma.candidate.findMany({ where: { sessionId }, select: { gender: true, subjectCodes: true, school: { select: { name: true } } } }),
-        prisma.candidateSubmission.groupBy({ by: ['status'], where: { sessionId }, _count: true }),
-        prisma.examinerNomination.groupBy({ by: ['status'], where: { sessionId }, _count: true }),
-        prisma.resultBatch.groupBy({ by: ['status'], where: { sessionId }, _count: true }),
-        prisma.result.groupBy({ by: ['batchId'], where: { batch: { sessionId, status: { in: ['APPROVED', 'RELEASED'] } } }, _avg: { mark: true }, _min: { mark: true }, _max: { mark: true }, _count: true }),
-      ]);
-      const bySchool = {}, bySubject = {}, gender = { M: 0, F: 0 };
-      for (const c of cands) {
-        bySchool[c.school.name] = (bySchool[c.school.name] || 0) + 1;
-        gender[c.gender] = (gender[c.gender] || 0) + 1;
-        for (const s of c.subjectCodes) bySubject[s] = (bySubject[s] || 0) + 1;
-      }
-      const batchInfo = await prisma.resultBatch.findMany({ where: { id: { in: marks.map((m) => m.batchId) } }, select: { id: true, subjectCode: true } });
-      const code = Object.fromEntries(batchInfo.map((b) => [b.id, b.subjectCode]));
-      const flat = (rows) => Object.fromEntries(rows.map((r) => [r.status, r._count]));
-      res.json({
-        session: { id: session.id, name: session.name, year: session.year, status: session.status },
-        students: { total: cands.length, bySchool, bySubject, gender },
-        entries: flat(subs), examinerRecommendations: flat(noms), resultBatches: flat(batches),
-        marks: marks.map((m) => ({ subjectCode: code[m.batchId], count: m._count, average: m._avg.mark == null ? null : Math.round(m._avg.mark * 10) / 10, lowest: m._min.mark, highest: m._max.mark })),
-      });
+      res.json(await reportSummary(String(req.query.sessionId || '')));
+    } catch (e) { next(e); }
+  });
+  staff.get('/reports/summary/export', requirePermission('reports.view'), async (req, res, next) => {
+    try {
+      const report = await reportSummary(String(req.query.sessionId || ''));
+      const rows = [
+        ['Report', `${report.session.name} ${report.session.year}`, '', '', '', ''],
+        ['Section', 'Item', 'Count', 'Average mark', 'Lowest mark', 'Highest mark'],
+        ['Students', 'Total approved students', report.students.total, '', '', ''],
+        ...Object.entries(report.students.bySchool).map(([name, count]) => ['Students by school', name, count, '', '', '']),
+        ...Object.entries(report.students.bySubject).map(([code, count]) => ['Students by subject', code, count, '', '', '']),
+        ...Object.entries(report.students.gender).map(([gender, count]) => ['Students by gender', gender, count, '', '', '']),
+        ...Object.entries(report.entries).map(([status, count]) => ['Student entries', status, count, '', '', '']),
+        ...Object.entries(report.examinerRecommendations).map(([status, count]) => ['Examiner recommendations', status, count, '', '', '']),
+        ...Object.entries(report.resultBatches).map(([status, count]) => ['Result batches', status, count, '', '', '']),
+        ...report.marks.map((mark) => [
+          'Approved or released marks',
+          [mark.schoolName, mark.subjectCode, mark.paperCode].filter(Boolean).join(' — '),
+          mark.count,
+          mark.average,
+          mark.lowest,
+          mark.highest,
+        ]),
+      ];
+      const csv = rows.map((row) => row.map(csvEscape).join(',')).join('\r\n') + '\r\n';
+      res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+      res.setHeader('Content-Disposition', `attachment; filename="reports-${report.session.year}-${report.session.id}.csv"`);
+      res.setHeader('Cache-Control', 'private, no-store');
+      res.send(csv);
     } catch (e) { next(e); }
   });
 }
 
 export function registerCommunicationPortal(portal) {
   portal.get('/announcements', async (_req, res, next) => {
-    try { res.json({ items: await prisma.announcement.findMany({ orderBy: { createdAt: 'desc' }, take: 100, select: { id: true, title: true, body: true, createdAt: true } }) }); } catch (e) { next(e); }
+    try { res.json({ items: await prisma.announcement.findMany({ where: { audience: 'GENERAL' }, orderBy: { createdAt: 'desc' }, take: 100, select: { id: true, title: true, body: true, audience: true, createdAt: true } }) }); } catch (e) { next(e); }
   });
 
   portal.get('/messages', async (req, res, next) => {

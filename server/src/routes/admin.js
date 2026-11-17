@@ -55,31 +55,51 @@ export function registerAdmin(staff) {
 
   // ----- Subjects and subject groups -----
   staff.get('/subjects', requirePermission('schools.view'), async (_req, res, next) => {
-    try { res.json({ items: await prisma.subject.findMany({ orderBy: { code: 'asc' } }) }); } catch (e) { next(e); }
+    try { res.json({ items: await prisma.subject.findMany({ orderBy: { code: 'asc' }, include: { papers: { orderBy: { number: 'asc' } } } }) }); } catch (e) { next(e); }
   });
 
+  const papersBody = z.array(z.object({
+    number: z.number().int().min(1).max(3),
+    code: z.string().trim().min(1, 'Enter the paper code.').max(20).transform((value) => value.toUpperCase()),
+  })).max(3, 'A subject can have up to three papers.')
+    .superRefine((papers, ctx) => {
+      if (new Set(papers.map((paper) => paper.number)).size !== papers.length) {
+        ctx.addIssue({ code: 'custom', message: 'Choose each paper number only once.', path: [] });
+      }
+    });
   const subjectBody = z.object({
     code: z.string().min(2, 'Enter a subject code, for example MATH.').max(12).transform((s) => s.toUpperCase()),
     name: z.string().min(2, 'Enter the subject name.'),
     category: z.string().optional(),
     maxMark: z.number().int().min(1).max(1000).optional(),
     isActive: z.boolean().optional(),
+    papers: papersBody.optional(),
   });
   staff.post('/subjects', requirePermission('subjects.manage'), async (req, res, next) => {
     try {
-      const s = await prisma.subject.create({ data: subjectBody.parse(req.body) });
+      const { papers = [], ...data } = subjectBody.parse(req.body);
+      const s = await prisma.subject.create({ data: { ...data, papers: { create: papers } }, include: { papers: { orderBy: { number: 'asc' } } } });
       await logActivity(req, 'subject.created', { entity: 'Subject', entityId: s.id, after: s });
       res.status(201).json(s);
-    } catch (e) { next(e.code === 'P2002' ? new HttpError(409, 'A subject with this code already exists.') : e); }
+    } catch (e) { next(e.code === 'P2002' ? new HttpError(409, 'A subject or paper with this code already exists.') : e); }
   });
   staff.patch('/subjects/:id', requirePermission('subjects.manage'), async (req, res, next) => {
     try {
       const before = await prisma.subject.findUnique({ where: { id: req.params.id } });
       if (!before) throw new HttpError(404, 'Subject not found.');
-      const s = await prisma.subject.update({ where: { id: before.id }, data: subjectBody.partial().parse(req.body) });
+      const parsed = subjectBody.partial().parse(req.body);
+      const { papers, ...data } = parsed;
+      const s = await prisma.$transaction(async (tx) => {
+        if (papers) await tx.subjectPaper.deleteMany({ where: { subjectId: before.id } });
+        return tx.subject.update({
+          where: { id: before.id },
+          data: { ...data, ...(papers ? { papers: { create: papers } } : {}) },
+          include: { papers: { orderBy: { number: 'asc' } } },
+        });
+      });
       await logActivity(req, 'subject.updated', { entity: 'Subject', entityId: s.id, before, after: s });
       res.json(s);
-    } catch (e) { next(e); }
+    } catch (e) { next(e.code === 'P2002' ? new HttpError(409, 'A subject or paper with this code already exists.') : e); }
   });
 
   staff.get('/subject-groups', requirePermission('schools.view'), async (_req, res, next) => {
